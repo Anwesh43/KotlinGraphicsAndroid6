@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "KotlinGraphicsAndroid6"
 include(":app")
+include(":linestartfromleftview")
