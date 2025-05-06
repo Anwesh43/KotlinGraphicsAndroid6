@@ -180,4 +180,27 @@ class LineStartFromLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineStartFromLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lsfl : LineStartFromLeft = LineStartFromLeft(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lsfl.draw(canvas, paint)
+            animator.animate {
+                lsfl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lsfl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
