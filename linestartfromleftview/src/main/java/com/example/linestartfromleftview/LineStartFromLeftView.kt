@@ -205,4 +205,12 @@ class LineStartFromLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineStartFromLeftView {
+            val view : LineStartFromLeftView = LineStartFromLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
