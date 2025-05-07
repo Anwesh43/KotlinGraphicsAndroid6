@@ -46,7 +46,7 @@ fun Canvas.drawDropMultiSemiCircles(scale : Float, w : Float, h : Float, paint :
         for (j in 0..(arcs - 1)) {
             val ds0j : Float = dsc(0).divideScale(j, arcs)
             val ds2j : Float = dsc(2).divideScale(j, arcs)
-            drawXY(-w / 2 + size * j, h * 0.5f * ds2j) {
+            drawXY(-w / 2 + size * j, -h * 0.5f * ds2j) {
                 drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * ds0j, false, paint)
             }
         }
@@ -59,6 +59,7 @@ fun Canvas.drawDMSCNode(i : Int, scale : Float, paint : Paint) {
     paint.color = Color.parseColor(colors[i])
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawDropMultiSemiCircles(scale, w, h, paint)
 }
 
