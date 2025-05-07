@@ -118,4 +118,45 @@ class DropMultiSemiCirclesView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class DMSCNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : DMSCNode? = null
+        private var prev : DMSCNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = DMSCNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawDMSCNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : DMSCNode {
+            var curr : DMSCNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
