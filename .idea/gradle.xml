@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/dropmultisemicirclesview" />
             <option value="$PROJECT_DIR$/linestartfromleftview" />
+            <option value="$PROJECT_DIR$/slantlinejoinarcview" />
           </set>
         </option>
       </GradleProjectSettings>
