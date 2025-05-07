@@ -188,4 +188,27 @@ class DropMultiSemiCirclesView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : DropMultiSemiCirclesView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val dmsc : DropMultiSemiCircles = DropMultiSemiCircles(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            dmsc.draw(canvas, paint)
+            animator.animate {
+                dmsc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            dmsc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
