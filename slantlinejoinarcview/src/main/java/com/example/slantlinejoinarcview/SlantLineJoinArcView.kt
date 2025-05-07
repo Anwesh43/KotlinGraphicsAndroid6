@@ -123,4 +123,45 @@ class SlantLineJoinArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class SLJANode(var i : Int = 0, val state : State = State()) {
+
+        private var next : SLJANode? = null
+        private var prev : SLJANode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = SLJANode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawSLJANode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : SLJANode {
+            var curr : SLJANode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
