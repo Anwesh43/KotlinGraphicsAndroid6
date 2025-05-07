@@ -212,4 +212,13 @@ class SlantLineJoinArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : SlantLineJoinArcView {
+            val view : SlantLineJoinArcView = SlantLineJoinArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
