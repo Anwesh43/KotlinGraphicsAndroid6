@@ -8,6 +8,7 @@ import android.graphics.RectF
 import android.graphics.Color
 import android.app.Activity
 import android.content.Context
+import androidx.core.graphics.toColorInt
 
 val colors : Array<String> = arrayOf(
     "#1A237E",
@@ -23,4 +24,8 @@ val rot : Float = -180f
 val delay : Long = 20
 val sizeFactor : Float = 6.9f
 val strokeFactor : Float = 90f
-val backColor : Int = Color.parseColor("#BDBDBD")
+val backColor : Int = "#BDBDBD".toColorInt()
+
+fun Int.inverse() : Float = 1f / this
+fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
+fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
