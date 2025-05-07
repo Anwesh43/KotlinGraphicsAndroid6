@@ -101,7 +101,13 @@ class DropMultiSemiCirclesView(ctx : Context) : View(ctx) {
 
         fun animate(cb : () -> Unit) {
             if (animated) {
+                cb()
+                try {
+                    Thread.sleep(delay)
+                    view.invalidate()
+                } catch(ex : Exception) {
 
+                }
             }
         }
 
