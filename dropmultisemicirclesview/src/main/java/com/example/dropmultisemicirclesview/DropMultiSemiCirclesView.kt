@@ -213,4 +213,12 @@ class DropMultiSemiCirclesView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : DropMultiSemiCirclesView {
+            val view : DropMultiSemiCirclesView = DropMultiSemiCirclesView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
