@@ -24,7 +24,7 @@ val lineDeg : Float = 45f
 val sizeFactor : Float = 6.9f
 val delay : Long = 20
 val backColor : Int = Color.parseColor("#BDBDBD")
-val sweep : Float = rot + lineDeg
+val sweep : Float = 90f + lineDeg
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -48,7 +48,7 @@ fun Canvas.drawSlantLineJoinArc(scale : Float, w : Float, h : Float, paint : Pai
             rotate(lineDeg)
             drawLine(0f, 0f, size * dsc(0), 0f, paint)
         }
-        drawArc(RectF(0f, -size / 2, size, size / 2), 180f, sweep * dsc(1), false, paint)
+        drawArc(RectF(-size, -size, size, size), -90f, sweep * dsc(1), false, paint)
     }
 }
 
@@ -58,6 +58,7 @@ fun Canvas.drawSLJANode(i : Int, scale : Float, paint : Paint) {
     paint.color = Color.parseColor(colors[i])
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawSlantLineJoinArc(scale, w, h, paint)
 }
 
