@@ -184,4 +184,27 @@ class StepQuarterArcLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : StepQuarterArcLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val sqal : StepQuarterArcLeft = StepQuarterArcLeft(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            sqal.draw(canvas, paint)
+            animator.animate {
+                sqal.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            sqal.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
