@@ -43,7 +43,7 @@ fun Canvas.drawStepQuarterArcLeft(scale : Float, w : Float, h : Float, paint : P
     drawXY(w / 2 - (w / 2) * dsc(3), h / 2) {
         drawLine(0f, 0f, -size * 0.5f * dsc(0), 0f, paint)
         drawXY(-size / 2, 0f) {
-            drawLine(0f, 0f, 0f, -size * 0.5f * dsc(1), paint)
+            drawLine(0f, 0f, 0f, size * 0.5f * dsc(1), paint)
         }
         drawArc(RectF(-size, -size / 2, 0f, size / 2), 90f, rot * dsc(2), false, paint)
     }
@@ -55,6 +55,7 @@ fun Canvas.drawSQALNode(i : Int, scale : Float, paint : Paint) {
     paint.color = Color.parseColor(colors[i])
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawStepQuarterArcLeft(scale, w, h, paint)
 }
 
