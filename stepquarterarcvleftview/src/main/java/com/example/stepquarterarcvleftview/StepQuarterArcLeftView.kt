@@ -209,4 +209,12 @@ class StepQuarterArcLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : StepQuarterArcLeftView {
+            val view : StepQuarterArcLeftView = StepQuarterArcLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
