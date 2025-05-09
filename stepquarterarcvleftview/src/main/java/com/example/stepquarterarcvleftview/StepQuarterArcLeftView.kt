@@ -16,13 +16,14 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 4
+val parts : Int = 5
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = Color.parseColor("#BDBDBD")
 val rot : Float = 270f
+val deg : Float = 180f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -40,7 +41,8 @@ fun Canvas.drawStepQuarterArcLeft(scale : Float, w : Float, h : Float, paint : P
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 - (w / 2) * dsc(3), h / 2) {
+    drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
+        rotate(deg * dsc(3))
         drawLine(0f, 0f, -size * 0.5f * dsc(0), 0f, paint)
         drawXY(-size / 2, 0f) {
             drawLine(0f, 0f, 0f, size * 0.5f * dsc(1), paint)
