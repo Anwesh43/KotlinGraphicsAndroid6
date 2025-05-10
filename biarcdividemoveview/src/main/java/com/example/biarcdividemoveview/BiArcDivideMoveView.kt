@@ -194,4 +194,27 @@ class BiArcDivideMoveView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiArcDivideMoveView) {
+
+        private val animator : Animator = Animator(view)
+        private val badm : BiArcDivideMove = BiArcDivideMove(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            badm.draw(canvas, paint)
+            animator.animate {
+                badm.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            badm.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
