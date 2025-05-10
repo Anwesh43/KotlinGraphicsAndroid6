@@ -130,4 +130,45 @@ class BiArcDivideMoveView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class BADMNode(var i : Int = 0, var state : State = State()) {
+
+        private var next : BADMNode? = null
+        private var prev : BADMNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = BADMNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawBADMNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun strtUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : BADMNode {
+            var curr : BADMNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
