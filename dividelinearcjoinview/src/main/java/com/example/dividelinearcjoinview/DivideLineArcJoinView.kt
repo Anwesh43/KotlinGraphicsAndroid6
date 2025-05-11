@@ -47,8 +47,8 @@ fun Canvas.drawDivideLineArcJoin(scale : Float, w : Float, h : Float, paint : Pa
         rotate(rot * dsc(3))
         for (j in 0..1) {
             drawXY(0f, 0f) {
-                rotate((1 + dsc(0)) * sweep * (1f - 2 * j))
-                drawLine(0f, 0f, 0f, -size * dsc(0), paint)
+                rotate((1 + dsc(2)) * sweep * (1f - 2 * j))
+                drawLine(0f, 0f, 0f, size * dsc(0), paint)
             }
         }
         drawArc(RectF(-size, -size, size, size), start + sweep * dsc(2), arcSweep * dsc(1) - 2 * sweep * dsc(2), false, paint)
@@ -61,6 +61,7 @@ fun Canvas.drawDLAJNode(i : Int, scale : Float, paint : Paint) {
     paint.color = Color.parseColor(colors[i])
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawDivideLineArcJoin(scale, w, h, paint)
 }
 
