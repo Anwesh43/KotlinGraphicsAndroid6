@@ -215,4 +215,12 @@ class DivideLineArcJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : DivideLineArcJoinView {
+            val view : DivideLineArcJoinView = DivideLineArcJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
