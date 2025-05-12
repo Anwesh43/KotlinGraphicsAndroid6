@@ -190,4 +190,27 @@ class CapArcLineCircleView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : CapArcLineCircleView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val calc : CapArcLineCircle = CapArcLineCircle(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            calc.draw(canvas, paint)
+            animator.animate {
+                calc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            calc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
