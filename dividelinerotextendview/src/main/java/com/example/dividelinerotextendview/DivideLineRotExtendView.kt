@@ -190,4 +190,27 @@ class DivideLineRotExtendView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : DivideLineRotExtendView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val dlre : DivideLineRotExtend = DivideLineRotExtend(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            dlre.draw(canvas, paint)
+            animator.animate {
+                dlre.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            dlre.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
