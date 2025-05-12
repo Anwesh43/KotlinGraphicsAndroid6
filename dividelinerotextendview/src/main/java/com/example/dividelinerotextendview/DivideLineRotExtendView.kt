@@ -4,7 +4,6 @@ import android.view.View
 import android.view.MotionEvent
 import android.graphics.Paint
 import android.graphics.Canvas
-import android.graphics.Color
 import android.app.Activity
 import android.content.Context
 import androidx.core.graphics.toColorInt
@@ -17,12 +16,12 @@ val colors : Array<String> = arrayOf(
     "#00C853"
 )
 val parts : Int = 6
-val rot : Float = 90f
+val rot : Float = -90f
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
-val sizeFactor : Float = 6.9f
+val sizeFactor : Float = 4.9f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -48,7 +47,7 @@ fun Canvas.drawDivideLineRotExtend(scale : Float, w : Float, h : Float, paint  :
         drawLine(0f, 0f, size * dsc(0), 0f, paint)
         val gap : Float = size / 3
         for (j in 0..3) {
-            drawXY(gap * j, 0f) {
+            drawXY(size - gap * j, 0f) {
                 drawLine(0f, 0f, 0f, size * 0.5f * dsk(j + 1, 1), paint)
             }
         }
