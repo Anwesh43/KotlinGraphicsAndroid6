@@ -215,4 +215,13 @@ class CapArcLineCircleView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : CapArcLineCircleView {
+            val view : CapArcLineCircleView = CapArcLineCircleView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
