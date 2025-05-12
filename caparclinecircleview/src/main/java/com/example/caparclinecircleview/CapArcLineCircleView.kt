@@ -49,7 +49,7 @@ fun Canvas.drawCapArcLineCircle(scale : Float, w : Float, h : Float, paint : Pai
             rotate(rot * dsc(3))
             drawLine(0f, 0f, size * dsc(1).divideScale(0, 2), 0f, paint)
             drawXY(size * (1 - dsc(2)), 0f) {
-                drawArc(RectF(0f, -size / 2, size, 0f), 180f, 180f * dsc(1).divideScale(1, 2), false, paint)
+                drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(1).divideScale(1, 2), false, paint)
             }
         }
     }
@@ -61,6 +61,7 @@ fun Canvas.drawCALCNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawCapArcLineCircle(scale, w, h, paint)
 }
 
