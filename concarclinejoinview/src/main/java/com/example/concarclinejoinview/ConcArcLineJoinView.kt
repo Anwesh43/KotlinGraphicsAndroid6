@@ -195,4 +195,27 @@ class ConcArcLineJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ConcArcLineJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val calj : ConcArcLineJoin = ConcArcLineJoin(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            calj.draw(canvas, paint)
+            animator.animate {
+                calj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            calj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
