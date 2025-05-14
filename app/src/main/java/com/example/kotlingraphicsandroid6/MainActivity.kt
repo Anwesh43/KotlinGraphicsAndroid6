@@ -11,12 +11,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.caparclinecircleview.CapArcLineCircleView
+import com.example.concarclinejoinview.ConcArcLineJoinView
 import com.example.kotlingraphicsandroid6.ui.theme.KotlinGraphicsAndroid6Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        CapArcLineCircleView.create(this)
+        ConcArcLineJoinView.create(this)
     }
 }
