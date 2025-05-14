@@ -47,7 +47,7 @@ fun Canvas.drawCapArcLineCircle(scale : Float, w : Float, h : Float, paint : Pai
         }
         drawXY(0f, 0f) {
             rotate(rot * dsc(3))
-            drawLine(0f, 0f, size * dsc(1).divideScale(0, 2), 0f, paint)
+            drawLine(0f, 0f, size * (dsc(1).divideScale(0, 2) - dsc(2)), 0f, paint)
             drawXY(size * (1 - dsc(2)), 0f) {
                 drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(1).divideScale(1, 2), false, paint)
             }
