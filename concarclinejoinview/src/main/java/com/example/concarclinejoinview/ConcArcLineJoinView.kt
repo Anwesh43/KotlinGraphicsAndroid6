@@ -220,4 +220,12 @@ class ConcArcLineJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : ConcArcLineJoinView {
+            val view : ConcArcLineJoinView = ConcArcLineJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
