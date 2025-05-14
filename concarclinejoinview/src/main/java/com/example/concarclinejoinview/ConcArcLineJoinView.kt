@@ -49,7 +49,7 @@ fun Canvas.drawConcArcLineJoin(scale : Float, w : Float, h : Float, paint : Pain
         drawArc(RectF(-r1, -r1, r1, r1), -sweep, sweep * dsc(0), false, paint)
         for (j in 0..1) {
             drawXY(0f, 0f) {
-                rotate(sweep * j)
+                rotate(-sweep * j)
                 drawXY(r1, 0f) {
                     drawLine(0f, 0f, (r2 - r1) * dsc(1), 0f, paint)
                 }
