@@ -47,7 +47,7 @@ fun Canvas.drawLineSlantArcJoin(scale : Float, w : Float, h : Float, paint : Pai
             rotate(rot * (1f + dsc(2)))
             drawLine(0f, 0f, -size * dsc(1), 0f, paint)
         }
-        drawArc(RectF(0f, -size / 2, size, size / 2), 0f, rot * 2 * dsc(3), false, paint)
+        drawArc(RectF(0f, -size, 2 * size, size), 180f, rot * 2 * dsc(3), false, paint)
     }
 }
 
@@ -57,6 +57,7 @@ fun Canvas.drawLSAJNode(i : Int, scale : Float, paint : Paint) {
     paint.color = Color.parseColor(colors[i])
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawLineSlantArcJoin(scale, w, h, paint)
 }
 
