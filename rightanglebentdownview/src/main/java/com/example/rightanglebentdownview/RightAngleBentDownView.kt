@@ -215,4 +215,13 @@ class RightAngleBentDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : RightAngleBentDownView {
+            val view : RightAngleBentDownView = RightAngleBentDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
