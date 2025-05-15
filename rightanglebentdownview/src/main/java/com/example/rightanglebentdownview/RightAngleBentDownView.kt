@@ -190,4 +190,27 @@ class RightAngleBentDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RightAngleBentDownView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val rabd : RightAngleBentDown = RightAngleBentDown(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rabd.draw(canvas, paint)
+            animator.animate {
+                rabd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rabd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
