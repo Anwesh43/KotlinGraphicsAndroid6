@@ -47,7 +47,7 @@ fun Canvas.drawLineCapJoinRight(scale : Float, w : Float, h : Float, paint : Pai
             rotate(rot * dsc(2))
             drawLine(-size, 0f, -size + size * dsc(0), 0f, paint)
         }
-        drawArc(RectF(-size / 2, -size, size / 2, 0f), -90f - sweep * dsc(1), sweep * dsc(1), false, paint)
+        drawArc(RectF(-size / 2, -size, size / 2, 0f), 90f - sweep * dsc(1), sweep * dsc(1), false, paint)
     }
 }
 
@@ -57,6 +57,7 @@ fun Canvas.drawLCJRNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawLineCapJoinRight(scale, w, h, paint)
 }
 
