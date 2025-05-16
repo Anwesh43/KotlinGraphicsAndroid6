@@ -211,4 +211,12 @@ class LineCapJoinRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineCapJoinRightView {
+            val view : LineCapJoinRightView = LineCapJoinRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
