@@ -48,9 +48,9 @@ fun Canvas.drawRightAngleBentDown(scale : Float, w : Float, h : Float, paint : P
                 drawLine(0f, 0f, size * dsc(0), 0f, paint)
             }
         }
-        drawXY(0f, -h * 0.5f * (1 - dsc(2))) {
+        drawXY(size, h * 0.5f * (1 - dsc(2))) {
             rotate(deg * dsc(3))
-            drawLine(0f, 0f, 0f, -size, paint)
+            drawLine(0f, 0f, 0f, size, paint)
         }
     }
 }
