@@ -186,4 +186,27 @@ class LineCapJoinRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineCapJoinRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lcjr : LineCapJoinRight = LineCapJoinRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lcjr.draw(canvas, paint)
+            animator.animate {
+                lcjr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lcjr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
