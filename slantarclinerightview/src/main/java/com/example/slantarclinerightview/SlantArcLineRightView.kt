@@ -17,8 +17,8 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 4
-val scGap : Float = 0.04f
+val parts : Int = 5
+val scGap : Float = 0.04f / parts
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val rot : Float = 135f
@@ -52,7 +52,7 @@ fun Canvas.drawSlantArcLineRight(scale : Float, w : Float, h : Float, paint : Pa
 fun Canvas.drawSALRNode(i : Int, scale : Float, paint : Paint) {
     val w : Float = width.toFloat()
     val h : Float = height.toFloat()
-    paint.color = Color.parseColor(colors[i])
+    paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
     drawSlantArcLineRight(scale, w, h, paint)
@@ -205,7 +205,7 @@ class SlantArcLineRightView(ctx : Context) : View(ctx) {
 
         fun handleTap() {
             slar.startUpdating {
-                animator.stop()
+                animator.start()
             }
         }
     }
