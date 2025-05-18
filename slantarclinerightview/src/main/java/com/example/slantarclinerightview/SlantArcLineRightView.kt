@@ -55,6 +55,7 @@ fun Canvas.drawSALRNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawSlantArcLineRight(scale, w, h, paint)
 }
 
