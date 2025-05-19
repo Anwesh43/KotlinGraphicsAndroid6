@@ -12,11 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlingraphicsandroid6.ui.theme.KotlinGraphicsAndroid6Theme
-import com.example.slantarclinerightview.SlantArcLineRightView
+import com.example.quarterhalfarcrotview.QuarterHalfArcRotView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SlantArcLineRightView.create(this)
+        QuarterHalfArcRotView.create(this)
     }
 }
