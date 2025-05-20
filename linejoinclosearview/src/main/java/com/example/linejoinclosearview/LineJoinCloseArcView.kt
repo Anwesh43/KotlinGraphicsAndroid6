@@ -41,14 +41,14 @@ fun Canvas.drawLineJoinCloseArc(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 - (w / 2) * dsc(3), h / 2) {
+    drawXY(w / 2 - (w / 2) * dsc(4), h / 2) {
         for (j in 0..1) {
             drawXY(0f, -size * j) {
                 rotate(rot * (2 * j - 1) * dsc(3))
-                drawLine(size * (1 - j) * (1 - dsc(j * 2)), 0f, size * ((1 - j) +  dsc(j * 2)), 0f, paint)
+                drawLine(size * (1 - j) * (1 - dsc(j * 2)), 0f, size * ((1 - j) +  dsc(j * 2) * j), 0f, paint)
             }
         }
-        drawArc(RectF(-size / 2, 0f, size / 2, -size), 90f, 180f * dsc(1), false, paint)
+        drawArc(RectF(-size / 2, -size, size / 2, 0f), 90f, 180f * dsc(1), false, paint)
     }
 }
 
