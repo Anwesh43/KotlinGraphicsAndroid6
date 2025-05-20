@@ -28,3 +28,35 @@ val rot : Float = 90f
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
+
+fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
+    save()
+    translate(x, y)
+    cb()
+    restore()
+}
+
+fun Canvas.drawLineJoinCloseArc(scale : Float, w : Float, h : Float, paint : Paint) {
+    val size : Float = Math.min(w, h) / sizeFactor
+    val dsc : (Int) -> Float = {
+        scale.divideScale(it, parts)
+    }
+    drawXY(w / 2 - (w / 2) * dsc(3), h / 2) {
+        for (j in 0..1) {
+            drawXY(0f, -size * j) {
+                rotate(rot * (2 * j - 1) * dsc(3))
+                drawLine(size * (1 - j) * (1 - dsc(j * 2)), 0f, size * ((1 - j) +  dsc(j * 2)), 0f, paint)
+            }
+        }
+        drawArc(RectF(-size / 2, 0f, size / 2, -size), 90f, 180f * dsc(1), false, paint)
+    }
+}
+
+fun Canvas.drawLJCANode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    paint.color = Color.parseColor(colors[i])
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    drawLineJoinCloseArc(scale, w, h, paint)
+}
