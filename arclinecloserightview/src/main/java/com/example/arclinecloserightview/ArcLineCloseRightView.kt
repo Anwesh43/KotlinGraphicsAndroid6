@@ -17,13 +17,14 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 4
+val parts : Int = 6
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
-val sizeFactor : Float = 5.9f
+val sizeFactor : Float = 8.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val rot : Float = -270f
+val deg : Float = 90f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -41,19 +42,20 @@ fun Canvas.drawArcLineCloseRight(scale : Float, w : Float, h : Float, paint : Pa
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2) {
+    drawXY(w / 2 + (w / 4 - size) * dsc(3), h / 2 + (h / 2) * dsc(5)) {
+        rotate(deg * dsc(4))
         drawXY(0f, -size) {
             rotate(rot * dsc(2))
             drawLine(0f, 0f, size * dsc(1), 0f, paint)
         }
-        drawArc(RectF(-size / 2, 0f, -size / 2, -size), 90f - 180f * dsc(0), 180f * dsc(0), false, paint)
+        drawArc(RectF(-size / 2, -size, size / 2, 0f), 90f - 180f * dsc(0), 180f * dsc(0), false, paint)
     }
 }
 
 fun Canvas.drawALCRNode(i : Int, scale : Float, paint : Paint) {
     val w : Float = width.toFloat()
     val h : Float= height.toFloat()
-    paint.color = Color.parseColor(colors[i])
+    paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
     paint.style = Paint.Style.STROKE
