@@ -212,4 +212,12 @@ class LineJoinCloseArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineJoinCloseArcView {
+            val view : LineJoinCloseArcView = LineJoinCloseArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
