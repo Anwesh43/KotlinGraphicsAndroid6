@@ -45,7 +45,7 @@ fun Canvas.drawLineJoinCloseArc(scale : Float, w : Float, h : Float, paint : Pai
         for (j in 0..1) {
             drawXY(0f, -size * j) {
                 rotate(rot * (2 * j - 1) * dsc(3))
-                drawLine(size * (1 - j) * (1 - dsc(j * 2)), 0f, size * ((1 - j) +  dsc(j * 2) * j), 0f, paint)
+                drawLine(size * 0.5f * (1 - j) * (1 - dsc(j * 2)), 0f, size * 0.5f * ((1 - j) +  dsc(j * 2) * j), 0f, paint)
             }
         }
         drawArc(RectF(-size / 2, -size, size / 2, 0f), 90f, 180f * dsc(1), false, paint)
@@ -58,6 +58,7 @@ fun Canvas.drawLJCANode(i : Int, scale : Float, paint : Paint) {
     paint.color = Color.parseColor(colors[i])
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawLineJoinCloseArc(scale, w, h, paint)
 }
 
