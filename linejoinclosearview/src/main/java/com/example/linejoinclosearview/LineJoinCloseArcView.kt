@@ -187,4 +187,27 @@ class LineJoinCloseArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineJoinCloseArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ljca : LineJoinCloseArc = LineJoinCloseArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ljca.draw(canvas, paint)
+            animator.animate {
+                ljca.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ljca.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
