@@ -54,6 +54,16 @@ fun Canvas.drawLineRotArcLeft(scale : Float, w : Float, h : Float, paint : Paint
     }
 }
 
+fun Canvas.drawLRALNode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    paint.color = colors[i].toColorInt()
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
+    drawLineRotArcLeft(scale, w, h, paint)
+}
+
 class LineRotArcLeftView(ctx : Context) : View(ctx) {
 
     override fun onDraw(canvas : Canvas) {
@@ -114,6 +124,47 @@ class LineRotArcLeftView(ctx : Context) : View(ctx) {
             if (animated) {
                 animated = false
             }
+        }
+    }
+
+    data class LRALNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : LRALNode? = null
+        private var prev : LRALNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = LRALNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawLRALNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : LRALNode {
+            var curr : LRALNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
         }
     }
 }
