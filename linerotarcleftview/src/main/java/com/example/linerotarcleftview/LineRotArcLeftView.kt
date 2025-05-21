@@ -53,3 +53,19 @@ fun Canvas.drawLineRotArcLeft(scale : Float, w : Float, h : Float, paint : Paint
         drawArc(RectF(-size, -size, size, size), 90f - sweep * 0.5f * dsc(1), sweep * dsc(1), false, paint)
     }
 }
+
+class LineRotArcLeftView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
