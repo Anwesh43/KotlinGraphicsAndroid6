@@ -27,3 +27,40 @@ val rot : Float = 180f
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
+
+fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
+    save()
+    translate(x, y)
+    cb()
+    restore()
+}
+
+fun Canvas.drawParallelOppositeLine(scale : Float, w : Float, h : Float, paint : Paint) {
+    val size : Float = Math.min(w, h) / sizeFactor
+    val dsc : (Int) -> Float = {
+        scale.divideScale(it, parts)
+    }
+    val dsk : (Int, Int, Int) -> Float = {i, j, parts ->
+        dsc(i).divideScale(j, parts)
+    }
+    drawXY(w / 2, h / 2) {
+        for (j in 0..1) {
+            drawXY(0f, -size * j) {
+                rotate(-rot * (1f - 2 * j))
+                val x1 : Float = size * (1 - dsk(0, j * 2, 3)) * j
+                val x2 : Float = size * (1 - j) + size * j * dsk(0, j * 2, 3)
+                drawLine(x1, 0f, x2, 0f, paint)
+            }
+        }
+        drawLine(0f, 0f, 0f, -size * dsk(0, 1, 3), paint)
+    }
+}
+
+fun Canvas.drawPOLRNode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    paint.color = "#BDBDBD".toColorInt()
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.style = Paint.Style.STROKE
+    paint.strokeCap = Paint.Cap.ROUND
+}
