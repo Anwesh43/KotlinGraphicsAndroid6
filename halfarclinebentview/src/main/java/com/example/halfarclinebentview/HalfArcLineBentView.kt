@@ -215,4 +215,13 @@ class HalfArcLineBentView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : HalfArcLineBentView {
+            val view : HalfArcLineBentView = HalfArcLineBentView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
