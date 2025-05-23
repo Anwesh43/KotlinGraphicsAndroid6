@@ -190,4 +190,27 @@ class HalfArcLineBentView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : HalfArcLineBentView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val halb : HalfArcLineBent = HalfArcLineBent(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            halb.draw(canvas, paint)
+            animator.animate {
+                halb.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            halb.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
