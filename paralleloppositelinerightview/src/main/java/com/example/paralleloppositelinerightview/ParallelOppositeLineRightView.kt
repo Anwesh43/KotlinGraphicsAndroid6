@@ -191,4 +191,27 @@ class ParallelOppositeLineRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ParallelOppositeLineRightView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val polr : ParallelOppositeLineRight = ParallelOppositeLineRight(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            polr.draw(canvas, paint)
+            animator.animate {
+                polr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            polr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
