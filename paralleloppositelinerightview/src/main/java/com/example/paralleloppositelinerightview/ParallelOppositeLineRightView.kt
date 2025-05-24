@@ -59,10 +59,11 @@ fun Canvas.drawParallelOppositeLine(scale : Float, w : Float, h : Float, paint :
 fun Canvas.drawPOLRNode(i : Int, scale : Float, paint : Paint) {
     val w : Float = width.toFloat()
     val h : Float = height.toFloat()
-    paint.color = "#BDBDBD".toColorInt()
+    paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.style = Paint.Style.STROKE
     paint.strokeCap = Paint.Cap.ROUND
+    drawParallelOppositeLine(scale, w, h, paint)
 }
 
 class ParallelOppositeLineRightView(ctx : Context) : View(ctx) {
