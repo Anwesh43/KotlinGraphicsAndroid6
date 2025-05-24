@@ -43,12 +43,12 @@ fun Canvas.drawParallelOppositeLine(scale : Float, w : Float, h : Float, paint :
     val dsk : (Int, Int, Int) -> Float = {i, j, parts ->
         dsc(i).divideScale(j, parts)
     }
-    drawXY(w / 2, h / 2) {
+    drawXY(w / 2 + (w / 2) * dsc(3), h / 2) {
         for (j in 0..1) {
             drawXY(0f, -size * j) {
-                rotate(-rot * (1f - 2 * j))
-                val x1 : Float = size * (1 - dsk(0, j * 2, 3)) * j
-                val x2 : Float = size * (1 - j) + size * j * dsk(0, j * 2, 3)
+                rotate(-rot * (1f - 2 * j) * dsc(j + 1))
+                val x1 : Float = -size * (1 - j) * (1 - dsk(0, j, 3))
+                val x2 : Float = -size * (1 - j) - size * j * dsk(0, 2 * j, 3)
                 drawLine(x1, 0f, x2, 0f, paint)
             }
         }
@@ -62,7 +62,7 @@ fun Canvas.drawPOLRNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.style = Paint.Style.STROKE
-    paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
     drawParallelOppositeLine(scale, w, h, paint)
 }
 
