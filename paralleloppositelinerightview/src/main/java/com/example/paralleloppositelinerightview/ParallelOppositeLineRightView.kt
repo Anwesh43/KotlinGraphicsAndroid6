@@ -216,4 +216,13 @@ class ParallelOppositeLineRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : ParallelOppositeLineRightView {
+            val view : ParallelOppositeLineRightView = ParallelOppositeLineRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
