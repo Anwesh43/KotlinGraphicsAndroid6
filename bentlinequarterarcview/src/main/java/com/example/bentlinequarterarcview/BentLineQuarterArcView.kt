@@ -213,4 +213,13 @@ class BentLineQuarterArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : BentLineQuarterArcView {
+            val view : BentLineQuarterArcView = BentLineQuarterArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
