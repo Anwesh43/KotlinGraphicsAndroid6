@@ -188,4 +188,27 @@ class BentLineQuarterArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BentLineQuarterArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val blqa : BentLineQuarterArc = BentLineQuarterArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blqa.draw(canvas, paint)
+            animator.animate {
+                blqa.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            blqa.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
