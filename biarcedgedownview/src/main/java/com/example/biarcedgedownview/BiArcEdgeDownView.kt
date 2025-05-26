@@ -221,4 +221,12 @@ class BiArcEdgeDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : BiArcEdgeDownView {
+            val view : BiArcEdgeDownView = BiArcEdgeDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
