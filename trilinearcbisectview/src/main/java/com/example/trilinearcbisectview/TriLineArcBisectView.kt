@@ -194,7 +194,28 @@ class TriLineArcBisectView(ctx : Context) : View(ctx) {
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
         }
+    }
 
+    data class Renderer(var view : TriLineArcBisectView) {
 
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+        private val tlab : TriLineArcBisect = TriLineArcBisect(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            tlab.draw(canvas, paint)
+            animator.animate {
+                tlab.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            tlab.startUpdating {
+                animator.start()
+            }
+        }
     }
 }
