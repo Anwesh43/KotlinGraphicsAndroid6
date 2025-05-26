@@ -220,4 +220,12 @@ class TriLineArcBisectView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : TriLineArcBisectView {
+            val view : TriLineArcBisectView = TriLineArcBisectView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
