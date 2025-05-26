@@ -49,11 +49,11 @@ fun Canvas.drawBiArcEdgeDown(scale : Float, w : Float, h : Float, paint : Paint)
         scale.divideScale(it, parts)
     }
     drawXY(w / 2, h / 2 + (h / 2) * dsc(3)) {
-        rotate(rot * dsc(2))
         for (j in 0..1) {
             scaleXY(1f - 2 * j, 1f) {
                 drawXY((w / 2 - size) * (1f - dsc(1)), 0f) {
-                    drawArc(RectF(0f, -size / 2, size, size / 2), 180f * (1 - dsc(0)), 180f * dsc(0), false, paint)
+                    rotate(rot * dsc(2))
+                    drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(0), false, paint)
                 }
             }
         }
@@ -166,7 +166,7 @@ class BiArcEdgeDownView(ctx : Context) : View(ctx) {
         fun getNext(dir : Int, cb : () -> Unit) : BAEDNode {
             var curr : BAEDNode? = prev
             if (dir === 1) {
-                curr = this
+                curr = next
             }
             if (curr != null) {
                 return curr
