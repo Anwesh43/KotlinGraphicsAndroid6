@@ -5,6 +5,10 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.RectF
 import androidx.core.graphics.toColorInt
+import android.view.View
+import android.view.MotionEvent
+import android.content.Context
+import android.app.Activity
 
 val colors : Array<String> = arrayOf(
     "#1A237E",
