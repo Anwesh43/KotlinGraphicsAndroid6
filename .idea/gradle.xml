@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/arclinecloserightview" />
             <option value="$PROJECT_DIR$/bentlinequarterarcview" />
             <option value="$PROJECT_DIR$/biarcdividemoveview" />
+            <option value="$PROJECT_DIR$/biarcedgedownview" />
             <option value="$PROJECT_DIR$/caparclinecircleview" />
             <option value="$PROJECT_DIR$/concarclinejoinview" />
             <option value="$PROJECT_DIR$/dividelinearcjoinview" />
@@ -31,6 +32,7 @@
             <option value="$PROJECT_DIR$/slantarclinerightview" />
             <option value="$PROJECT_DIR$/slantlinejoinarcview" />
             <option value="$PROJECT_DIR$/stepquarterarcvleftview" />
+            <option value="$PROJECT_DIR$/trilinearcbisectview" />
           </set>
         </option>
       </GradleProjectSettings>
