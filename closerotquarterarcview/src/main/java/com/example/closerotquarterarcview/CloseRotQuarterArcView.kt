@@ -17,7 +17,7 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
+val parts : Int = 6
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
@@ -41,13 +41,13 @@ fun Canvas.drawCloseRotQuarterArc(scale : Float, w : Float, h : Float, paint : P
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
-        rotate(rot * dsc(1))
+    drawXY(w / 2 + (w / 2) * dsc(5), h / 2) {
+        rotate(rot * dsc(2))
         drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), -90f, rot * dsc(0), false, paint)
         drawXY(size / 2, 0f) {
-            drawLine(0f, 0f, -size * 0.5f * dsc(2), 0f, paint)
+            drawLine(0f, 0f, -size * 0.5f * dsc(3), 0f, paint)
         }
-        drawLine(0f, 0f, 0f, -size * 0.5f * dsc(3), paint)
+        drawLine(0f, 0f, 0f, -size * 0.5f * dsc(4), paint)
     }
 }
 
