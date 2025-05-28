@@ -187,4 +187,27 @@ class CloseRotQuarterArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : CloseRotQuarterArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val crqa : CloseRotQuarterArc = CloseRotQuarterArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            crqa.draw(canvas, paint)
+            animator.animate {
+                crqa.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            crqa.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
