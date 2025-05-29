@@ -191,4 +191,27 @@ class RotTrapeziumLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RotTrapeziumLineView) {
+
+        private val rtl : RotTrapeziumLine = RotTrapeziumLine(0)
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rtl.draw(canvas, paint)
+            animator.animate {
+                rtl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rtl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
