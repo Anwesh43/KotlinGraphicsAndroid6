@@ -216,4 +216,13 @@ class RotTrapeziumLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : RotTrapeziumLineView {
+            val view : RotTrapeziumLineView = RotTrapeziumLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
