@@ -63,7 +63,7 @@ fun Canvas.drawRotTrapeziumLine(scale : Float, w : Float, h : Float, paint : Pai
 fun Canvas.drawRTLNode(i : Int, scale : Float, paint : Paint) {
     val w : Float = width.toFloat()
     val h : Float = height.toFloat()
-    paint.color = Color.parseColor(colors[i])
+    paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
     drawRotTrapeziumLine(scale, w, h, paint)
