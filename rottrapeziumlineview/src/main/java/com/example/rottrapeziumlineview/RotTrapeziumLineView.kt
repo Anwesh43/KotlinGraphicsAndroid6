@@ -41,17 +41,21 @@ fun Canvas.drawRotTrapeziumLine(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2 + (h / 2) * dsc(5)) {
-        rotate(-rot * dsc(4))
-        drawXY(0f, -size) {
-            drawLine(0f, 0f, 0f, size * dsc(0), paint)
-        }
-        drawLine(0f, 0f, -size * dsc(1), 0f, paint)
-        drawXY(-size, 0f) {
-            drawLine(0f, 0f, 0f, -size * 0.5f * dsc(2), paint)
-        }
-        drawXY(-size, -size / 2) {
-            drawLine(0f, 0f, size * dsc(3), -size * 0.5f * dsc(3), paint)
+    drawXY(w / 2, h / 2) {
+        for (j in 0..1) {
+            drawXY(-w * 0.5f * dsc(5) * (1 - j), h * 0.5f * dsc(5) * j) {
+                rotate(-rot * dsc(4) * j)
+                drawXY(0f, -size) {
+                    drawLine(0f, 0f, 0f, size * dsc(0), paint)
+                }
+                drawLine(0f, 0f, -size * dsc(1), 0f, paint)
+                drawXY(-size, 0f) {
+                    drawLine(0f, 0f, 0f, -size * 0.5f * dsc(2), paint)
+                }
+                drawXY(-size, -size / 2) {
+                    drawLine(0f, 0f, size * dsc(3), -size * 0.5f * dsc(3), paint)
+                }
+            }
         }
     }
 }
