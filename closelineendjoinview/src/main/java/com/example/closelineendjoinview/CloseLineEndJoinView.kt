@@ -215,4 +215,13 @@ class CloseLineEndJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : CloseLineEndJoinView {
+            val view : CloseLineEndJoinView = CloseLineEndJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
