@@ -196,4 +196,27 @@ class TriinSqRotRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : TriinSqRotRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val tsrr : TriinSqRotRight = TriinSqRotRight(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            tsrr.draw(canvas, paint)
+            animator.animate {
+                tsrr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            tsrr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
