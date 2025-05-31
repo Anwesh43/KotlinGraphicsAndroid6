@@ -43,8 +43,10 @@ fun Canvas.drawTriinSqRotRight(i : Int, scale : Float, w : Float, h : Float, pai
         scale.divideScale(it, parts)
     }
     val dsk : (Int, Int, Int) -> Float = {i, j, k -> dsc(i).divideScale(j, k)}
-    drawXY(w / 2, h / 2) {
-        paint.color = backColor
+    drawXY(w / 2 + (w / 2) * dsc(3), h / 2) {
+        paint.color = colors[i].toColorInt()
+        drawRect(RectF(0f, -size, size * dsc(0), 0f), paint)
+        paint.color = Color.WHITE
         val inSize : Float = Math.min(w, h) / inSizeFactor
         for (j in 0..1) {
             drawXY(size / 2, -size / 2) {
@@ -57,8 +59,6 @@ fun Canvas.drawTriinSqRotRight(i : Int, scale : Float, w : Float, h : Float, pai
                 }
             }
         }
-        paint.color = colors[i].toColorInt()
-        drawRect(RectF(0f, -size, size * dsc(0), 0f), paint)
     }
 }
 
