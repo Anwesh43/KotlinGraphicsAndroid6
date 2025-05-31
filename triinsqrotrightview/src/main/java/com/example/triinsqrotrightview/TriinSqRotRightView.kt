@@ -221,4 +221,12 @@ class TriinSqRotRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : TriinSqRotRightView {
+            val view : TriinSqRotRightView = TriinSqRotRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
