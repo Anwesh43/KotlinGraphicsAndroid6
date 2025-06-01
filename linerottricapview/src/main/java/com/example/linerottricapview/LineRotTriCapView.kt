@@ -3,7 +3,6 @@ package com.example.linerottricapview
 import android.view.View
 import android.view.MotionEvent
 import android.app.Activity
-import android.graphics.Color
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.content.Context
@@ -210,6 +209,15 @@ class LineRotTriCapView(ctx : Context) : View(ctx) {
             lrtc.startUpdating {
                 animator.start()
             }
+        }
+    }
+
+    companion object {
+
+        fun create(activity: Activity) : LineRotTriCapView {
+            val view : LineRotTriCapView = LineRotTriCapView(activity)
+            activity.setContentView(view)
+            return view
         }
     }
 }
