@@ -12,11 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlingraphicsandroid6.ui.theme.KotlinGraphicsAndroid6Theme
-import com.example.triinsqrotrightview.TriinSqRotRightView
+import com.example.linerottricapview.LineRotTriCapView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        TriinSqRotRightView.create(this)
+        LineRotTriCapView.create(this)
     }
 }
