@@ -215,4 +215,12 @@ class LineMultiForkRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineMultiForkRotView {
+            val view : LineMultiForkRotView = LineMultiForkRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
