@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf(
     "#00C853"
 )
 val rot : Float = 180f
-val deg : Float = 60f
+val deg : Float = 30f
 val backColor : Int = "#BDBDBD".toColorInt()
 val sizeFactor : Float = 6.9f
 val strokeFactor : Float = 90f
@@ -46,7 +46,7 @@ fun Canvas.drawLineMultiForkRot(scale : Float, w : Float, h : Float, paint : Pai
                 rotate(rot * j * dsc(1))
                 for (k in 0..2) {
                     drawXY(0f, 0f) {
-                        rotate(deg * (k - 1) * dsc(2))
+                        rotate(deg * (k - 1) * dsc(2) * j)
                         drawLine(0f, 0f, -size * dsc(0), 0f, paint)
                     }
                 }
