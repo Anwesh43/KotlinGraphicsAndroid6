@@ -25,7 +25,9 @@
             <option value="$PROJECT_DIR$/halfarclinebentview" />
             <option value="$PROJECT_DIR$/linecapjoinrightview" />
             <option value="$PROJECT_DIR$/linejoinclosearview" />
+            <option value="$PROJECT_DIR$/linemultiforkrotview" />
             <option value="$PROJECT_DIR$/linerotarcleftview" />
+            <option value="$PROJECT_DIR$/linerottricapview" />
             <option value="$PROJECT_DIR$/lineslantarcjoinview" />
             <option value="$PROJECT_DIR$/linestartfromleftview" />
             <option value="$PROJECT_DIR$/paralleloppositelinerightview" />
