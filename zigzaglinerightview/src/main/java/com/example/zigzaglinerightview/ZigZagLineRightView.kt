@@ -214,4 +214,12 @@ class ZigZagLineRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ZigZagLineRightView {
+            val view : ZigZagLineRightView = ZigZagLineRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
