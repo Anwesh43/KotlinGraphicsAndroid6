@@ -1,0 +1,25 @@
+package com.example.lineshiftjoindownview
+
+import android.view.View
+import android.view.MotionEvent
+import android.graphics.Paint
+import android.graphics.Canvas
+import androidx.core.graphics.toColorInt
+import android.content.Context
+import android.app.Activity
+
+val colors : Array<String> = arrayOf(
+    "#1A237E",
+    "#EF5350",
+    "#AA00FF",
+    "#C51162",
+    "#00C853"
+)
+val parts : Int = 5
+val scGap : Float = 0.05f / parts
+val strokeFactor : Float = 90f
+val sizeFactor : Float = 5.9f
+val delay : Long = 20
+val rot1 : Float = 90f
+val rot2 : Float = -180f
+val backColor : Int = "#BDBDBD".toColorInt()
