@@ -12,11 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlingraphicsandroid6.ui.theme.KotlinGraphicsAndroid6Theme
-import com.example.zigzaglinerightview.ZigZagLineRightView
+import com.example.lineshiftjoindownview.LineShiftJoinDownView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ZigZagLineRightView.create(this)
+        LineShiftJoinDownView.create(this)
     }
 }
