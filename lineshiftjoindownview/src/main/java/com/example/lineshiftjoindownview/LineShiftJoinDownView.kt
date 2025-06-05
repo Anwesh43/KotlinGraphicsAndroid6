@@ -213,4 +213,12 @@ class LineShiftJoinDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineShiftJoinDownView {
+            val view : LineShiftJoinDownView = LineShiftJoinDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
