@@ -57,7 +57,7 @@ fun Canvas.drawSideConcArcDown(scale : Float, w : Float, h : Float, paint : Pain
             drawArc(
                 RectF(-r, -r, r, r),
                 startDeg - deg,
-                2 * deg * dsc(2).divideScale(j, arc),
+                2 * deg * dsc(2).divideScale(j - 1, arc),
                 false,
                 paint
             )
