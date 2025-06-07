@@ -26,3 +26,7 @@ val rot : Float = 90f
 val startDeg : Float = -90f
 val deg : Float = 30f
 val backColor : Int = "#BDBDBD".toColorInt()
+
+fun Int.inverse() : Float = 1f / this
+fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
+fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
