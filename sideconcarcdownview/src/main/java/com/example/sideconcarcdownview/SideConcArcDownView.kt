@@ -110,7 +110,7 @@ class SideConcArcDownView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class Animaor(var view : View, var animated : Boolean = false) {
+    data class Animator(var view : View, var animated : Boolean = false) {
 
         fun animate(cb : () -> Unit) {
             if (animated) {
@@ -199,6 +199,29 @@ class SideConcArcDownView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : SideConcArcDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val scad : SideConcArcDown = SideConcArcDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            scad.draw(canvas, paint)
+            animator.animate {
+                scad.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            scad.startUpdating {
+                animator.start()
+            }
         }
     }
 }
