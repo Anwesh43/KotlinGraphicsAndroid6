@@ -226,4 +226,12 @@ class SideConcArcDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : SideConcArcDownView {
+            val view : SideConcArcDownView = SideConcArcDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
