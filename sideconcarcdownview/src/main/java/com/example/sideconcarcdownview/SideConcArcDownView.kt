@@ -74,3 +74,19 @@ fun Canvas.drawSCADNode(i : Int, scale : Float, paint : Paint) {
     paint.style = Paint.Style.STROKE
     drawSideConcArcDown(scale, w, h, paint)
 }
+
+class SideConcArcDownView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
