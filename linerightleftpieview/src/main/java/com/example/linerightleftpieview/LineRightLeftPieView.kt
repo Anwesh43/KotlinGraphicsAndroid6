@@ -123,4 +123,45 @@ class LineRightLeftPieView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class LRLPNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : LRLPNode? = null
+        private var prev : LRLPNode? = null
+
+        init {
+            if (i < colors.size - 1) {
+                next = LRLPNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun addNeighbor() {
+            addNeighbor()
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawLRLPNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : LRLPNode {
+            var curr : LRLPNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
