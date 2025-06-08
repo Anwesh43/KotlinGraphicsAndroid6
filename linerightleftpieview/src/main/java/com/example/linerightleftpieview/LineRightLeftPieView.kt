@@ -212,4 +212,12 @@ class LineRightLeftPieView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineRightLeftPieView {
+            val view : LineRightLeftPieView = LineRightLeftPieView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
