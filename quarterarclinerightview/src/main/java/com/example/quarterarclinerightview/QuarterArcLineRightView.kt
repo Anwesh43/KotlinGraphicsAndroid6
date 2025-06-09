@@ -211,4 +211,12 @@ class QuarterArcLineRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : QuarterArcLineRightView {
+            val view : QuarterArcLineRightView = QuarterArcLineRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
