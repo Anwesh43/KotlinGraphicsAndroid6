@@ -184,4 +184,27 @@ class BottomBentLeftLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BottomBentLeftLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bbll : BottomBentLeftLine = BottomBentLeftLine(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bbll.draw(canvas, paint)
+            animator.animate {
+                bbll.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bbll.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
