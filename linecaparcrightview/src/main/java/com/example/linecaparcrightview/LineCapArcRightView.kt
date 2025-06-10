@@ -27,3 +27,34 @@ val rot : Float = 180f
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
+
+fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
+    save()
+    translate(x, y)
+    cb()
+    restore()
+}
+
+fun Canvas.drawLineCapArcRight(scale : Float, w : Float, h : Float, paint : Paint) {
+    val size : Float = Math.min(w, h) / sizeFactor
+    val dsc : (Int) -> Float = {
+        scale.divideScale(it, parts)
+    }
+    drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
+        drawXY(0f, 0f) {
+            rotate(rot * dsc(2))
+            drawArc(RectF(-size / 2, -size, size / 2, 0f), 90f, rot * dsc(1), false, paint)
+        }
+        drawLine(0f, size * (1 - dsc(0)), 0f, size * (1 - dsc(3)), paint)
+
+    }
+}
+
+fun Canvas.drawLCARNode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    paint.color = colors[i].toColorInt()
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    drawLineCapArcRight(scale, w, h, paint)
+}
