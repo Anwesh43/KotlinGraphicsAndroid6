@@ -43,8 +43,10 @@ fun Canvas.drawBottomBentLeftLine(scale : Float, w : Float, h : Float, paint : P
     }
     drawXY(w / 2 * (1f - dsc(3)), h / 2) {
         for (j in 0..1) {
-            rotate(rot1 * (1 - dsc(1)) * j + rot2 * dsc(2) * (1 - j))
-            drawLine(0f, 0f, -size * dsc(0), 0f, paint)
+            drawXY(0F, 0F) {
+                rotate(90f * j + rot1 * (1 - dsc(1)) * (1 - j) + rot2 * dsc(2) * j)
+                drawLine(0f, 0f, -size * dsc(0).divideScale(j, 2), 0f, paint)
+            }
         }
     }
 }
