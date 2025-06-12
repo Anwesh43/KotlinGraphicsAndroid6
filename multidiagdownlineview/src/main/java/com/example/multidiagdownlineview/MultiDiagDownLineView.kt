@@ -41,7 +41,7 @@ fun Canvas.drawMultiDiagDownLine(scale : Float, w : Float, h : Float, paint : Pa
         scale.divideScale(it, parts)
     }
     drawXY(w / 2, h / 2 + (h / 2) * dsc(3)) {
-        rotate(dsc(2))
+        rotate(rot * dsc(2))
         for (j in 0..1) {
             drawXY(0f, 0f) {
                 scale(1f - 2 * j, 1f)
