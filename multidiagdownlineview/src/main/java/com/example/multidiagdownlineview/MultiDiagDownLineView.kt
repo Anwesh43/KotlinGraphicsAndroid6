@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 4
+val parts : Int = 5
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
@@ -40,18 +40,21 @@ fun Canvas.drawMultiDiagDownLine(scale : Float, w : Float, h : Float, paint : Pa
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2 + (h / 2) * dsc(3)) {
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
         rotate(rot * dsc(2))
         for (j in 0..1) {
             drawXY(0f, 0f) {
                 scale(1f - 2 * j, 1f)
                 drawXY(-size, 0f) {
-                    drawLine(0f, 0f, size * dsc(0), -size * dsc(0), paint)
+                    drawLine(0f, 0f, size * 0.5f * dsc(0), -size * 0.5f * dsc(0), paint)
                 }
-                drawXY(0f, -size) {
-                    drawLine(0f, 0f, -size * dsc(1), -size * dsc(1), paint)
+                drawXY(-size / 2, -size / 2) {
+                    drawLine(0f, 0f, -size * 0.5f * dsc(1), -size * 0.5f * dsc(1), paint)
                 }
             }
+        }
+        drawXY(-size, -size) {
+            drawLine(0f, 0f, size * dsc(3), 0f, paint)
         }
     }
 }
