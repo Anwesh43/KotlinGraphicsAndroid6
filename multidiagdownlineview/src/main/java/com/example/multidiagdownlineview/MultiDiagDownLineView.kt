@@ -215,4 +215,12 @@ class MultiDiagDownLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : MultiDiagDownLineView {
+            val view : MultiDiagDownLineView = MultiDiagDownLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
