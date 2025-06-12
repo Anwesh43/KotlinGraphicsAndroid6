@@ -210,4 +210,12 @@ class LineDropRightDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineDropRightDownView {
+            val view : LineDropRightDownView = LineDropRightDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
