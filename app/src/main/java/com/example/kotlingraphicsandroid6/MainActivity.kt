@@ -12,11 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlingraphicsandroid6.ui.theme.KotlinGraphicsAndroid6Theme
-import com.example.linedroprightdownview.LineDropRightDownView
+import com.example.multidiagdownlineview.MultiDiagDownLineView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LineDropRightDownView.create(this)
+        MultiDiagDownLineView.create(this)
     }
 }
