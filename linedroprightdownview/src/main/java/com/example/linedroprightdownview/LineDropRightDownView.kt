@@ -40,10 +40,10 @@ fun Canvas.drawLineDropRightDown(scale : Float, w : Float, h : Float, paint : Pa
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2) {
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(3)) {
         for (j in 0..1) {
             drawXY(size * dsc(1) * (1 - j), -h * 0.5f * (1 - dsc(j))) {
-                rotate(deg * (1 + j) * dsc(2))
+                rotate(deg * (2 - j) * dsc(2))
                 drawLine(0f, 0f, 0f, -size, paint)
             }
         }
