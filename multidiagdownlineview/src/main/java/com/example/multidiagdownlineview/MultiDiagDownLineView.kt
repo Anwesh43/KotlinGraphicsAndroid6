@@ -190,4 +190,27 @@ class MultiDiagDownLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : MultiDiagDownLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val mddl : MultiDiagDownLine = MultiDiagDownLine(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            mddl.draw(canvas, paint)
+            animator.animate {
+                mddl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            mddl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
