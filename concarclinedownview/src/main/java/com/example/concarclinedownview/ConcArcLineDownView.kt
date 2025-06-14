@@ -43,7 +43,7 @@ fun Canvas.drawConcArcLineDown(scale : Float, w : Float, h : Float, paint : Pain
     }
     val r1 : Float = size * 0.5f
     val r2 : Float = size
-    drawXY(w / 2 + (w / 2) * dsc(6), h / 2 + (h / 2) * dsc(4)) {
+    drawXY(w / 2 + (w / 2) * dsc(6), h / 2 + (h / 2) * dsc(6)) {
         rotate(rot * dsc(5))
         drawArc(RectF(-r1, -r1, r1, r1), -deg * 2, deg * dsc(0), false, paint)
         drawXY(0f, 0f) {
