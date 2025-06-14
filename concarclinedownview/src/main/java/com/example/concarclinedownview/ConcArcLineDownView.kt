@@ -192,4 +192,27 @@ class ConcArcLineDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ConcArcLineDownView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val cald : ConcArcLineDown = ConcArcLineDown(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            cald.draw(canvas, paint)
+            animator.animate {
+                cald.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            cald.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
