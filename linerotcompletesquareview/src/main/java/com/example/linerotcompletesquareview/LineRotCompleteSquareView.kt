@@ -52,7 +52,7 @@ fun Canvas.drawLineRotCompleteSquare(scale : Float, w : Float, h : Float, paint 
     drawXY(w / 2 - (w / 2) * dsc(4), h / 2 - (h / 2) * dsc(4)) {
         var currRot : Float = 0f
         for (j in 1..times) {
-            currRot = rot * dsc(j).divideScale(1, 2)
+            currRot += rot * dsc(j - 1).divideScale(1, 2)
         }
         rotate(currRot)
         for (j in 0..(times - 1)) {
