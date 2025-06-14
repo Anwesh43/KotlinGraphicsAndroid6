@@ -16,8 +16,8 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
-val scGap : Float = 0.04f / parts
+val parts : Int = 6
+val scGap : Float = 0.05f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
@@ -43,9 +43,8 @@ fun Canvas.drawConcArcLineDown(scale : Float, w : Float, h : Float, paint : Pain
     }
     val r1 : Float = size * 0.5f
     val r2 : Float = size
-    drawXY(w / 2 + (w / 2) * dsc(4), h / 2 + (h / 2) * dsc(4)) {
-        rotate(rot * dsc(3))
-        rotate(rot * dsc(2))
+    drawXY(w / 2 + (w / 2) * dsc(5), h / 2 + (h / 2) * dsc(4)) {
+        rotate(rot * dsc(4))
         drawArc(RectF(-r1, -r1, r1, r1), -deg * 2, deg * dsc(0), false, paint)
         drawXY(0f, 0f) {
             rotate(-deg)
@@ -54,6 +53,9 @@ fun Canvas.drawConcArcLineDown(scale : Float, w : Float, h : Float, paint : Pain
             }
         }
         drawArc(RectF(-r2, -r2, r2, r2), -deg, deg * dsc(2), false, paint)
+        drawXY(r2, 0f) {
+            drawLine(-r2 * dsc(3), 0f, 0f, 0f, paint)
+        }
     }
 }
 
@@ -63,6 +65,7 @@ fun Canvas.drawCALDNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawConcArcLineDown(scale, w, h, paint)
 }
 
