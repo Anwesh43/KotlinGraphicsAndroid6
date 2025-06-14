@@ -221,4 +221,13 @@ class LineRotCompleteSquareView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineRotCompleteSquareView {
+            val view : LineRotCompleteSquareView = LineRotCompleteSquareView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
