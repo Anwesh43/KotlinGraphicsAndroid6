@@ -23,7 +23,46 @@ val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val rot : Float = 90f
+val deg : Float = 45f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
+
+fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
+    save()
+    translate(x, y)
+    cb()
+    restore()
+}
+
+fun Canvas.drawConcArcLineDown(scale : Float, w : Float, h : Float, paint : Paint) {
+    val size : Float = Math.min(w, h) / sizeFactor
+    val dsc : (Int) -> Float = {
+        scale.divideScale(it, parts)
+    }
+    val r1 : Float = size * 0.5f
+    val r2 : Float = size
+    drawXY(w / 2 + (w / 2) * dsc(4), h / 2 + (h / 2) * dsc(4)) {
+        rotate(rot * dsc(3))
+        rotate(rot * dsc(2))
+        drawArc(RectF(-r1, -r1, r1, r1), -deg * 2, deg * dsc(0), false, paint)
+        drawXY(0f, 0f) {
+            rotate(-deg)
+            drawXY(r1, 0f) {
+                drawLine(0f, 0f, (r2 - r1) * dsc(1), 0f, paint)
+            }
+        }
+        drawArc(RectF(-r2, -r2, r2, r2), -deg, deg * dsc(2), false, paint)
+    }
+}
+
+fun Canvas.drawCALDNode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    paint.color = colors[i].toColorInt()
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    drawConcArcLineDown(scale, w, h, paint)
+}
+
