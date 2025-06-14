@@ -217,4 +217,12 @@ class ConcArcLineDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : ConcArcLineDownView {
+            val view : ConcArcLineDownView = ConcArcLineDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
