@@ -191,4 +191,27 @@ class ArcLineUpDiagView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcLineUpDiagView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val alud : ArcLineUpDiag = ArcLineUpDiag(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            alud.draw(canvas, paint)
+            animator.animate {
+                alud.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            alud.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
