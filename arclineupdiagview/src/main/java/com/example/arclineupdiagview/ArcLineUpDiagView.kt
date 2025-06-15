@@ -216,4 +216,12 @@ class ArcLineUpDiagView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ArcLineUpDiagView {
+            val view : ArcLineUpDiagView = ArcLineUpDiagView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
