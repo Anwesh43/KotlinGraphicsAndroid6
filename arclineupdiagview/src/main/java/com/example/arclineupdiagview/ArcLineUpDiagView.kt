@@ -50,7 +50,7 @@ fun Canvas.drawArcLineUpDiag(scale : Float, w : Float, h : Float, paint : Paint)
             }
             drawXY(size * j, 0f) {
                 rotate(rot * dsc(2) * j)
-                drawArc(RectF(-size, -size, size, size), 270f - 90f * j, rot * dsc(1).divideScale(j, 2), false, paint)
+                drawArc(RectF(-size + size * j, -size, size + size * j, size), 270f - 90f * j, rot * dsc(1).divideScale(j, 2), false, paint)
             }
         }
     }
@@ -62,6 +62,7 @@ fun Canvas.drawALUDNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawArcLineUpDiag(scale, w, h, paint)
 }
 
