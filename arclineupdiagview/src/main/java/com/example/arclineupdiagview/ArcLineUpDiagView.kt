@@ -45,11 +45,11 @@ fun Canvas.drawArcLineUpDiag(scale : Float, w : Float, h : Float, paint : Paint)
     drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
         for (j in 0..1) {
             drawXY(0f, 0f) {
-                rotate(-deg * dsc(3))
+                rotate(-deg * dsc(3) * j)
                 drawLine(0f, 0f, 0f, -size * dsc(0), paint)
             }
             drawXY(size * j, 0f) {
-                rotate(rot * dsc(2) * j)
+                rotate(deg * dsc(2) * j)
                 drawArc(RectF(-size + size * j, -size, size + size * j, size), 270f - 90f * j, rot * dsc(1).divideScale(j, 2), false, paint)
             }
         }
