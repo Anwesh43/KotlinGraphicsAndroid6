@@ -188,4 +188,27 @@ class EncloseSqDiagView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : EncloseSqDiagView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val esd : EncloseSqDiag = EncloseSqDiag(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            esd.draw(canvas, paint)
+            animator.animate {
+                esd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            esd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
