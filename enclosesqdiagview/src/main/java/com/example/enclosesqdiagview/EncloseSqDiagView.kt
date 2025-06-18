@@ -44,9 +44,9 @@ fun Canvas.drawEncloseSqDiag(scale : Float, w : Float, h : Float, paint : Paint)
         for (i in 0..3) {
             val j = i % 2
             val k = i / 2
-            val dsi : Int = (1 - j) * k + 2 * k
+            val dsi : Int = k * (1 - j) + (1 - k) * j + 2 * k
             val dsij : Int = dsi % 2
-            drawXY(size * j, size * k - ((h * 0.5f - size * k) * (1 - 2 * k) * dsc(dsi).divideScale(0, 2))) {
+            drawXY(size * j, size * k - ((h * 0.5f - size * k) * (1 - 2 * k) * (1 - dsc(dsi).divideScale(0, 2)))) {
                 rotate(rot * dsc(dsi).divideScale(1, 2) * (1 + dsij))
                 drawLine(0f, 0f, 0f, -size * (1 - 2 * k), paint)
             }
@@ -104,6 +104,7 @@ class EncloseSqDiagView(ctx : Context) : View(ctx) {
 
         fun animate(cb : () -> Unit) {
             if (animated) {
+                cb()
                 try {
                     Thread.sleep(delay)
                     view.invalidate()
