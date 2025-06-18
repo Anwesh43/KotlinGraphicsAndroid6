@@ -213,4 +213,13 @@ class EncloseSqDiagView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : EncloseSqDiagView {
+            val view : EncloseSqDiagView = EncloseSqDiagView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
