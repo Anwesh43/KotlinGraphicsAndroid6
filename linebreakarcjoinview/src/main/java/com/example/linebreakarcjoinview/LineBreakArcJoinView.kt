@@ -216,4 +216,12 @@ class LineBreakArcJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineBreakArcJoinView {
+            val view : LineBreakArcJoinView = LineBreakArcJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
