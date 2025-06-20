@@ -217,4 +217,12 @@ class BrokenArcRectLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BrokenArcRectLeftView {
+            val view : BrokenArcRectLeftView = BrokenArcRectLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
