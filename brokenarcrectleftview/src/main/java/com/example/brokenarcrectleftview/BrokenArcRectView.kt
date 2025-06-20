@@ -46,12 +46,12 @@ fun Canvas.drawBrokenArcRectLeft(scale : Float, w : Float, h : Float, paint : Pa
         drawXY(-size / 2, size / 2) {
             drawLine(0f, 0f, 0f, -size * 0.5f * dsc(0), paint)
         }
-        drawXY(size / 2, 0f) {
+        drawXY(-size / 2, 0f) {
             drawLine(0f, 0f, size * dsc(1), 0f, paint)
         }
         drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 0f, 90f * dsc(2), false, paint)
         drawXY(0f, size / 2) {
-            drawLine(0f, 0f, size * 0.5f * dsc(3), 0f, paint)
+            drawLine(0f, 0f, -brosize * 0.5f * dsc(3), 0f, paint)
         }
     }
 }
