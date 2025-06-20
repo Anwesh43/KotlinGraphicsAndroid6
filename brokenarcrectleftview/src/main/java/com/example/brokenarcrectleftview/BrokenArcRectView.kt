@@ -192,4 +192,27 @@ class BrokenArcRectLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BrokenArcRectLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val barl : BrokenArcRectLeft = BrokenArcRectLeft(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            barl.draw(canvas, paint)
+            animator.animate {
+                barl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            barl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
