@@ -43,8 +43,8 @@ fun Canvas.drawArcJoinLineUp(scale : Float, w : Float, h : Float, paint : Paint)
     drawXY(w / 2, h / 2 - (h / 2) * dsc(4)) {
         rotate(rot * dsc(3))
         drawArc(RectF(-size, -size / 2, 0f, size / 2), 0f, 180f * dsc(0), false, paint)
-        drawXY(size, 0f) {
-            drawLine(0f, 0f, -size * dsc(1), -size * dsc(1), paint)
+        drawXY(-size, 0f) {
+            drawLine(0f, 0f, size * dsc(1), -size * dsc(1), paint)
         }
         drawXY(0f, -size) {
             drawLine(0f, 0f, 0f, size * dsc(2), paint)
