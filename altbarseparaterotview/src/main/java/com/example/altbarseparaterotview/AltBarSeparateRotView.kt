@@ -212,5 +212,13 @@ class AltBarSeparateRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : AltBarSeparateRotView {
+            val view : AltBarSeparateRotView = AltBarSeparateRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
 
