@@ -148,7 +148,7 @@ class AltBarSeparateRotView(ctx : Context) : View(ctx) {
             state.update(cb)
         }
 
-        fun startUpdating(cb : () -> Unit) : ABSRNode {
+        fun startUpdating(cb : () -> Unit) {
             state.startUpdating(cb)
         }
 
@@ -185,6 +185,29 @@ class AltBarSeparateRotView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : AltBarSeparateRotView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val absr : AltBarSeparateRot = AltBarSeparateRot(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            absr.draw(canvas, paint)
+            animator.animate {
+                absr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            absr.startUpdating {
+                animator.start()
+            }
         }
     }
 }
