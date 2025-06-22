@@ -44,10 +44,10 @@ fun Canvas.drawAltBarSeparateRot(scale : Float, w : Float, h : Float, paint : Pa
     drawXY(w / 2, h / 2) {
         for (j in 0..1) {
             drawXY(0f, 0f) {
-                scale(1f - 2 * j, 1f - 2 * j)
-                drawXY((w / 2 - barW) * dsc(1), h * 0.5f * dsc(3)) {
-                    rotate(rot * dsc(2))
-                    drawRect(RectF(0f, 0f, barW, barH), paint)
+                scale(1f - 2 * j, 1f)
+                drawXY((w / 2 - barW) * dsc(1), (h * 0.5f * dsc(3)) * (1f - 2 * j)) {
+                    rotate(rot * dsc(2) * (1f - 2 * j))
+                    drawRect(RectF(0f, 0f, barW * dsc(0), barH), paint)
                 }
             }
         }
