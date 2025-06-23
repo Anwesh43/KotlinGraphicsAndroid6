@@ -211,4 +211,12 @@ class BentHalfArcRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BentHalfArcRightView {
+            val view : BentHalfArcRightView = BentHalfArcRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
