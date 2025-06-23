@@ -188,4 +188,27 @@ class BentHalfArcRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BentHalfArcRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bhar : BentHalfArcRight = BentHalfArcRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bhar.draw(canvas, paint)
+            animator.animate {
+                bhar.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bhar.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
