@@ -208,4 +208,12 @@ class LineDropRotExtendView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineDropRotExtendView {
+            val view : LineDropRotExtendView = LineDropRotExtendView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
