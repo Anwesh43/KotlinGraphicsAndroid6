@@ -5,6 +5,7 @@ import android.view.MotionEvent
 import android.graphics.Paint
 import android.graphics.Canvas
 import androidx.core.graphics.toColorInt
+import android.graphics.RectF
 import android.app.Activity
 import android.content.Context
 
@@ -39,7 +40,7 @@ fun Canvas.drawLineDownRotRight(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2 - h * 0.5f * dsc(3)) {
+    drawXY(w / 2, h / 2 - h * 0.5f * dsc(4)) {
         drawXY(0f, -h * 0.5f * (1 - dsc(0))) {
             drawLine(0f, 0f, 0f, -size, paint)
         }
@@ -48,6 +49,9 @@ fun Canvas.drawLineDownRotRight(scale : Float, w : Float, h : Float, paint : Pai
                 rotate(rot * j * dsc(2))
                 drawLine(0f, 0f, size, 0f, paint)
             }
+        }
+        drawXY(0f, -size) {
+            drawArc(RectF(-size, -size, size, size), -rot, rot * dsc(3), false, paint)
         }
     }
 }
