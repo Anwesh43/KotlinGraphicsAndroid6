@@ -40,7 +40,7 @@ fun Canvas.drawLineDropRotExtend(scale : Float, w : Float, h : Float, paint : Pa
         scale.divideScale(it, parts)
     }
     drawXY(w / 2, h / 2 - (h / 2) * dsc(3)) {
-        drawXY(0f, -h * 0.5f * (1 - dsc(0))) {
+        drawXY(-size, -h * 0.5f * (1 - dsc(0))) {
             rotate(rot * dsc(1))
             drawLine(0f, -size * dsc(2), 0f, -size, paint)
         }
