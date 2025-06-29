@@ -43,7 +43,7 @@ fun Canvas.drawLineAltDownRot(scale : Float, w : Float, h : Float, paint : Paint
     drawXY(w / 2, h / 2 + (h / 2) * dsc(5)) {
         rotate(deg * dsc(4))
         for (j in 0..1) {
-            drawXY(-w * 0.5f * (1 - dsc(2 * j)), 0f) {
+            drawXY(w * 0.5f * (1 - dsc(2 * j)), -size / 2) {
                 rotate((rot + deg * (1 - j)) * dsc(2 * j + 1))
                 drawLine(0f, 0f, size * 0.5f, 0f, paint)
             }
