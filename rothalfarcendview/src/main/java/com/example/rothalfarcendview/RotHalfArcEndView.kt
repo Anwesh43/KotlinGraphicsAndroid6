@@ -187,4 +187,27 @@ class RotHalfArcEndView(ctx : Context) : View(ctx) {
             curr.startUdpating(cb)
         }
     }
+
+    data class Renderer(var view : RotHalfArcEndView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val rhae : RotHalfArcEnd = RotHalfArcEnd(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rhae.draw(canvas, paint)
+            animator.animate {
+                rhae.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rhae.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
