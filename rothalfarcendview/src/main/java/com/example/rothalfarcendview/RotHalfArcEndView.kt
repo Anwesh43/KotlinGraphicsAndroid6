@@ -123,4 +123,45 @@ class RotHalfArcEndView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class RHAENode(var i : Int = 0, val state : State = State()) {
+
+        private var next : RHAENode? = null
+        private var prev : RHAENode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = RHAENode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawRHAENode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUdpating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : RHAENode {
+            var curr : RHAENode? = prev
+            if (dir == 1) {
+                curr = next
+            }
+            if (curr != null) {
+               return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
