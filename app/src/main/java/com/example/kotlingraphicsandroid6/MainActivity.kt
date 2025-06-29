@@ -12,11 +12,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlingraphicsandroid6.ui.theme.KotlinGraphicsAndroid6Theme
-import com.example.linealtdownrotview.LineAltDownRotView
+import com.example.rothalfarcendview.RotHalfArcEndView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LineAltDownRotView.create(this)
+        RotHalfArcEndView.create(this)
     }
 }
