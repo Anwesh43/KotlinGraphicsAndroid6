@@ -212,4 +212,12 @@ class RotHalfArcEndView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : RotHalfArcEndView {
+            val view : RotHalfArcEndView = RotHalfArcEndView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
