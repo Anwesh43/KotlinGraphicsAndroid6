@@ -216,4 +216,12 @@ class UpSideDownTriView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : UpSideDownTriView {
+            val view : UpSideDownTriView = UpSideDownTriView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
