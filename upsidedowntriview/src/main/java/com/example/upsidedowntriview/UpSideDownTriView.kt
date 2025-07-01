@@ -191,4 +191,27 @@ class UpSideDownTriView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : UpSideDownTriView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val usdt : UpSideDownTri = UpSideDownTri(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            usdt.draw(canvas, paint)
+            animator.animate {
+                usdt.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            usdt.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
