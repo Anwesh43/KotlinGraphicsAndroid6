@@ -20,7 +20,7 @@ val parts : Int = 4
 val scGap : Float = 0.04f / parts
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
-val rot : Float = 90f
+val rot : Float = 180f
 val sizeFactor : Float = 5.9f
 val strokeFactor : Float = 90f
 
@@ -42,7 +42,8 @@ fun Canvas.drawUpSideDownTri(scale : Float, w : Float, h : Float, paint : Paint)
     }
     drawXY(w / 2, h / 2) {
         for (j in 0..1) {
-            drawXY(0f, -h * (1 - 2 * j) * dsc(3)) {
+            drawXY(0f, h * 0.5f * (1 - 2 * j) * dsc(3)) {
+                scale(1f, 1f - 2 * j)
                 drawXY(0f, size / 2 + (size / 4)) {
                     rotate(rot * dsc(2))
                     drawXY(0f, -size / 4) {
