@@ -53,7 +53,7 @@ fun Canvas.drawLineOpenRotDown(scale : Float, w : Float, h : Float, paint : Pain
     }
 }
 
-fun Canvas.drawLORDNode(i : Int, scale : Float, paint : Paint) {
+fun Canvas.drawLODRNode(i : Int, scale : Float, paint : Paint) {
     val w : Float = width.toFloat()
     val h : Float = height.toFloat()
     paint.color = colors[i].toColorInt()
@@ -122,6 +122,47 @@ class LineOpenDownRotView(ctx : Context) : View(ctx) {
             if (animated) {
                 animated = false
             }
+        }
+    }
+
+    data class LODRNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : LODRNode? = null
+        private var prev : LODRNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = LODRNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawLODRNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : LODRNode {
+            var curr : LODRNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
         }
     }
 }
