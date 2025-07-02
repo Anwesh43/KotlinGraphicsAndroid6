@@ -213,4 +213,12 @@ class LineOpenDownRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineOpenDownRotView {
+            val view : LineOpenDownRotView = LineOpenDownRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
