@@ -208,4 +208,13 @@ class BentCloseArcRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : BentCloseArcRightView {
+            val view : BentCloseArcRightView = BentCloseArcRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
