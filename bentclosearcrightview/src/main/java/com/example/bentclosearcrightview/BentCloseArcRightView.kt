@@ -180,8 +180,30 @@ class BentCloseArcRightView(ctx : Context) : View(ctx) {
             }
         }
 
-        fun startUpdating(cb : () -> Float) {
+        fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : BentCloseArcRightView) {
+        private val animaotr : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bcar : BentCloseArRight = BentCloseArRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bcar.draw(canvas, paint)
+            animaotr.animate {
+                bcar.update {
+                    animaotr.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bcar.startUpdating {
+                animaotr.start()
+            }
         }
     }
 }
