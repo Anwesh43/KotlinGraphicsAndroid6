@@ -22,6 +22,7 @@ val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val rot : Float = -270f
+val deg : Float = 90f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -39,7 +40,8 @@ fun Canvas.drawLineNShapeRight(scale : Float, w : Float, h : Float, paint : Pain
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 + (w / 2) * dsc(3), h / 2) {
+    drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
+        rotate(deg * dsc(3))
         for (j in 0..1) {
             drawXY(0f, -h * 0.5f * (1 - dsc(0))) {
                 rotate(rot * dsc(2) * j)
