@@ -46,7 +46,7 @@ fun Canvas.drawLineNShapeRight(scale : Float, w : Float, h : Float, paint : Pain
                 drawLine(0f, 0f, 0f, -size, paint)
             }
         }
-        drawXY((w / 2) * 0.5f * (1 - dsc(1)), 0f) {
+        drawXY((w / 2) * (1 - dsc(1)), -size) {
             drawLine(0f, 0f, size, 0f, paint)
         }
 
