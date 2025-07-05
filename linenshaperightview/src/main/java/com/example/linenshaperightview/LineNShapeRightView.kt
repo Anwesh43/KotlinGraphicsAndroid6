@@ -213,4 +213,13 @@ class LineNShapeRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineNShapeRightView {
+            val view : LineNShapeRightView = LineNShapeRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
