@@ -209,4 +209,12 @@ class MultiLineRotAltView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : MultiLineRotAltView {
+            val view : MultiLineRotAltView = MultiLineRotAltView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
