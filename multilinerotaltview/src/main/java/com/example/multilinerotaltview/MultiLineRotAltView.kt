@@ -184,4 +184,27 @@ class MultiLineRotAltView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : MultiLineRotAltView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val mlra : MultiLineRotAlt = MultiLineRotAlt(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            mlra.draw(canvas, paint)
+            animator.animate {
+                mlra.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            mlra.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
