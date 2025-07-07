@@ -43,11 +43,11 @@ fun Canvas.drawBentLineDownRot(scale : Float, w : Float, h : Float, paint : Pain
     drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
         rotate(rot * dsc(3))
         drawXY(0f, 0f) {
-            rotate(-rot)
+            rotate(-deg)
             drawLine(0f, -size * (1 - dsc(0)), 0f, -size * (1 - dsc(1)), paint)
         }
         drawXY(0f, 0f) {
-            rotate(rot * (1 - dsc(2)))
+            rotate(deg * (1 - dsc(2)))
             drawLine(0f, 0f, 0f, -size * dsc(1), paint)
         }
     }
