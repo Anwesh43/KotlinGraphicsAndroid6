@@ -215,4 +215,13 @@ class HalfArcPointLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : HalfArcPointLineView {
+            val view : HalfArcPointLineView = HalfArcPointLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
