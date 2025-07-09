@@ -184,4 +184,27 @@ class ArcToLineDropView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcToLineDropView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val atld : ArcToLineDrop = ArcToLineDrop(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            atld.draw(canvas, paint)
+            animator.animate {
+                atld.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            atld.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
