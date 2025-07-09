@@ -209,4 +209,12 @@ class ArcToLineDropView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : ArcToLineDropView {
+            val view : ArcToLineDropView = ArcToLineDropView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
