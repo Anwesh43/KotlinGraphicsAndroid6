@@ -214,4 +214,12 @@ class ConcLineOpenRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : ConcLineOpenRightView {
+            val view : ConcLineOpenRightView = ConcLineOpenRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
