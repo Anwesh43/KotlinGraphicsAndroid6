@@ -189,4 +189,27 @@ class ConcLineOpenRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ConcLineOpenRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val clor : ConcLineOpenRight = ConcLineOpenRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            clor.draw(canvas, paint)
+            animator.animate {
+                clor.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            clor.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
