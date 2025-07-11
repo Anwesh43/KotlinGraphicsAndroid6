@@ -15,8 +15,10 @@
             <option value="$PROJECT_DIR$/arcjoinlineupview" />
             <option value="$PROJECT_DIR$/arclinecloserightview" />
             <option value="$PROJECT_DIR$/arclineupdiagview" />
+            <option value="$PROJECT_DIR$/arctolinedropview" />
             <option value="$PROJECT_DIR$/bentclosearcrightview" />
             <option value="$PROJECT_DIR$/benthalfarcrightview" />
+            <option value="$PROJECT_DIR$/bentlinedownrotview" />
             <option value="$PROJECT_DIR$/bentlinequarterarcview" />
             <option value="$PROJECT_DIR$/biarcdividemoveview" />
             <option value="$PROJECT_DIR$/biarcedgedownview" />
@@ -27,11 +29,13 @@
             <option value="$PROJECT_DIR$/closerotquarterarcview" />
             <option value="$PROJECT_DIR$/concarclinedownview" />
             <option value="$PROJECT_DIR$/concarclinejoinview" />
+            <option value="$PROJECT_DIR$/conclineopenrightview" />
             <option value="$PROJECT_DIR$/dividelinearcjoinview" />
             <option value="$PROJECT_DIR$/dividelinerotextendview" />
             <option value="$PROJECT_DIR$/dropmultisemicirclesview" />
             <option value="$PROJECT_DIR$/enclosesqdiagview" />
             <option value="$PROJECT_DIR$/halfarclinebentview" />
+            <option value="$PROJECT_DIR$/halfarcpointlineview" />
             <option value="$PROJECT_DIR$/linealtdownrotview" />
             <option value="$PROJECT_DIR$/linebentarcjoinview" />
             <option value="$PROJECT_DIR$/linebreakarcjoinview" />
