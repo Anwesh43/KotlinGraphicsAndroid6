@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.conclineopenrightview.ConcLineOpenRightView
+import com.example.lineopenrotupview.LineOpenRotUpView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ConcLineOpenRightView.create(this)
+        LineOpenRotUpView.create(this)
     }
 }
