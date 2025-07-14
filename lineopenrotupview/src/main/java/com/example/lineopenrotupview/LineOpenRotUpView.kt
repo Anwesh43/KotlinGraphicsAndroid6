@@ -52,7 +52,7 @@ fun Canvas.drawLineOpenRotUp(scale : Float, w : Float, h : Float, paint : Paint)
                 }
             }
         }
-        drawArc(RectF(-size / 2, -size, size / 2, size), -90f, 360f * dsc(2), false, paint)
+        drawArc(RectF(-size / 2, -size, size / 2, 0f), -90f, 360f * dsc(2), false, paint)
     }
 }
 
