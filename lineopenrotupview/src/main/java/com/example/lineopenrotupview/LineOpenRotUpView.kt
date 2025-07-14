@@ -189,4 +189,27 @@ class LineOpenRotUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineOpenRotUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val loru : LineOpenRotUp = LineOpenRotUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            loru.draw(canvas, paint)
+            animator.animate {
+                loru.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            loru.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
