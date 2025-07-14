@@ -7,6 +7,7 @@ import android.graphics.Canvas
 import androidx.core.graphics.toColorInt
 import android.view.View
 import android.view.MotionEvent
+import android.graphics.RectF
 
 val colors : Array<String> = arrayOf(
     "#1A237E",
@@ -51,6 +52,7 @@ fun Canvas.drawLineOpenRotUp(scale : Float, w : Float, h : Float, paint : Paint)
                 }
             }
         }
+        drawArc(RectF(-size / 2, -size, size / 2, size), -90f, 360f * dsc(2), false, paint)
     }
 }
 
@@ -60,6 +62,7 @@ fun Canvas.drawLORUNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawLineOpenRotUp(scale, w, h, paint)
 }
 
