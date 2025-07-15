@@ -209,4 +209,12 @@ class LineSickleRotDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineSickleRotDownView {
+            val view : LineSickleRotDownView = LineSickleRotDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
