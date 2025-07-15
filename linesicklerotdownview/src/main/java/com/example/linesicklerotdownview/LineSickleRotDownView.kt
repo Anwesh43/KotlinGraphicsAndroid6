@@ -16,13 +16,13 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 4
+val parts : Int = 5
 val scGap : Float = 0.04f / parts
 val rot : Float = -90f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val strokeFactor : Float = 90f
-val sizeFactor : Float = 4.9f
+val sizeFactor : Float = 8.9f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -55,6 +55,7 @@ fun Canvas.drawLSRDNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawLineSickleRotDown(scale, w, h, paint)
 }
 
