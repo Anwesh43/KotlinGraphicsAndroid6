@@ -7,6 +7,7 @@ import android.content.Context
 import android.graphics.Paint
 import android.graphics.RectF
 import android.graphics.Canvas
+import androidx.constraintlayout.widget.ConstraintSet.Motion
 import androidx.core.graphics.toColorInt
 
 val colors : Array<String> = arrayOf(
@@ -60,4 +61,20 @@ fun Canvas.drawRDTPNode(i : Int, scale : Float, paint : Paint) {
     paint.strokeWidth = Math.min(w, h) / strokeFactor
     paint.style = Paint.Style.STROKE
     drawRotDownThreePie(scale, w, h, paint)
+}
+
+class RotDownThreePieView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
 }
