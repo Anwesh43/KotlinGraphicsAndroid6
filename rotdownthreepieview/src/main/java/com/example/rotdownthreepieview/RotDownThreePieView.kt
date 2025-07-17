@@ -189,4 +189,27 @@ class RotDownThreePieView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RotDownThreePieView) {
+
+        private val animator : Animator = Animator(view)
+        private val rdtp : RotDownThreePie = RotDownThreePie(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rdtp.draw(canvas, paint)
+            animator.animate {
+                rdtp.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rdtp.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
