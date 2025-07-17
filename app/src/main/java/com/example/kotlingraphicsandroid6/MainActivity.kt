@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.linerotdroprightview.LineRotDropRightView
+import com.example.rotdownthreepieview.RotDownThreePieView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LineRotDropRightView.create(this)
+        RotDownThreePieView.create(this)
     }
 }
