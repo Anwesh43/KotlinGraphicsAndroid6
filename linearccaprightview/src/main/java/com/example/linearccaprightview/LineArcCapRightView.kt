@@ -206,7 +206,13 @@ class LineArcCapRightView(ctx : Context) : View(ctx) {
                 animator.start()
             }
         }
+    }
 
-
+    companion object {
+        fun create(activity: Activity) : LineArcCapRightView {
+            val view : LineArcCapRightView = LineArcCapRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
     }
 }
