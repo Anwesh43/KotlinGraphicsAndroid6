@@ -44,7 +44,7 @@ fun Canvas.drawLineArcCapRight(scale : Float, w : Float, h : Float, paint : Pain
     drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
         rotate(rot * (dsc(1) + dsc(3)))
         drawLine(0f, 0f, -size * dsc(0), 0f, paint)
-        drawArc(RectF(-size, -size / 2, 0f, size / 2), sweep, sweep * dsc(1), false, paint)
+        drawArc(RectF(-size, -size / 2, 0f, size / 2), sweep, sweep * dsc(2), false, paint)
     }
 }
 
