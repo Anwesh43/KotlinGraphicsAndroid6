@@ -60,3 +60,18 @@ fun Canvas.drawSAJDNode(i : Int, scale : Float, paint : Paint) {
     drawSeqArcJoinDown(scale, w, h, paint)
 }
 
+class SeqArcJoinDownView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
