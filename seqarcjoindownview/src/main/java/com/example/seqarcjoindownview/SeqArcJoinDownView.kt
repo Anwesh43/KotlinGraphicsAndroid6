@@ -211,4 +211,12 @@ class SeqArcJoinDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : SeqArcJoinDownView {
+            val view : SeqArcJoinDownView = SeqArcJoinDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
