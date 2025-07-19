@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.linearccaprightview.LineArcCapRightView
+import com.example.seqarcjoindownview.SeqArcJoinDownView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LineArcCapRightView.create(this)
+        SeqArcJoinDownView.create(this)
     }
 }
