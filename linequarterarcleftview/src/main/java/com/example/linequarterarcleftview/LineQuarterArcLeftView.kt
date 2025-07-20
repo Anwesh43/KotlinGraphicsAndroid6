@@ -215,4 +215,12 @@ class LineQuarterArcLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineQuarterArcLeftView {
+            val view : LineQuarterArcLeftView = LineQuarterArcLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
