@@ -190,4 +190,27 @@ class LineQuarterArcLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineQuarterArcLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val lqal : LineQuarterArcLeft = LineQuarterArcLeft(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lqal.draw(canvas, paint)
+            animator.animate {
+                lqal.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lqal.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
