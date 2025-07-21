@@ -213,4 +213,12 @@ class LineQuartCreateArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineQuartCreateArcView {
+            val view : LineQuartCreateArcView = LineQuartCreateArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
