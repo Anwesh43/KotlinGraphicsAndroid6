@@ -188,4 +188,27 @@ class LineQuartCreateArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineQuartCreateArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lqca : LineQuartCreateArc = LineQuartCreateArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lqca.draw(canvas, paint)
+            animator.animate {
+                lqca.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lqca.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
