@@ -191,4 +191,27 @@ class AltBentLineArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : AltBentLineArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val abla : AltBentLineArc = AltBentLineArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            abla.draw(canvas, paint)
+            animator.animate {
+                abla.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            abla.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
