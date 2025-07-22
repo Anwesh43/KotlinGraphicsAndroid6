@@ -216,4 +216,12 @@ class AltBentLineArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : AltBentLineArcView {
+            val view : AltBentLineArcView = AltBentLineArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
