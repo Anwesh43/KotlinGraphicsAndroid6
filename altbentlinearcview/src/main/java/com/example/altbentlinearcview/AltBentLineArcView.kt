@@ -56,7 +56,7 @@ fun Canvas.drawAltBentLineArc(scale : Float, w : Float, h : Float, paint : Paint
     }
 }
 
-fun Canvas.drawABLNode(i : Int, scale : Float, paint : Paint) {
+fun Canvas.drawABLANode(i : Int, scale : Float, paint : Paint) {
     val w : Float = width.toFloat()
     val h : Float = height.toFloat()
     paint.color = colors[i].toColorInt()
@@ -125,6 +125,47 @@ class AltBentLineArcView(ctx : Context) : View(ctx) {
             if (animated) {
                 animated = false
             }
+        }
+    }
+
+    data class ABLANode(var i : Int = 0, val state : State = State()) {
+
+        private var next : ABLANode? = null
+        private var prev : ABLANode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = ABLANode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawABLANode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : ABLANode {
+            var curr : ABLANode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
         }
     }
 }
