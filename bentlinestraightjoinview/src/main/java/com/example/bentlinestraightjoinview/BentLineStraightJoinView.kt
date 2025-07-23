@@ -64,14 +64,16 @@ fun Canvas.drawBLSJNode(i : Int, scale : Float, paint : Paint) {
 
 class BentLineStraightJoinView(ctx : Context) : View(ctx) {
 
-    override fun onDraw(canvas : Canvas) {
+    private val renderer : Renderer = Renderer(this)
 
+    override fun onDraw(canvas : Canvas) {
+        renderer.render(canvas)
     }
 
     override fun onTouchEvent(event : MotionEvent) : Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-
+                renderer.handleTap()
             }
         }
         return true
@@ -164,50 +166,50 @@ class BentLineStraightJoinView(ctx : Context) : View(ctx) {
             cb()
             return this
         }
+    }
 
-        data class BentLineStraightJoin(var i : Int) {
+    data class BentLineStraightJoin(var i : Int) {
 
-            private var curr : BLSJNode = BLSJNode(0)
-            private var dir : Int = 1
+        private var curr : BLSJNode = BLSJNode(0)
+        private var dir : Int = 1
 
-            fun draw(canvas : Canvas, paint : Paint) {
-                curr.draw(canvas, paint)
-            }
+        fun draw(canvas : Canvas, paint : Paint) {
+            curr.draw(canvas, paint)
+        }
 
-            fun update(cb : (Float) -> Unit) {
-                curr.update {
-                    curr = curr.getNext(dir) {
-                        dir *= -1
-                    }
-                    cb(it)
+        fun update(cb : (Float) -> Unit) {
+            curr.update {
+                curr = curr.getNext(dir) {
+                    dir *= -1
                 }
-            }
-
-            fun startUpdating(cb : () -> Unit) {
-                curr.startUpdating(cb)
+                cb(it)
             }
         }
 
-        data class Renderer(var view : BentLineStraightJoinView) {
+        fun startUpdating(cb : () -> Unit) {
+            curr.startUpdating(cb)
+        }
+    }
 
-            private val animator : Animator = Animator(view)
-            private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
-            private val blsj : BentLineStraightJoin = BentLineStraightJoin(0)
+    data class Renderer(var view : BentLineStraightJoinView) {
 
-            fun render(canvas : Canvas) {
-                canvas.drawColor(backColor)
-                blsj.draw(canvas, paint)
-                animator.animate {
-                    blsj.update {
-                        animator.stop()
-                    }
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val blsj : BentLineStraightJoin = BentLineStraightJoin(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blsj.draw(canvas, paint)
+            animator.animate {
+                blsj.update {
+                    animator.stop()
                 }
             }
+        }
 
-            fun handleTap() {
-                blsj.startUpdating {
-                    animator.start()
-                }
+        fun handleTap() {
+            blsj.startUpdating {
+                animator.start()
             }
         }
     }
