@@ -187,5 +187,28 @@ class BentLineStraightJoinView(ctx : Context) : View(ctx) {
                 curr.startUpdating(cb)
             }
         }
+
+        data class Renderer(var view : BentLineStraightJoinView) {
+
+            private val animator : Animator = Animator(view)
+            private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+            private val blsj : BentLineStraightJoin = BentLineStraightJoin(0)
+
+            fun render(canvas : Canvas) {
+                canvas.drawColor(backColor)
+                blsj.draw(canvas, paint)
+                animator.animate {
+                    blsj.update {
+                        animator.stop()
+                    }
+                }
+            }
+
+            fun handleTap() {
+                blsj.startUpdating {
+                    animator.start()
+                }
+            }
+        }
     }
 }
