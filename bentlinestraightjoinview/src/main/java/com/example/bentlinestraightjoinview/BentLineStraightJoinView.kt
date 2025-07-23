@@ -62,4 +62,18 @@ fun Canvas.drawBLSJNode(i : Int, scale : Float, paint : Paint) {
     drawBentLineStraightJoin(scale, w, h, paint)
 }
 
+class BentLineStraightJoinView(ctx : Context) : View(ctx) {
 
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
