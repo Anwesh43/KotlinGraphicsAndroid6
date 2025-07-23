@@ -213,4 +213,12 @@ class BentLineStraightJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BentLineStraightJoinView {
+            val view : BentLineStraightJoinView = BentLineStraightJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
