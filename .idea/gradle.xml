@@ -11,6 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/altbarseparaterotview" />
+            <option value="$PROJECT_DIR$/altbentlinearcview" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/arcjoinlineupview" />
             <option value="$PROJECT_DIR$/arclinecloserightview" />
@@ -50,6 +51,8 @@
             <option value="$PROJECT_DIR$/linenshaperightview" />
             <option value="$PROJECT_DIR$/lineopendownrotview" />
             <option value="$PROJECT_DIR$/lineopenrotupview" />
+            <option value="$PROJECT_DIR$/linequartcreaterightview" />
+            <option value="$PROJECT_DIR$/linequarterarcleftview" />
             <option value="$PROJECT_DIR$/linerightleftpieview" />
             <option value="$PROJECT_DIR$/linerotarcleftview" />
             <option value="$PROJECT_DIR$/linerotcompletesquareview" />
