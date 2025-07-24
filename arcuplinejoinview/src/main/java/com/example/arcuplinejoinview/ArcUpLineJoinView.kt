@@ -45,9 +45,9 @@ fun Canvas.drawArcUpLineJoin(scale : Float, w : Float, h : Float, paint : Paint)
             rotate(rot * dsc(2))
             drawLine(0f, 0f, 0f, -size * dsc(1), paint)
         }
-        drawArc(RectF(-size, -size / 2, 0f, size / 2), -90f, 90f * dsc(0), false, paint)
-        drawXY(-size / 2, 0f) {
-            drawLine(0f, 0f, -size * dsc(3), 0f, paint)
+        drawArc(RectF(-2 * size, -size, 0f, size), -90f, 90f * dsc(0), false, paint)
+        drawXY(-size, 0f) {
+            drawLine(0f, 0f, 0f, -size * dsc(3), paint)
         }
     }
 }
