@@ -186,4 +186,27 @@ class ArcUpLineJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcUpLineJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val aulj : ArcUpLineJoin = ArcUpLineJoin(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            aulj.draw(canvas, paint)
+            animator.animate {
+                aulj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            aulj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
