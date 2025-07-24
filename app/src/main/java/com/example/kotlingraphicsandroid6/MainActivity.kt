@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.bentlinestraightjoinview.BentLineStraightJoinView
+import com.example.arcuplinejoinview.ArcUpLineJoinView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        BentLineStraightJoinView.create(this)
+        ArcUpLineJoinView.create(this)
     }
 }
