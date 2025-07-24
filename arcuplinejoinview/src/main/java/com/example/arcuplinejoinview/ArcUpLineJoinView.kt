@@ -209,4 +209,12 @@ class ArcUpLineJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : ArcUpLineJoinView {
+            val view : ArcUpLineJoinView = ArcUpLineJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
