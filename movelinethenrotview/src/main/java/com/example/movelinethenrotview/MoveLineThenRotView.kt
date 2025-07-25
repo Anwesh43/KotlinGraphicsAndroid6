@@ -184,4 +184,27 @@ class MoveLineThenRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : MoveLineThenRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val mltr : MoveLineThenRot = MoveLineThenRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            mltr.draw(canvas, paint)
+            animator.animate {
+                mltr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            mltr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
