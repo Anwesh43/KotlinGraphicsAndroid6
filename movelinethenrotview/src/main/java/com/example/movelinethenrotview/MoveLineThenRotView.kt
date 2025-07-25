@@ -209,4 +209,12 @@ class MoveLineThenRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : MoveLineThenRotView {
+            val view : MoveLineThenRotView = MoveLineThenRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
