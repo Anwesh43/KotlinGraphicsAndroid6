@@ -188,4 +188,27 @@ class QuarterArcsHalfUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : QuarterArcsHalfUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val qahu : QuarterArcsHalfUp = QuarterArcsHalfUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            qahu.draw(canvas, paint)
+            animator.animate {
+                qahu.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            qahu.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
