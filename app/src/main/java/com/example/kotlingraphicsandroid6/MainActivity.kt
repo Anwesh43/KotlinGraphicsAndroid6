@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.movelinethenrotview.MoveLineThenRotView
+import com.example.quarterarcshalfupview.QuarterArcsHalfUpView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        MoveLineThenRotView.create(this)
+        QuarterArcsHalfUpView.create(this)
     }
 }
