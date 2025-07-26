@@ -44,10 +44,11 @@ fun Canvas.drawQuarterArcHalfUp(scale : Float, w : Float, h : Float, paint : Pai
     drawXY(w / 2, h / 2 - (h / 2) * dsc(4)) {
         rotate(rot * dsc(3))
         for (j in 0..1) {
-            drawXY(-size * (1 - j), 0f) {
+            val shift : Float = size * 0.5f * (1 - j) * Math.floor(dsc(j).toDouble()).toFloat()
+            drawXY(-size * (1 - j) + shift, 0f) {
                 rotate(deg * (1 - j) * dsc(2))
                 var startDeg : Float = -90f * (1 + j)
-                drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), startDeg, rot * dsc(j), false, paint)
+                drawArc(RectF(-size / 2 - shift, -size / 2, size / 2 - shift, size / 2), startDeg, rot * dsc(j), false, paint)
             }
         }
     }
@@ -59,6 +60,7 @@ fun Canvas.drawQAHUNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawQuarterArcHalfUp(scale, w, h, paint)
 }
 
