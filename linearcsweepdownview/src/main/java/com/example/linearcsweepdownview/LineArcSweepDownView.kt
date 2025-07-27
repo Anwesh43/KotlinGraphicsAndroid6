@@ -212,4 +212,12 @@ class LineArcSweepDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineArcSweepDownView {
+            val view : LineArcSweepDownView = LineArcSweepDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
