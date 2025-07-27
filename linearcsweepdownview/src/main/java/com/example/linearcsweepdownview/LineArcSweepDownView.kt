@@ -187,4 +187,27 @@ class LineArcSweepDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineArcSweepDownView) {
+
+        private val lasd : LineArcSweepDown = LineArcSweepDown(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lasd.draw(canvas, paint)
+            animator.animate {
+                lasd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lasd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
