@@ -221,4 +221,12 @@ class TriJoinArcRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : TriJoinArcRightView {
+            val view : TriJoinArcRightView = TriJoinArcRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
