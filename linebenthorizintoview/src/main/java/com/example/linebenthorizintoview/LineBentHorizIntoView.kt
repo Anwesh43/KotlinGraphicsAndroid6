@@ -185,4 +185,27 @@ class LineBentHorizIntoView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineBentHorizIntoView) {
+
+        private val animator : Animator = Animator(view)
+        private val lbhi : LineBentHorizInto = LineBentHorizInto(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lbhi.draw(canvas, paint)
+            animator.animate {
+                lbhi.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbhi.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
