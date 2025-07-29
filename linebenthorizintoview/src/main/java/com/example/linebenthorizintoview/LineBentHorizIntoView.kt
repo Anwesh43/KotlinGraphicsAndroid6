@@ -210,4 +210,12 @@ class LineBentHorizIntoView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineBentHorizIntoView {
+            val view : LineBentHorizIntoView = LineBentHorizIntoView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
