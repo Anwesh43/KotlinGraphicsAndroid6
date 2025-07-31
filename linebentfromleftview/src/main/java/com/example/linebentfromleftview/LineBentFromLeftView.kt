@@ -180,4 +180,27 @@ class LineBentFromLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineBentFromLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lbfl : LineBentFromLeft = LineBentFromLeft(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lbfl.draw(canvas, paint)
+            animator.animate {
+                lbfl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbfl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
