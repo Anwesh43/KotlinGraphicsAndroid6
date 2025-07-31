@@ -18,7 +18,7 @@ val colors : Array<String> = arrayOf(
 val parts : Int = 4
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
-val sizeFactor : Float = 90f
+val sizeFactor : Float = 5.9f
 val rot : Float = 45f
 val backColor : Int = "#BDBDBD".toColorInt()
 val delay : Long = 20
@@ -45,7 +45,7 @@ fun Canvas.drawLineBentPointLeft(scale : Float, w : Float, h : Float, paint : Pa
             val downSize : Float = -size * (1 - dsc(0)) * (1 - j)
             drawXY(0f, 0f) {
                 rotate(rot * (1 - dsc(2)) * (1 - 2 * j))
-                drawLine(0f, 0f, 0f, upSize, paint)
+                drawLine(downSize, 0f,  upSize, 0f, paint)
             }
         }
     }
