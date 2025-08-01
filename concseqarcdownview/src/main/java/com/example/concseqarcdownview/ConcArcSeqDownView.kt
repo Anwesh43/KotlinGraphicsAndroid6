@@ -193,4 +193,27 @@ class ConcArcSeqDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ConcArcSeqDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val casd : ConcArcSeqDown = ConcArcSeqDown(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            casd.draw(canvas, paint)
+            animator.animate {
+                casd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            casd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
