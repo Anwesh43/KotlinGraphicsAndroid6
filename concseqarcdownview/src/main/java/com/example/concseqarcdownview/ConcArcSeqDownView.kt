@@ -35,6 +35,13 @@ fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
     restore()
 }
 
+fun Canvas.rotateXY( rot : Float, cb : () -> Unit) {
+    drawXY(0f, 0f) {
+        rotate(rot)
+        cb()
+    }
+}
+
 fun Canvas.drawConcArcSeqDown(scale : Float, w : Float, h : Float, paint : Paint) {
     val size : Float = Math.min(w, h) / sizeFactor
     val dsc : (Int) -> Float = {
@@ -43,15 +50,16 @@ fun Canvas.drawConcArcSeqDown(scale : Float, w : Float, h : Float, paint : Paint
     drawXY(w / 2, h / 2 + (h / 2) * dsc(3)) {
         rotate(rot * dsc(1))
         for (j in 0..1) {
-            drawXY(0f, size - size * j) {
-                rotate(-rot * (1f - 2 * j) * dsc(2))
-                drawArc(
-                    RectF(-size / 2, -size, size / 2, 0f),
-                    -90f,
-                    180f * dsc(0).divideScale(j, 2),
-                    false,
-                    paint
-                )
+            rotateXY(-rot * (1f - 2 * j) * dsc(2)) {
+                drawXY(0f, size - size * j) {
+                    drawArc(
+                        RectF(-size / 2, -size, size / 2, 0f),
+                        90f,
+                        180f * dsc(0).divideScale(j, 2),
+                        false,
+                        paint
+                    )
+                }
             }
         }
     }
