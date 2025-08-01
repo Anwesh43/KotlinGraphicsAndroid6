@@ -216,4 +216,12 @@ class ConcArcSeqDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : ConcArcSeqDownView {
+            val view : ConcArcSeqDownView = ConcArcSeqDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
