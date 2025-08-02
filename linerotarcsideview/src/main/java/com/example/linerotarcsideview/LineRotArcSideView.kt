@@ -184,4 +184,27 @@ class LineRotArcSideView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineRotArcSideView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lras : LineRotArcSide = LineRotArcSide(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lras.draw(canvas, paint)
+            animator.animate {
+                lras.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lras.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
