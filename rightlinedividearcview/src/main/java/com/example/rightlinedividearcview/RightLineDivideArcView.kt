@@ -187,4 +187,27 @@ class RightLineDivideArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RightLineDivideArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val rlda : RightLineDivideArc = RightLineDivideArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rlda.draw(canvas, paint)
+            animator.animate {
+                rlda.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rlda.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
