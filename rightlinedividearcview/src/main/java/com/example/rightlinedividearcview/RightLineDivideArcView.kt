@@ -45,7 +45,12 @@ fun Canvas.drawRightLineDivideArc(scale : Float, w : Float, h : Float, paint : P
         rotate(rot * dsc(3))
         drawLine(0f, 0f, size * dsc(0), 0f, paint)
         drawXY(size + (w / 2 - size) * (1 - dsc(1)), 0f) {
-            drawLine(0f, 0f, size, 0f, paint)
+            for (j in 0..1) {
+                drawXY(0f, 0f) {
+                    rotate(deg * 0.5f * (1 - 2 * j) * dsc(2))
+                    drawLine(0f, 0f, size, 0f, paint)
+                }
+            }
             drawArc(RectF(-size, -size, size, size), -deg * 0.5f * dsc(2), deg * dsc(2), false, paint)
         }
     }
