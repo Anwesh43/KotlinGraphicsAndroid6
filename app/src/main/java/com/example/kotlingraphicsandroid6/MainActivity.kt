@@ -7,6 +7,6 @@ import com.example.linebentarcrightview.LineBentArcRightView
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LineBentArcRightView.create(this)
+        LineBentArcRightView.create( this)
     }
 }
