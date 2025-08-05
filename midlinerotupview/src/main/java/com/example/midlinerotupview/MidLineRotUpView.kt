@@ -213,4 +213,12 @@ class MidLineRotUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : MidLineRotUpView {
+            val view : MidLineRotUpView = MidLineRotUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
