@@ -212,4 +212,12 @@ class LineDownArcLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineDownArcLeftView {
+            val view : LineDownArcLeftView = LineDownArcLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
