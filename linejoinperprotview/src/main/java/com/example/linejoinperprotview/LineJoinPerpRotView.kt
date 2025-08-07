@@ -210,4 +210,13 @@ class LineJoinPerpRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineJoinPerpRotView {
+            var view : LineJoinPerpRotView = LineJoinPerpRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
