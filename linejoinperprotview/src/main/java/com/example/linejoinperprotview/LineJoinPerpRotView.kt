@@ -42,7 +42,7 @@ fun Canvas.drawLineJoinPerpRot(scale : Float, w : Float, h : Float, paint : Pain
     drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
         rotate(rot * dsc(3))
         for (j in 0..1) {
-            drawXY(-(w / 2) * (1 - dsc(0)), -size * j) {
+            drawXY(-(w / 2) * (1 - dsc(2 * j)), -size * j) {
                 rotate(rot * (1 - j) * dsc(1))
                 drawLine(0f, 0f, -size, 0f, paint)
             }
