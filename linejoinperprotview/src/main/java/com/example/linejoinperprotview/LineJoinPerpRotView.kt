@@ -185,4 +185,27 @@ class LineJoinPerpRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineJoinPerpRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ljpr : LineJoinPerpRot = LineJoinPerpRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ljpr.draw(canvas, paint)
+            animator.animate {
+                ljpr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ljpr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
