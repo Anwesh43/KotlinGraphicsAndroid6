@@ -186,4 +186,27 @@ class LineBentRotUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineBentRotUpView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lbru : LineBentRotUp = LineBentRotUp(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lbru.draw(canvas, paint)
+            animator.animate {
+                lbru.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbru.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
