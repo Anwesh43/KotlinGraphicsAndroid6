@@ -205,4 +205,12 @@ class RightArcCreateView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : RightArcCreateView {
+            val view : RightArcCreateView = RightArcCreateView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
