@@ -42,7 +42,7 @@ fun Canvas.drawRightArcCreate(scale : Float, w : Float, h : Float, paint : Paint
     }
     drawXY(w / 2 + (w / 2 - size) * (1 - dsc(1)) - w * 0.5f * dsc(4), h / 2) {
         rotate(rot * dsc(2))
-        drawArc(RectF(-size, -size, size, size), 0f, rot * (dsc(0) + dsc(3)), false, paint)
+        drawArc(RectF(0f, -size / 2, size, size / 2), 0f, rot * (dsc(0) + dsc(3)), false, paint)
     }
 }
 
@@ -52,6 +52,7 @@ fun Canvas.drawRACNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawRightArcCreate(scale, w, h, paint)
 }
 
@@ -96,6 +97,7 @@ class RightArcCreateView(ctx : Context) : View(ctx) {
 
         fun animate(cb : () -> Unit) {
             if (animated) {
+                cb()
                 try {
                     Thread.sleep(delay)
                     view.invalidate()
