@@ -215,4 +215,12 @@ class RotLineStraightDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : RotLineStraightDownView {
+            val view : RotLineStraightDownView = RotLineStraightDownView(activity)
+            activity.setContentView(view)
+            return  view
+        }
+    }
 }
