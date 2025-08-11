@@ -214,4 +214,13 @@ class LineArcMiniRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineArcMiniRotView {
+            val view : LineArcMiniRotView = LineArcMiniRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
