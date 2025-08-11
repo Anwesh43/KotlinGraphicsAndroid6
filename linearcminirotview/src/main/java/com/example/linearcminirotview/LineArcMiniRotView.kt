@@ -125,4 +125,45 @@ class LineArcMiniRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class LAMRNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : LAMRNode? = null
+        private var prev : LAMRNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = LAMRNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawLAMRNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : LAMRNode {
+            var curr : LAMRNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr !=null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
