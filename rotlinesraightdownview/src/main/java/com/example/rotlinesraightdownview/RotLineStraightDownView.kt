@@ -190,4 +190,27 @@ class RotLineStraightDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RotLineStraightDownView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+        private val rlsd : RotLineStraightDown = RotLineStraightDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rlsd.draw(canvas, paint)
+            animator.animate {
+                rlsd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rlsd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
