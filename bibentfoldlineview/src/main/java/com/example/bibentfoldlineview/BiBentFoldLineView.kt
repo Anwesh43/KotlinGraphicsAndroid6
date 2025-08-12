@@ -23,6 +23,7 @@ val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val rot : Float = 45f
 val deg : Float = 90f
+val deg2 : Float = 270f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -45,7 +46,7 @@ fun Canvas.drawBiBentFoldLine(scale : Float, w : Float, h : Float, paint : Paint
         for (j in 0..1) {
             drawXY(size, 0f) {
                 val currDeg : Float = deg - (1f - 2 * j) * rot * (1 - dsc(2))
-                rotate(-currDeg *  (1 - dsc(3)))
+                rotate(-currDeg - deg2 * dsc(3))
                 drawLine(0f, 0f, -size * dsc(1), 0f, paint)
             }
         }
