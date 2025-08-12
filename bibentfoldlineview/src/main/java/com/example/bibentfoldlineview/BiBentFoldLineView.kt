@@ -187,4 +187,27 @@ class BiBentFoldLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiBentFoldLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bbfl : BiBentFoldLine = BiBentFoldLine(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bbfl.draw(canvas, paint)
+            animator.animate {
+                bbfl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bbfl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
