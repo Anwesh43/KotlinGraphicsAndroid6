@@ -212,4 +212,12 @@ class BiBentFoldLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : BiBentFoldLineView {
+            val view : BiBentFoldLineView = BiBentFoldLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
