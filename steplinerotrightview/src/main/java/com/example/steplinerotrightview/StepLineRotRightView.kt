@@ -184,4 +184,28 @@ class StepLineRotRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : StepLineRotRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val slrr : StepLineRotRight = StepLineRotRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            slrr.draw(canvas, paint)
+            animator.animate {
+                slrr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            slrr.startUpdating {
+                animator.start()
+            }
+        }
+
+    }
 }
