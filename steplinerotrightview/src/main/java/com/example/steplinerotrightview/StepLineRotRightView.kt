@@ -208,13 +208,13 @@ class StepLineRotRightView(ctx : Context) : View(ctx) {
                 animator.start()
             }
         }
+    }
 
-        companion object {
-            fun create(activity: Activity) : StepLineRotRightView {
-                val view : StepLineRotRightView = StepLineRotRightView(activity)
-                activity.setContentView(view)
-                return view
-            }
+    companion object {
+        fun create(activity: Activity) : StepLineRotRightView {
+            val view : StepLineRotRightView = StepLineRotRightView(activity)
+            activity.setContentView(view)
+            return view
         }
     }
 }
