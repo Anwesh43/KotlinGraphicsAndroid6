@@ -43,7 +43,7 @@ fun Canvas.drawStepLineRotRight(scale : Float, w : Float, h : Float, paint : Pai
         for (j in 0..1) {
             drawXY(size * j + (w / 2 - size * j) * (1 - dsc(j)), size * j) {
                 rotate(-rot * dsc(2) * j)
-                drawLine(0f, 0f, -size, 0f, paint)
+                drawLine(0f, 0f, size, 0f, paint)
             }
         }
     }
