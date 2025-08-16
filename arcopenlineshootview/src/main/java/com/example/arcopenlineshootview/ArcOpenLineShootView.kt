@@ -186,4 +186,27 @@ class ArcOpenLineShootView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcOpenLineShootView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val aols : ArcOpenLineShoot = ArcOpenLineShoot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            aols.draw(canvas, paint)
+            animator.animate {
+                aols.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            aols.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
