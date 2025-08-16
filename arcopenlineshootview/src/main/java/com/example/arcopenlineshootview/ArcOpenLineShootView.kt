@@ -43,7 +43,7 @@ fun Canvas.drawArcOpenLineShoot(scale : Float, w : Float, h : Float, paint : Pai
     drawXY(w / 2, h  / 2) {
         drawXY(0f, 0f) {
             rotate(rot * dsc(2))
-            drawArc(RectF(0f, -size / 2, size, size / 2), 180f * dsc(4), 180f * (dsc(1) - dsc(4)), false, paint)
+            drawArc(RectF(0f, -size / 2, size, size / 2), 180f * (1 + dsc(4)), 180f * (dsc(1) - dsc(4)), false, paint)
         }
         drawXY((w / 2) * dsc(3), 0f) {
             drawLine(size * (1 - dsc(0)), 0f, size, 0f, paint)
@@ -57,6 +57,7 @@ fun Canvas.drawAOLSNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawArcOpenLineShoot(scale, w, h, paint)
 }
 
