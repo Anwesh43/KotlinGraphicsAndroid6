@@ -208,4 +208,12 @@ class LineBentJoinRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineBentJoinRotView {
+            val view : LineBentJoinRotView = LineBentJoinRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
