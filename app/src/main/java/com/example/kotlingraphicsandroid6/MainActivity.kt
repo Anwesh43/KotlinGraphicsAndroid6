@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.steplinerotrightview.StepLineRotRightView
+import com.example.linebentjoinrotview.LineBentJoinRotView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        StepLineRotRightView.create( this)
+        LineBentJoinRotView.create( this)
     }
 }
