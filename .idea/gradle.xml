@@ -42,6 +42,7 @@
             <option value="$PROJECT_DIR$/enclosesqdiagview" />
             <option value="$PROJECT_DIR$/halfarclinebentview" />
             <option value="$PROJECT_DIR$/halfarcpointlineview" />
+            <option value="$PROJECT_DIR$/halfarcrotrightview" />
             <option value="$PROJECT_DIR$/linealtdownrotview" />
             <option value="$PROJECT_DIR$/linearccaprightview" />
             <option value="$PROJECT_DIR$/linearcencloserightview" />
