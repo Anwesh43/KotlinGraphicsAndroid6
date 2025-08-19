@@ -211,4 +211,13 @@ class BentLineToFShapeView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : BentLineToFShapeView {
+            val view : BentLineToFShapeView = BentLineToFShapeView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
