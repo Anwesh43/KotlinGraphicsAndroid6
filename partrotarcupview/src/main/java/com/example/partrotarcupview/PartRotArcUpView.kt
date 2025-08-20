@@ -206,4 +206,12 @@ class PartRotArcUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : PartRotArcUpView {
+            val view : PartRotArcUpView = PartRotArcUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
