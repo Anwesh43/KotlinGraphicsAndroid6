@@ -181,4 +181,27 @@ class PartRotArcUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : PartRotArcUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val prau : PartRotArcUp = PartRotArcUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            prau.draw(canvas, paint)
+            animator.animate {
+                prau.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            prau.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
