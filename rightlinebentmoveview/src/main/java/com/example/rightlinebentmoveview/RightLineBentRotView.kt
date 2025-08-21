@@ -209,4 +209,13 @@ class RightLineBentRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : RightLineBentRotView {
+            val view : RightLineBentRotView = RightLineBentRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
