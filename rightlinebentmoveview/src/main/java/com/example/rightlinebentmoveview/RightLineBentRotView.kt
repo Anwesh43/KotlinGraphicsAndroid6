@@ -184,4 +184,27 @@ class RightLineBentRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RightLineBentRotView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val rlbr : RightLineBentRot = RightLineBentRot(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rlbr.draw(canvas, paint)
+            animator.animate {
+                rlbr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rlbr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
