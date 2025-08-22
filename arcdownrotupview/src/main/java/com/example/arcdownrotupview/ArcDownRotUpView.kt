@@ -207,4 +207,12 @@ class ArcDownRotUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : ArcDownRotUpView {
+            val view : ArcDownRotUpView = ArcDownRotUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
