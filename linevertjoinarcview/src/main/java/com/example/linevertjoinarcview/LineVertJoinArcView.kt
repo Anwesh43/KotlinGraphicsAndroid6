@@ -42,9 +42,12 @@ fun Canvas.drawLineVertJoinArc(scale  : Float, w : Float, h : Float, paint : Pai
         scale.divideScale(it, parts)
     }
     drawXY(w / 2 + (w / 2) * dsc(3), h * 0.5f * dsc(0)) {
-        drawLine(0f, 0f, 0f, -size, paint)
         drawXY(0f, 0f) {
-            rotate(rot)
+            rotate(rot * dsc(0))
+            drawLine(0f, 0f, 0f, -size, paint)
+        }
+        drawXY(0f, 0f) {
+            rotate(deg)
             drawLine(0f, 0f, size * dsc(1), 0f, paint)
         }
         drawArc(RectF(-size, -size, size, size), deg * (1 - dsc(2)), deg * dsc(2), false, paint)
@@ -57,6 +60,7 @@ fun Canvas.drawLVJANode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawLineVertJoinArc(scale, w, h, paint)
 }
 
