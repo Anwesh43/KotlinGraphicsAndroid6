@@ -186,4 +186,27 @@ class LineVertJoinArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineVertJoinArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lvja : LineVertJoinArc = LineVertJoinArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lvja.draw(canvas, paint)
+            animator.animate {
+                lvja.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lvja.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
