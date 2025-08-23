@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 4
+val parts : Int = 5
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 6.9f
@@ -41,9 +41,9 @@ fun Canvas.drawLineVertJoinArc(scale  : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 + (w / 2) * dsc(3), h * 0.5f * dsc(0)) {
+    drawXY(w / 2 + (w / 2) * dsc(4), h * 0.5f * dsc(0)) {
         drawXY(0f, 0f) {
-            rotate(rot * dsc(0))
+            rotate(rot * dsc(3))
             drawLine(0f, 0f, 0f, -size, paint)
         }
         drawXY(0f, 0f) {
