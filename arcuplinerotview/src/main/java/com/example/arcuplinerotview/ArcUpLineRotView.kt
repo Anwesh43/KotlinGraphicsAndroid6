@@ -68,14 +68,16 @@ fun Canvas.drawAULRNode(i : Int, scale : Float, paint : Paint) {
 
 class ArcUpLineRotView(ctx : Context) : View(ctx) {
 
-    override fun onDraw(canvas : Canvas) {
+    private val renderer : Renderer = Renderer(this)
 
+    override fun onDraw(canvas : Canvas) {
+        renderer.render(canvas)
     }
 
     override fun onTouchEvent(event : MotionEvent) : Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-
+                renderer.handleTap()
             }
         }
         return true
@@ -213,6 +215,15 @@ class ArcUpLineRotView(ctx : Context) : View(ctx) {
             aulr.startUpdating {
                 animator.start()
             }
+        }
+    }
+
+    companion object {
+
+        fun create(activity : Activity) : ArcUpLineRotView {
+            val view : ArcUpLineRotView = ArcUpLineRotView(activity)
+            activity.setContentView(view)
+            return view
         }
     }
 }
