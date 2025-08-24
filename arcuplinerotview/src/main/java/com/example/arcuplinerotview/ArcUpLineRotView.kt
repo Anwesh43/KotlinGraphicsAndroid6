@@ -192,4 +192,27 @@ class ArcUpLineRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcUpLineRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val aulr : ArcUpLineRot = ArcUpLineRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            aulr.draw(canvas, paint)
+            animator.animate {
+                aulr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            aulr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
