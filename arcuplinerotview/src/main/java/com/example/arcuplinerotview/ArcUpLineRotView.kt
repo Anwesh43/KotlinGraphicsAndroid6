@@ -46,7 +46,7 @@ fun Canvas.drawArcUpLineRot(scale : Float, w : Float, h : Float, paint : Paint) 
         for (j in 0..1) {
             drawXY(0f, 0f) {
                 scale(1f, 1f - 2 * j)
-                drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 90f, 90f * dsc(0), false, paint)
+                drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 180f, 90f * dsc(0), false, paint)
                 drawXY(0f, -size / 2) {
                     rotate(deg * dsc(2))
                     drawLine(0f, 0f, 0f, -size * 0.5f * dsc(1), paint)
