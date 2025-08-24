@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.linevertjoinarcview.LineVertJoinArcView
+import com.example.arcuplinerotview.ArcUpLineRotView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LineVertJoinArcView.create( this)
+        ArcUpLineRotView.create( this)
     }
 }
