@@ -212,4 +212,12 @@ class LineEncloseArcLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineEncloseArcLeftView {
+            val view : LineEncloseArcLeftView = LineEncloseArcLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
