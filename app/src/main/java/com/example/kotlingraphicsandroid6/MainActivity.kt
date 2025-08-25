@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.arcuplinerotview.ArcUpLineRotView
+import com.example.lineenclosearcleftview.LineEncloseArcLeftView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ArcUpLineRotView.create( this)
+        LineEncloseArcLeftView.create( this)
     }
 }
