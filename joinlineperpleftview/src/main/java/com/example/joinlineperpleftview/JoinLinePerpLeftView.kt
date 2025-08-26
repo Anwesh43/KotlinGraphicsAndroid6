@@ -210,4 +210,12 @@ class JoinLinePerpLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : JoinLinePerpLeftView {
+            val view : JoinLinePerpLeftView = JoinLinePerpLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
