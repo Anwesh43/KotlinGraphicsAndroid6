@@ -185,4 +185,27 @@ class JoinLinePerpLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : JoinLinePerpLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val jlpl : JoinLinePerpLeft = JoinLinePerpLeft(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            jlpl.draw(canvas, paint)
+            animator.animate {
+                jlpl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            jlpl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
