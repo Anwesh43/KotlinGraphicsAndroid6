@@ -21,7 +21,7 @@ val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
-val rot : Float = 90f
+val rot : Float = 180f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -39,7 +39,7 @@ fun Canvas.drawJoinLinePerpLeft(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 - (w / 2) * dsc(3), h / 2 - (h / 2) * dsc(3)) {
+    drawXY(w / 2 - (w / 2) * dsc(3), h / 2 + (h / 2) * dsc(3)) {
         drawXY(-w / 2 + (w / 2) * dsc(1), 0f) {
             drawLine(0f, 0f, -size, 0f, paint)
         }
