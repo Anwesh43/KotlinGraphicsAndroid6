@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.lineenclosearcleftview.LineEncloseArcLeftView
+import com.example.joinlineperpleftview.JoinLinePerpLeftView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LineEncloseArcLeftView.create( this)
+        JoinLinePerpLeftView.create( this)
     }
 }
