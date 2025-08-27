@@ -49,7 +49,7 @@ fun Canvas.drawLineJoinArcDown(scale : Float, w : Float, h : Float, paint : Pain
                 drawLine(0f, 0f, 0f, -size, paint)
             }
         }
-        drawArc(RectF(-size, -size, size, size), 0f, arcDeg * dsc(2), false, paint)
+        drawArc(RectF(-size, -size, size, size), -90f, arcDeg * dsc(2), false, paint)
     }
 }
 
