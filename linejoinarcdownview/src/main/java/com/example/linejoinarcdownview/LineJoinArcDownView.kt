@@ -214,4 +214,12 @@ class LineJoinArcDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineJoinArcDownView {
+            val view : LineJoinArcDownView = LineJoinArcDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
