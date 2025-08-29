@@ -212,4 +212,12 @@ class CrossBentPerpLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : CrossBentPerpLineView {
+            val view : CrossBentPerpLineView = CrossBentPerpLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
