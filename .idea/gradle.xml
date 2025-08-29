@@ -39,6 +39,7 @@
             <option value="$PROJECT_DIR$/concarclinejoinview" />
             <option value="$PROJECT_DIR$/conclineopenrightview" />
             <option value="$PROJECT_DIR$/concseqarcdownview" />
+            <option value="$PROJECT_DIR$/crossbentperplineview" />
             <option value="$PROJECT_DIR$/dividelinearcjoinview" />
             <option value="$PROJECT_DIR$/dividelinerotextendview" />
             <option value="$PROJECT_DIR$/dropmultisemicirclesview" />
@@ -67,6 +68,7 @@
             <option value="$PROJECT_DIR$/linedroprightdownview" />
             <option value="$PROJECT_DIR$/linedroprotextendview" />
             <option value="$PROJECT_DIR$/lineenclosearcleftview" />
+            <option value="$PROJECT_DIR$/linejoinarcdownview" />
             <option value="$PROJECT_DIR$/linejoinclosearview" />
             <option value="$PROJECT_DIR$/linejoinperprotview" />
             <option value="$PROJECT_DIR$/linemultiforkrotview" />

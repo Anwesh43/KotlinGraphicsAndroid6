@@ -44,7 +44,7 @@ fun Canvas.drawCrossBentPerpLine(scale : Float, w : Float, h : Float, paint : Pa
         for (j in 0..1) {
             drawXY(-size + size * dsc(2), 0f) {
                 rotate(-rot * (1f - 2 * j) * (1f - dsc(1)))
-                drawLine(0f, size * (1 - j) * (1 - dsc(0).divideScale(j, 2)), 0f, size * j * dsc(0).divideScale(j, 2), paint)
+                drawLine(0f, size * (1 - j) * (1 - dsc(0).divideScale(0, 2)), 0f, size * (1 - j) + size * j * dsc(0).divideScale(1, 2), paint)
             }
         }
     }
