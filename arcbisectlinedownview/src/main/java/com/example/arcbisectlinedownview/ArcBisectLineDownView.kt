@@ -214,4 +214,12 @@ class ArcBisectLineDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ArcBisectLineDownView {
+            val view : ArcBisectLineDownView = ArcBisectLineDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
