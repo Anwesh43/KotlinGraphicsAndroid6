@@ -185,8 +185,31 @@ class ArcBisectLineDownView(ctx : Context) : View(ctx) {
             }
         }
 
-        fun startUpdaitng(cb : () -> Unit) {
+        fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : ArcBisectLineDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val abld : ArcBisectLineDown = ArcBisectLineDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            abld.draw(canvas, paint)
+            animator.animate {
+                abld.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            abld.startUpdating {
+                animator.start()
+            }
         }
     }
 }
