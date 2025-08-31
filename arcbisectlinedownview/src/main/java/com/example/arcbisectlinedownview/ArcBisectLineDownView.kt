@@ -22,8 +22,8 @@ val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
-val rot : Float = 45f
-val arcSizeFactor : Float = 6f
+val rot : Float = 25f
+val arcSizeFactor : Float = 3.4f
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
@@ -60,6 +60,7 @@ fun Canvas.drawABLDNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawArcBisectLineDown(scale, w, h, paint)
 }
 
