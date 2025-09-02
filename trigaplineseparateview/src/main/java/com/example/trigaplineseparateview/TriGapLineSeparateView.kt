@@ -212,4 +212,12 @@ class TriGapLineSeparateView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : TriGapLineSeparateView {
+            val view : TriGapLineSeparateView = TriGapLineSeparateView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
