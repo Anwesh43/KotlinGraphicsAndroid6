@@ -41,8 +41,8 @@ fun Canvas.drawTriGapLineSeparate(scale : Float, w : Float, h : Float, paint : P
     }
     drawXY(w / 2, h / 2) {
         for (j in 0..1) {
-            drawXY(-size + 2 * size * j, -h * 0.5f * (1 - dsc(0)) + h * 0.5f * dsc(3)) {
-                rotate(rot * dsc(2))
+            drawXY(size - 2 * size * j, -h * 0.5f * (1 - dsc(0)) + h * 0.5f * dsc(3)) {
+                rotate(rot * dsc(2) * (1f - 2 * j))
                 drawLine(0f, 0f, 0f, -size, paint)
             }
         }
