@@ -187,4 +187,27 @@ class TriGapLineSeparateView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : TriGapLineSeparateView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val tgls : TriGapLineSeparate = TriGapLineSeparate(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            tgls.draw(canvas, paint)
+            animator.animate {
+                tgls.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            tgls.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
