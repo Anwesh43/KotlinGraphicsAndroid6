@@ -186,4 +186,27 @@ class LinePartialRotDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LinePartialRotDownView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lprd : LinePartialRotDown = LinePartialRotDown(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lprd.draw(canvas, paint)
+            animator.animate {
+                lprd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lprd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
