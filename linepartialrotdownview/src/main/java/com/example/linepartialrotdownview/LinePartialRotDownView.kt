@@ -46,7 +46,7 @@ fun Canvas.drawLinePartialRotDown(scale : Float, w : Float, h : Float, paint : P
         for (j in 0..1) {
             drawXY(size * j, 0f) {
                 rotate((initDeg + rot * dsc(2)) * j)
-                drawLine(0f, 0f, size * dsc(1),0f, paint)
+                drawLine(0f, 0f, size * dsc(j),0f, paint)
             }
         }
     }
