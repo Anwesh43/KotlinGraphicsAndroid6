@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.trigaplineseparateview.TriGapLineSeparateView
+import com.example.linepartialrotdownview.LinePartialRotDownView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        TriGapLineSeparateView.create( this)
+        LinePartialRotDownView.create( this)
     }
 }
