@@ -211,4 +211,12 @@ class LinePartialRotDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LinePartialRotDownView {
+            val view : LinePartialRotDownView = LinePartialRotDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
