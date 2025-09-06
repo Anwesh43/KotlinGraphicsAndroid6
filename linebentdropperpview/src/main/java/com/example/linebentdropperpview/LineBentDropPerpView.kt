@@ -124,4 +124,45 @@ class LineBentDropPerpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class LBDPNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : LBDPNode? = null
+        private var prev : LBDPNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = LBDPNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawLBDPNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : LBDPNode {
+            var curr : LBDPNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
