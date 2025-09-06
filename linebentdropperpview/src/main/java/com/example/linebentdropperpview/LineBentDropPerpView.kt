@@ -213,4 +213,12 @@ class LineBentDropPerpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineBentDropPerpView {
+            val view : LineBentDropPerpView = LineBentDropPerpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
