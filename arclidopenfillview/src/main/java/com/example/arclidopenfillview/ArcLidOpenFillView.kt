@@ -212,4 +212,12 @@ class ArcLidOpenFillView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ArcLidOpenFillView {
+            val view : ArcLidOpenFillView = ArcLidOpenFillView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
