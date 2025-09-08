@@ -46,7 +46,7 @@ fun Canvas.drawConcArcToDown(scale : Float, w : Float, h : Float, paint : Paint)
         for (j in 0..1) {
             drawXY(-size + size * j, 0f) {
                 rotate(rot * dsc(2) * j)
-                drawArc(RectF(-size, -size / 2, 0f, size / 2), -90f * (1 + j), 90f * dsc(j), false, paint)
+                drawArc(RectF(0f, -size / 2, size, size / 2), -90f * (1 + j), 90f * dsc(j), false, paint)
             }
         }
         drawArc(RectF(-size, -size / 2, 0f, size / 2), 90f, 180f * dsc(3), false, paint)
@@ -59,6 +59,7 @@ fun Canvas.drawCATDNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawConcArcToDown(scale, w, h, paint)
 }
 
