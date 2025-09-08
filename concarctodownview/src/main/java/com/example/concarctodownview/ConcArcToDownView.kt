@@ -188,4 +188,27 @@ class ConcArcToDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ConcArcToDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val catd : ConcArcToDown = ConcArcToDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            catd.draw(canvas, paint)
+            animator.animate {
+                catd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            catd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
