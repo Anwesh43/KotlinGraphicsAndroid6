@@ -45,12 +45,12 @@ fun Canvas.drawRightBoxArc(scale : Float, w : Float, h : Float, paint : Paint) {
         drawArc(RectF(-size / 2, -size, size / 2, 0f), 180f, 180f * dsc(0), false, paint)
         drawXY(size / 2, -size / 2) {
             drawLine(0f, 0f, 0f, size * 0.5f * dsc(1), paint)
-            drawXY(size / 2, 0f) {
-                drawLine(0f, 0f, -size * dsc(2), 0f, paint)
-            }
-            drawXY(-size / 2, 0f) {
-                drawLine(0f, 0f, 0f, -size * 0.5f * dsc(3), paint)
-            }
+        }
+        drawXY(size / 2, 0f) {
+            drawLine(0f, 0f, -size * dsc(2), 0f, paint)
+        }
+        drawXY(-size / 2, 0f) {
+            drawLine(0f, 0f, 0f, -size * 0.5f * dsc(3), paint)
         }
     }
 }
