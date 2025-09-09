@@ -191,4 +191,22 @@ class RightBoxArcView(ctx : Context) : View(ctx) {
             curr.startUdpating(cb)
         }
     }
+
+    data class Renderer(var view : RightBoxArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val rba : RightBoxArc = RightBoxArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rba.draw(canvas, paint)
+        }
+
+        fun handleTap() {
+            rba.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
