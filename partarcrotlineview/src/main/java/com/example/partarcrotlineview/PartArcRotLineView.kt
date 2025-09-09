@@ -48,7 +48,7 @@ fun Canvas.drawPartArcRotLine(scale : Float, w : Float, h : Float, paint : Paint
             rotate(deg * dsc(2))
             drawLine(-size * (1 - dsc(0)), 0f, -size, 0f, paint)
         }
-        drawLine(0f, 0f, 0f, -size * dsc(1), paint)
+        drawLine(0f, 0f, 0f, size * dsc(1), paint)
         drawArc(RectF(-size, -size, size, size), 0f, 90f * dsc(3), false, paint)
     }
 }
@@ -134,11 +134,14 @@ class PartArcRotLineView(ctx : Context) : View(ctx) {
         private var prev : PARLNode? = null
 
         init {
-
+            addNeighbor()
         }
 
         fun addNeighbor() {
-
+            if (i < colors.size - 1) {
+                next = PARLNode(i + 1)
+                next?.prev = this
+            }
         }
 
         fun draw(canvas : Canvas, paint : Paint) {
