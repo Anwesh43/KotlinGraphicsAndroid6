@@ -203,6 +203,11 @@ class RightBoxArcView(ctx : Context) : View(ctx) {
         fun render(canvas : Canvas) {
             canvas.drawColor(backColor)
             rba.draw(canvas, paint)
+            animator.animate {
+                rba.update {
+                    animator.stop()
+                }
+            }
         }
 
         fun handleTap() {
