@@ -162,27 +162,50 @@ class PartArcRotLineView(ctx : Context) : View(ctx) {
             cb()
             return this
         }
+    }
 
-        data class PartArcRotLine(var i : Int) {
+    data class PartArcRotLine(var i : Int) {
 
-            private var curr : PARLNode = PARLNode(0)
-            private var dir : Int = 1
+        private var curr : PARLNode = PARLNode(0)
+        private var dir : Int = 1
 
-            fun draw(canvas : Canvas, paint : Paint) {
-                curr.draw(canvas, paint)
+        fun draw(canvas : Canvas, paint : Paint) {
+            curr.draw(canvas, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            curr.update {
+                curr = curr.getNext(dir) {
+                    dir *= -1
+                }
+                cb(it)
             }
+        }
 
-            fun update(cb : (Float) -> Unit) {
-                curr.update {
-                    curr = curr.getNext(dir) {
-                        dir *= -1
-                    }
-                    cb(it)
+        fun startUpdating(cb : () -> Unit) {
+            curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : PartArcRotLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val parl : PartArcRotLine = PartArcRotLine(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            parl.draw(canvas, paint)
+            animator.animate {
+                parl.update {
+                    animator.stop()
                 }
             }
+        }
 
-            fun startUpdating(cb : () -> Unit) {
-                curr.startUpdating(cb)
+        fun handleTap() {
+            parl.startUpdating {
+                animator.start()
             }
         }
     }
