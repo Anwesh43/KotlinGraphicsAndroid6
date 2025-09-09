@@ -63,3 +63,18 @@ fun Canvas.drawPARLNode(i : Int, scale : Float, paint : Paint) {
     drawPartArcRotLine(scale, w, h, paint)
 }
 
+class PartArcRotLineView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
