@@ -186,4 +186,27 @@ class LineConcArcRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineConcArcRightView) {
+
+        private val lcar : LineConcArcRight = LineConcArcRight(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lcar.draw(canvas, paint)
+            animator.animate {
+                lcar.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lcar.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
