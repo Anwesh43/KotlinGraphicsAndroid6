@@ -211,4 +211,12 @@ class LineConcArcRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineConcArcRightView {
+            val view : LineConcArcRightView = LineConcArcRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
