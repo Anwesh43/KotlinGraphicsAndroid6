@@ -190,4 +190,27 @@ class RectLineArcRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RectLineArcRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val rlar : RectLineArcRot = RectLineArcRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rlar.draw(canvas, paint)
+            animator.animate {
+                rlar.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rlar.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
