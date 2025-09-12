@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.lineconcarcrightview.LineConcArcRightView
+import com.example.rectlinearcrotview.RectLineArcRotView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LineConcArcRightView.create( this)
+        RectLineArcRotView.create( this)
     }
 }
