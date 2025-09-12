@@ -215,4 +215,12 @@ class RectLineArcRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : RectLineArcRotView {
+            val view : RectLineArcRotView = RectLineArcRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
