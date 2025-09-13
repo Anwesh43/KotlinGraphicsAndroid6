@@ -188,4 +188,27 @@ class ArcCloseRotDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcCloseRotDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val acrd : ArcCloseRotDown = ArcCloseRotDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            acrd.draw(canvas, paint)
+            animator.animate {
+                acrd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            acrd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
