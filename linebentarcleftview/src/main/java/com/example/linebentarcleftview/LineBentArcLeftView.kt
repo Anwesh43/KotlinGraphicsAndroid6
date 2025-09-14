@@ -19,7 +19,7 @@ val colors : Array<String> = arrayOf(
 val parts : Int = 5
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
-val sizeFactor : Float = 90f
+val sizeFactor : Float = 4.9f
 val rot : Float = 120f
 val rest : Float = 360f - rot
 val backColor : Int = "#BDBDBD".toColorInt()
@@ -37,7 +37,7 @@ fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
 }
 
 fun Canvas.drawLineBentArcLeft(scale : Float, w : Float, h : Float, paint : Paint) {
-    val size : Float = Math.min(w, h) / strokeFactor
+    val size : Float = Math.min(w, h) / sizeFactor
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
