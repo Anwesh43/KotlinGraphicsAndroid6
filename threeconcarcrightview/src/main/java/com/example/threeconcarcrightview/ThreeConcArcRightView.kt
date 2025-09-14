@@ -214,4 +214,12 @@ class ThreeConcArcRightNow(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : ThreeConcArcRightNow {
+            val view : ThreeConcArcRightNow = ThreeConcArcRightNow(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
