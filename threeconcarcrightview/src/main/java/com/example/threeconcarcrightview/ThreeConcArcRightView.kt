@@ -17,7 +17,7 @@ val colors : Array<String> = arrayOf(
     "#00C853"
 )
 val arcs : Int = 3
-val parts : Int = arcs + 2
+val parts : Int = arcs + 3
 val scGap : Float = 0.04f / parts
 val rot : Float = 90f
 val sweep : Float = 180f
@@ -42,12 +42,13 @@ fun Canvas.drawThreeConcArcRight(scale : Float, w : Float, h : Float, paint : Pa
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 + (w / 2) * dsc(arcs + 1), h / 2) {
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(arcs + 2)) {
+        rotate(rot * dsc(arcs + 1))
         for (j in 1..arcs) {
             val upSize : Float = (size * j) / arcs
             drawXY(0f, 0f) {
                 rotate(rot * dsc(j - 1).divideScale(1, 2))
-                drawArc(RectF(-upSize / 2, -upSize, upSize / 2, upSize), 90f, sweep * (dsc(j - 1).divideScale(0, 2) + dsc(arcs)), false, paint)
+                drawArc(RectF(-upSize / 2, -upSize, upSize / 2, 0f), 90f, sweep * (dsc(j - 1).divideScale(0, 2) + dsc(arcs)), false, paint)
             }
         }
     }
