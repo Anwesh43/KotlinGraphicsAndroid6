@@ -189,4 +189,27 @@ class ThreeConcArcRightNow(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ThreeConcArcRightNow) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val tcar : ThreeConcArcRight = ThreeConcArcRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            tcar.draw(canvas, paint)
+            animator.animate {
+                tcar.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            tcar.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
