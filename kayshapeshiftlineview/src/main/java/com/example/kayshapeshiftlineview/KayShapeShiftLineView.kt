@@ -218,4 +218,12 @@ class KayShapeShiftLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : KayShapeShiftLineView {
+            val view : KayShapeShiftLineView = KayShapeShiftLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
