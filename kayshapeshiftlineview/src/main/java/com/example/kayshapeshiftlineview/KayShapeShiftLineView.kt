@@ -47,8 +47,8 @@ fun Canvas.drawKayShapeShift(scale : Float, w : Float, h : Float, paint : Paint)
             drawXY(size * dsc(2) * j, 0f) {
                 for (k in 0..1) {
                     drawXY(0f, -h * 0.5f * dsc(5) * (1 - 2 * k)) {
-                        rotate(deg * k * (1 - dsc(3)))
-                        drawLine(0f, 0f, 0f, -size * 0.5f * dsc(j), paint)
+                        rotate(deg * j * (1f  - 2 * k) * (1 - dsc(3)))
+                        drawLine(0f, 0f, 0f, -size * 0.5f * dsc(j) * (1f - 2 * k), paint)
                     }
                 }
             }
