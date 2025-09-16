@@ -53,12 +53,14 @@
             <option value="$PROJECT_DIR$/halfarcpointlineview" />
             <option value="$PROJECT_DIR$/halfarcrotrightview" />
             <option value="$PROJECT_DIR$/joinlineperpleftview" />
+            <option value="$PROJECT_DIR$/kayshapeshiftlineview" />
             <option value="$PROJECT_DIR$/linealtdownrotview" />
             <option value="$PROJECT_DIR$/linearccaprightview" />
             <option value="$PROJECT_DIR$/linearcencloserightview" />
             <option value="$PROJECT_DIR$/linearcminirotview" />
             <option value="$PROJECT_DIR$/linearcsweepdownview" />
             <option value="$PROJECT_DIR$/linebentarcjoinview" />
+            <option value="$PROJECT_DIR$/linebentarcleftview" />
             <option value="$PROJECT_DIR$/linebentarcrightview" />
             <option value="$PROJECT_DIR$/linebentdropperpview" />
             <option value="$PROJECT_DIR$/linebentfromleftview" />
