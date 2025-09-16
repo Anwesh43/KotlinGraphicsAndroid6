@@ -193,4 +193,27 @@ class KayShapeShiftLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : KayShapeShiftLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val kssl : KayShapeShiftLine = KayShapeShiftLine(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            kssl.draw(canvas, paint)
+            animator.animate {
+                kssl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            kssl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
