@@ -47,11 +47,11 @@ fun Canvas.drawBiLineArcJoin(scale : Float, w : Float, h : Float, paint : Paint)
                 val r : Float = size * 0.5f * (k + 1)
                 drawXY(0f, 0f) {
                     scale(1f - 2 * j, 1f)
-                    drawArc(RectF(-r, -r, r, r), 180f, 90f * dsc(2 * j), false, paint)
+                    drawArc(RectF(-r, -r, r, r), 180f, 90f * dsc(2 * k), false, paint)
                 }
             }
         }
-        drawLine(0f, -size / 2, 0f, -size / 2 - size * 0.5f * dsc(2), paint)
+        drawLine(0f, -size / 2, 0f, -size / 2 - size * 0.5f * dsc(1), paint)
     }
 }
 
