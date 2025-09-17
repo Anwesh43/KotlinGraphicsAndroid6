@@ -215,4 +215,13 @@ class BiLineArcJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : BiLineArcJoinView {
+            val view : BiLineArcJoinView = BiLineArcJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
