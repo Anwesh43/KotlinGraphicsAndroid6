@@ -190,4 +190,27 @@ class BiLineArcJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiLineArcJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val blaj : BiLineArcJoin = BiLineArcJoin(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blaj.draw(canvas, paint)
+            animator.animate {
+                blaj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            blaj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
