@@ -47,6 +47,7 @@ fun Canvas.drawRightAltArcRot(scale : Float, w : Float, h : Float, paint : Paint
             drawXY(0f, 0f) {
                 scale(1f, 1f - 2 * j)
                 drawXY(0f, h * 0.5f * (1 - dsc(1))) {
+                    rotate(sweep * dsc(1))
                     drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), sweep, sweep * (dsc(0) - dsc(2) * j), false, paint)
                 }
             }
