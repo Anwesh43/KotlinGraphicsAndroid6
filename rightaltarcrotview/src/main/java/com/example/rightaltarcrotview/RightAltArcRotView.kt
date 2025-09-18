@@ -190,4 +190,27 @@ class RightAltArcRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RightAltArcRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val raar : RightAltArcRot = RightAltArcRot(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            raar.draw(canvas, paint)
+            animator.animate {
+                raar.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            raar.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
