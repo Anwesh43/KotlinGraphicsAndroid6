@@ -22,7 +22,7 @@ val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
-val rot : Float = 45f
+val rot : Float = 30f
 val deg : Float = 90f
 
 fun Int.inverse() : Float = 1f / this
@@ -43,14 +43,14 @@ fun Canvas.drawEllipseLineBreak(scale : Float, w : Float, h : Float, paint : Pai
     }
     drawXY(w / 2, h / 2 + (h / 2) * dsc(5)) {
         rotate(deg * dsc(3))
-        drawXY(-size + size * dsc(2), 0f) {
-            drawLine(0f, 0f, size * dsc(0), 0f, paint)
-        }
         for (j in 0..1) {
             drawXY(0f, 0f) {
                 scale(1f, 1f - 2 * j)
-                rotate(rot * dsc(4))
+                rotate(-rot * dsc(4))
                 drawArc(RectF(0f, -size / 4, size, size / 4), 180f, 180f * dsc(1), false, paint)
+                drawXY(-size + size * dsc(2), 0f) {
+                    drawLine(0f, 0f, size * dsc(0), 0f, paint)
+                }
             }
         }
     }
