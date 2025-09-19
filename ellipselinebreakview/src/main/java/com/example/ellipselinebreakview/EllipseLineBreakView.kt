@@ -217,4 +217,12 @@ class EllipseLineBreakView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : EllipseLineBreakView {
+            val view : EllipseLineBreakView = EllipseLineBreakView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
