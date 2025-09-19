@@ -170,7 +170,7 @@ class EllipseLineBreakView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class EliipseLineBreak(var i : Int) {
+    data class EllipseLineBreak(var i : Int) {
 
         private var curr : ELBNode = ELBNode(0)
         private var dir : Int = 1
@@ -190,6 +190,29 @@ class EllipseLineBreakView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : EllipseLineBreakView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val elb : EllipseLineBreak = EllipseLineBreak(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            elb.draw(canvas, paint)
+            animator.animate {
+                elb.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            elb.startUpdating {
+                animator.start()
+            }
         }
     }
 }
