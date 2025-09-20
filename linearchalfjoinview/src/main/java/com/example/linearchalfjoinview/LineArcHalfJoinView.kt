@@ -215,4 +215,12 @@ class LineArcHalfJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineArcHalfJoinView {
+            val view : LineArcHalfJoinView = LineArcHalfJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
