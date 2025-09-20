@@ -49,7 +49,9 @@ fun Canvas.drawLineArcHalfJoin(scale : Float, w : Float, h : Float, paint : Pain
         drawArc(RectF(-size, -size, size, size), -rot * dsc(1), rot * (dsc(1) + dsc(3)), false, paint)
         drawXY(0f, 0f) {
             rotate(rot)
-            drawLine(size * (1 - dsc(4)), 0f, size, 0f, paint)
+            if (dsc(4) > 0) {
+                drawLine(size * (1 - dsc(4)), 0f, size, 0f, paint)
+            }
         }
     }
 }
