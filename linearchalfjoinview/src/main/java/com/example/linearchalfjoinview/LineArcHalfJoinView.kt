@@ -190,4 +190,27 @@ class LineArcHalfJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineArcHalfJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lahj : LineArcHalfJoin = LineArcHalfJoin(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lahj.draw(canvas, paint)
+            animator.animate {
+                lahj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lahj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
