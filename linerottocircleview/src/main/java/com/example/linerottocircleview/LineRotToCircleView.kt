@@ -41,10 +41,10 @@ fun Canvas.drawLineRotToCircle(scale : Float, w : Float, h : Float, paint : Pain
         scale.divideScale(it, parts)
     }
     drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
-        val ry : Float = size * 0.5f * dsc(2)
+        val ry : Float = size * 0.01f + size * 0.49f * dsc(2)
         for (j in 0..1) {
             drawXY(0f, 0f) {
-                rotate(-rot * (dsc(1) - dsc(3)) * j)
+                rotate(rot * (dsc(1) - dsc(3)) * j)
                 drawArc(RectF(0f, -ry, size * dsc(0), ry), 180f * j, 180f, false, paint)
             }
         }
