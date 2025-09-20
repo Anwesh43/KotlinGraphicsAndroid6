@@ -187,4 +187,27 @@ class LineRotToCircleView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineRotToCircleView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lrtc : LineRotToCircle = LineRotToCircle(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lrtc.draw(canvas, paint)
+            animator.animate {
+                lrtc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lrtc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
