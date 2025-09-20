@@ -63,3 +63,19 @@ fun Canvas.drawLAHJNode(i : Int, scale : Float, paint : Paint) {
     paint.style = Paint.Style.STROKE
     drawLineArcHalfJoin(scale, w, h, paint)
 }
+
+class LineArcHalfJoinView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
