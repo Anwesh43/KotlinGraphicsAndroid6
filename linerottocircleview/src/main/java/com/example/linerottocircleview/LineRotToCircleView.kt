@@ -210,4 +210,12 @@ class LineRotToCircleView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineRotToCircleView {
+            val view : LineRotToCircleView = LineRotToCircleView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
