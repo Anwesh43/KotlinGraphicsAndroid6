@@ -214,4 +214,12 @@ class HalfArcJoinDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : HalfArcJoinDownView {
+            val view : HalfArcJoinDownView = HalfArcJoinDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
