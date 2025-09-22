@@ -50,7 +50,7 @@ fun Canvas.drawHalfArcJoinDown(scale : Float, w : Float, h : Float, paint : Pain
                 }
             }
         }
-        drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 180f, 180f * dsc(3), false, paint)
+        drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 0f, 180f * dsc(3), false, paint)
     }
 }
 
