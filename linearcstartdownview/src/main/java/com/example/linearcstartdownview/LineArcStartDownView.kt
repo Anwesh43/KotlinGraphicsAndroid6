@@ -215,4 +215,12 @@ class LineArcStartDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineArcStartDownView {
+            val view : LineArcStartDownView = LineArcStartDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
