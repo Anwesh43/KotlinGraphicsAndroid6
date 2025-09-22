@@ -18,7 +18,7 @@ val colors : Array<String> = arrayOf(
 )
 val parts : Int = 7
 val scGap : Float = 0.06f / parts
-val rot : Float = 90f
+val rot : Float = 180f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val strokeFactor : Float = 90f
@@ -28,3 +28,38 @@ fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
 
+fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
+    save()
+    translate(x, y)
+    cb()
+    restore()
+}
+
+fun Canvas.drawLineArcStartDown(scale : Float, w : Float, h : Float, paint : Paint) {
+    val size : Float = Math.min(w, h) / sizeFactor
+    val dsc : (Int) -> Float = {
+        scale.divideScale(it, parts)
+    }
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(6)) {
+        rotate(rot * dsc(3))
+        drawXY(-2 * size + size * dsc(4), 0f) {
+            drawLine(0f, 0f, size * 0.5f * dsc(0), 0f, paint)
+            drawXY(size / 2, 0f) {
+                drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(1), false, paint)
+                drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(5), true, paint)
+                drawXY(size, 0f) {
+                    drawLine(0f, 0f, size * 0.5f * dsc(2), 0f, paint)
+                }
+            }
+        }
+    }
+}
+
+fun Canvas.drawLASDNode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    paint.color = colors[i].toColorInt()
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    drawLineArcStartDown(scale, w, h, paint)
+}
