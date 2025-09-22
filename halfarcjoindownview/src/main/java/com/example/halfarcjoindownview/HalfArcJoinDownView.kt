@@ -22,7 +22,7 @@ val rot : Float = 180f
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
-val backColor : Int = "#BDBDD".toColorInt()
+val backColor : Int = "#BDBDBD".toColorInt()
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -128,7 +128,7 @@ class HalfArcJoinDownView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class HAJDNode(var i : Int = 0, val state : State = State()) {
+    data class HAJDNode(var i : Int, val state : State = State()) {
 
         private var next : HAJDNode? = null
         private var prev : HAJDNode? = null
