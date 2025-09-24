@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val rot : Float = 45f
+val rot : Float = 90f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val strokeFactor : Float = 90f
