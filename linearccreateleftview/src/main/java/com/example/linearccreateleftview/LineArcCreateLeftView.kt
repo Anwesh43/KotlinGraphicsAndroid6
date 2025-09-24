@@ -48,7 +48,7 @@ fun Canvas.drawLineArcCreateLeft(scale : Float, w : Float, h : Float, paint : Pa
                 drawLine(0f, 0f, size, 0f, paint)
             }
             val currRot : Float = 180f * dsc(1)
-            drawArc(RectF(-size / 2, -size, size / 2, 0f), -90f - currRot, currRot, false, paint)
+            drawArc(RectF(-size / 2, 0f, size / 2, size), -90f - currRot, currRot, false, paint)
         }
     }
 }
