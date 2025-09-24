@@ -45,10 +45,10 @@ fun Canvas.drawLineArcCreateLeft(scale : Float, w : Float, h : Float, paint : Pa
         drawXY((w / 2) * (1 - dsc(0)), -size + size * 0.5f * dsc(3)) {
             drawXY(0f, 0f) {
                 rotate(rot * dsc(2))
-                drawLine(0f, 0f, 0f, -size, paint)
+                drawLine(0f, 0f, size, 0f, paint)
             }
             val currRot : Float = 180f * dsc(1)
-            drawArc(RectF(-size / 2, -size, size / 2, 0f), 90f - currRot, currRot, false, paint)
+            drawArc(RectF(-size / 2, -size, size / 2, 0f), -90f - currRot, currRot, false, paint)
         }
     }
 }
@@ -59,6 +59,7 @@ fun Canvas.drawLACLNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeWidth = Math.min(w, h) / strokeFactor
     paint.strokeCap = Paint.Cap.ROUND
+    paint.style = Paint.Style.STROKE
     drawLineArcCreateLeft(scale, w, h, paint)
 }
 
