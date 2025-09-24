@@ -118,4 +118,45 @@ class HalfArcJoinFullView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class HAJFNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : HAJFNode? = null
+        private var prev : HAJFNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = HAJFNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawHAJFNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : HAJFNode {
+            var curr : HAJFNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
