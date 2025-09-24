@@ -182,4 +182,27 @@ class HalfArcJoinFullView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : HalfArcJoinFullView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val hajf : HalfArcJoinFull = HalfArcJoinFull(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            hajf.draw(canvas, paint)
+            animator.animate {
+                hajf.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            hajf.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
