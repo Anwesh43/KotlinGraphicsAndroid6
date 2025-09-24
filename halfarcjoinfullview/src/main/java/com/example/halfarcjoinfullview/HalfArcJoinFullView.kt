@@ -207,4 +207,12 @@ class HalfArcJoinFullView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : HalfArcJoinFullView {
+            val view : HalfArcJoinFullView = HalfArcJoinFullView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
