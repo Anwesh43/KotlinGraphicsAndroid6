@@ -51,6 +51,7 @@
             <option value="$PROJECT_DIR$/dropmultisemicirclesview" />
             <option value="$PROJECT_DIR$/ellipselinebreakview" />
             <option value="$PROJECT_DIR$/enclosesqdiagview" />
+            <option value="$PROJECT_DIR$/halfarcjoindownview" />
             <option value="$PROJECT_DIR$/halfarclinebentview" />
             <option value="$PROJECT_DIR$/halfarcpointlineview" />
             <option value="$PROJECT_DIR$/halfarcrotrightview" />
@@ -61,6 +62,7 @@
             <option value="$PROJECT_DIR$/linearcencloserightview" />
             <option value="$PROJECT_DIR$/linearchalfjoinview" />
             <option value="$PROJECT_DIR$/linearcminirotview" />
+            <option value="$PROJECT_DIR$/linearcstartdownview" />
             <option value="$PROJECT_DIR$/linearcsweepdownview" />
             <option value="$PROJECT_DIR$/linebentarcjoinview" />
             <option value="$PROJECT_DIR$/linebentarcleftview" />
