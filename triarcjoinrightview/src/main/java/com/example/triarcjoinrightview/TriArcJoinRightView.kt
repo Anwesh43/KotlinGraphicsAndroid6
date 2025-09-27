@@ -216,4 +216,13 @@ class TriArcJoinRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : TriArcJoinRightView {
+            val view : TriArcJoinRightView = TriArcJoinRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
