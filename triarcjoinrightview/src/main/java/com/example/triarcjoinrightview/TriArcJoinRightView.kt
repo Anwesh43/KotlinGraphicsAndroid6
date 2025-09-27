@@ -191,4 +191,27 @@ class TriArcJoinRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : TriArcJoinRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val tajr : TriArcJoinRight = TriArcJoinRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            tajr.draw(canvas, paint)
+            animator.animate {
+                tajr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            tajr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
