@@ -42,7 +42,7 @@ fun Canvas.drawLineBallRotMover(scale : Float, w : Float, h : Float, paint : Pai
         scale.divideScale(it, parts)
     }
     val r : Float = Math.min(w, h) / rFactor
-    drawXY(w /2 , h / 2 + (h / 2) * dsc(5)) {
+    drawXY(w /2 , h / 2 + (h / 2 + r) * dsc(5)) {
         rotate(rot * dsc(4))
         drawXY(size * (dsc(1) - dsc(3)), size * dsc(2)) {
             drawArc(RectF(-r, -r, r, r), 0f, 360f * dsc(0), true, paint)
