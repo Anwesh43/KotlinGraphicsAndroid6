@@ -215,4 +215,12 @@ class LineBallRotMoverView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineBallRotMoverView {
+            val view : LineBallRotMoverView = LineBallRotMoverView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
