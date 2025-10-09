@@ -197,4 +197,27 @@ class BiLineCloseDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiLineCloseDownView) {
+
+        private var paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val blcd : BiLineCloseDown = BiLineCloseDown(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blcd.draw(canvas, paint)
+            animator.animate {
+                blcd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            blcd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
