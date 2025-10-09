@@ -43,14 +43,14 @@ fun Canvas.drawBiLineCloseDown(scale : Float, w : Float, h : Float, paint : Pain
     }
     drawXY(w / 2, h / 2 + (h / 2) * dsc(5)) {
         rotate(deg * dsc(4))
-        drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 0f, 180f * dsc(1), false, paint)
+        drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 180f, 180f * dsc(1), false, paint)
         for (j in 0..1) {
             drawXY(-size / 2 + size * j, 0f) {
                 rotate(-rot * (1f - 2 * j) * dsc(3))
                 drawXY(0f, size * 0.5f * (1 - j)) {
                     drawLine(
                         0f,
-                        size * 0.5f * (1 - j) * dsc(j * 2),
+                        -size * 0.5f * (1 - j) * dsc(j * 2),
                         0f,
                         size * 0.5f * j * dsc(j * 2),
                         paint
