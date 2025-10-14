@@ -24,3 +24,8 @@ val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val startDeg : Float = 45f
 val rot : Float = 180f + startDeg
+
+fun Int.inverse() : Float = 1f / this
+fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
+fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
+
