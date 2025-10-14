@@ -44,7 +44,7 @@ fun Canvas.drawRShapeToDShape(scale : Float, w : Float, h : Float, paint : Paint
     drawXY(w / 2 + (w / 2) * dsc(3), h / 2) {
         drawXY(0f, size / 2) {
             rotate(startDeg + rot * dsc(2))
-            drawLine(0f, 0f, size * dsc(0), 0f, paint)
+            drawLine(0f, 0f, size * dsc(1), 0f, paint)
         }
         drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), -90f, 180f * dsc(0), false, paint)
     }
