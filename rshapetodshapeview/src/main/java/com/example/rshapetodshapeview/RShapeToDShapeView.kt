@@ -211,4 +211,12 @@ class RShapeToDShapeView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : RShapeToDShapeView {
+            val view : RShapeToDShapeView = RShapeToDShapeView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
