@@ -186,4 +186,27 @@ class RShapeToDShapeView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RShapeToDShapeView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val rstds : RShapeToDShape = RShapeToDShape(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rstds.draw(canvas, paint)
+            animator.animate {
+                rstds.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rstds.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
