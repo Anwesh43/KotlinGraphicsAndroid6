@@ -47,7 +47,7 @@ fun Canvas.drawBiEndArrowLine(scale : Float, w : Float, h : Float, paint : Paint
                 for (k in 0..1) {
                     drawXY(0f, 0f) {
                         rotate(deg * (1f - 2 * k))
-                        drawLine(0f, 0f, 0f, -size * 0.1f * dsc(0), paint)
+                        drawLine(0f, 0f, 0f, -size * 0.22f * dsc(0), paint)
                     }
                 }
             }
