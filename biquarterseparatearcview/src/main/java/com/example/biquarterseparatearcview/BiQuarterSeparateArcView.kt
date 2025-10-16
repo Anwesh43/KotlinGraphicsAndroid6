@@ -43,9 +43,9 @@ fun Canvas.drawBiQuarterSeparateArc(scale : Float, w : Float, h : Float, paint :
     drawXY(w / 2, h / 2) {
         rotate(rot * dsc(2))
         for (j in 0..1) {
-            drawXY(0f, -w * 0.5f * (1 - dsc(3))) {
+            drawXY(0f, -w * 0.5f * dsc(3) * (1f - 2 * j)) {
                 scale(1f, 1f - 2 * j)
-                drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 90f, rot * dsc(j), false, paint)
+                drawArc(RectF(-size / 2, -size, size / 2, 0f), 90f, rot * dsc(j), false, paint)
             }
         }
     }
