@@ -187,4 +187,27 @@ class BiQuarterSeparateArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiQuarterSeparateArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bqsa : BiQuarterSeparateArc = BiQuarterSeparateArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bqsa.draw(canvas, paint)
+            animator.animate {
+                bqsa.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bqsa.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
