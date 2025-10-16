@@ -212,4 +212,13 @@ class BiQuarterSeparateArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : BiQuarterSeparateArcView {
+            val view : BiQuarterSeparateArcView = BiQuarterSeparateArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
