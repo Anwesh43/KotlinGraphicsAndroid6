@@ -214,4 +214,13 @@ class BiEndArrowLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : BiEndArrowLineView {
+            val view : BiEndArrowLineView = BiEndArrowLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
