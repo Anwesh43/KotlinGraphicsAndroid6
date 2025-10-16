@@ -102,7 +102,7 @@ class BiEndArrowLineView(ctx : Context) : View(ctx) {
 
     data class Animator(var view : View, var animated : Boolean = false) {
 
-        fun aniamte(cb : () -> Unit) {
+        fun animate(cb : () -> Unit) {
             if (animated) {
                 cb()
                 try {
@@ -189,6 +189,29 @@ class BiEndArrowLineView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : BiEndArrowLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val beal : BiEndArrowLine = BiEndArrowLine(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            beal.draw(canvas, paint)
+            animator.animate {
+                beal.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            beal.startUpdating {
+                animator.start()
+            }
         }
     }
 }
