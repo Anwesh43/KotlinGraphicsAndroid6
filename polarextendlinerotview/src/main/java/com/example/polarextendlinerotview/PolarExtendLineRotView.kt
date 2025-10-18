@@ -187,4 +187,27 @@ class PolarExtendLineRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : PolarExtendLineRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val pelr : PolarExtendRotLine = PolarExtendRotLine(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            pelr.draw(canvas, paint)
+            animator.animate {
+                pelr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            pelr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
