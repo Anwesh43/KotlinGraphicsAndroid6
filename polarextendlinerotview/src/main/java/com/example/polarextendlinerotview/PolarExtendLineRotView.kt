@@ -212,4 +212,13 @@ class PolarExtendLineRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : PolarExtendLineRotView {
+            val view : PolarExtendLineRotView = PolarExtendLineRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
