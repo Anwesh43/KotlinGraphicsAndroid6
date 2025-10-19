@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.polarextendlinerotview.PolarExtendLineRotView
+import com.example.bentlinerotsingleview.BentLineRotSingleView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        PolarExtendLineRotView.create( this)
+        BentLineRotSingleView.create( this)
     }
 }
