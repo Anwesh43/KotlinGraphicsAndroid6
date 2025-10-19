@@ -213,4 +213,13 @@ class BentLineRotSingleView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : BentLineRotSingleView {
+            val view : BentLineRotSingleView = BentLineRotSingleView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
