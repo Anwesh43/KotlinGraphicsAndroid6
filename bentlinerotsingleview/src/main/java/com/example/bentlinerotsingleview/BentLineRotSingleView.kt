@@ -188,4 +188,27 @@ class BentLineRotSingleView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BentLineRotSingleView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val blrs : BentLineRotSingle = BentLineRotSingle(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blrs.draw(canvas, paint)
+            animator.animate {
+                blrs.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            blrs.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
