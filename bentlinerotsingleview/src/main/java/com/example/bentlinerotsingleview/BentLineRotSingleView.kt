@@ -43,7 +43,7 @@ fun Canvas.drawBentLineRotSingle(scale : Float, w : Float, h : Float, paint : Pa
     drawXY(w / 2, h / 2 - size * dsc(4) - h * 0.5f * dsc(5)) {
         for (j in 0..1) {
             drawXY(0f, -size * j) {
-                rotate(startDeg * j + (rot + startDeg) * dsc(3))
+                rotate(startDeg * j + (rot + startDeg * j) * dsc(3))
                 drawLine(0f, size * (1f - dsc(0)) * j, size * (1 - j) * dsc(2), size * j, paint)
             }
         }
