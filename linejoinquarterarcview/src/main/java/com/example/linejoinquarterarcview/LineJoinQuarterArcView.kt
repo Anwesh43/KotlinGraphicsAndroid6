@@ -185,4 +185,27 @@ class LineJoinQuarterArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineJoinQuarterArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ljqa : LineJoinQuarterArc = LineJoinQuarterArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ljqa.draw(canvas, paint)
+            animator.animate {
+                ljqa.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ljqa.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
