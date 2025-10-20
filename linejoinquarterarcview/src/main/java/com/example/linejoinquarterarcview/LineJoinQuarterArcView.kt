@@ -16,13 +16,14 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
-val scGap : Float = 0.04f / parts
+val parts : Int = 6
+val scGap : Float = 0.05f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val rot : Float = 180f
+val deg :Float = -45f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -40,9 +41,10 @@ fun Canvas.drawLineJoinQuarterArc(scale : Float, w : Float, h : Float, paint : P
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 - (w / 2 + size / 2) * dsc(4), h / 2 - (h / 2 + size / 2) * dsc(4)) {
+    drawXY(w / 2 - (w / 2 + size / 2) * dsc(4), h / 2) {
+        rotate(deg * dsc(4))
         drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 180f, rot * dsc(0), false, paint)
-        drawXY(size, 0f) {
+        drawXY(size / 2, 0f) {
             drawLine(0f, 0f, -size * 0.5f * dsc(1), 0f, paint)
         }
         drawLine(0f, 0f, 0f, size * 0.5f * dsc(2), paint)
@@ -56,6 +58,7 @@ fun Canvas.drawLJQANode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawLineJoinQuarterArc(scale, w, h, paint)
 }
 
