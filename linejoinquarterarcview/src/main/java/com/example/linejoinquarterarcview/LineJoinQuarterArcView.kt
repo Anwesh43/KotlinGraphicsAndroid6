@@ -210,4 +210,12 @@ class LineJoinQuarterArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineJoinQuarterArcView {
+            val view : LineJoinQuarterArcView = LineJoinQuarterArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
