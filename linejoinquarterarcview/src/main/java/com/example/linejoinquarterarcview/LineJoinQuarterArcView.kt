@@ -41,7 +41,7 @@ fun Canvas.drawLineJoinQuarterArc(scale : Float, w : Float, h : Float, paint : P
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 - (w / 2 + size / 2) * dsc(4), h / 2) {
+    drawXY(w / 2 - (w / 2 + size / 2) * dsc(5), h / 2) {
         rotate(deg * dsc(4))
         drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 180f, rot * dsc(0), false, paint)
         drawXY(size / 2, 0f) {
