@@ -43,7 +43,7 @@ fun Canvas.drawDiagLineArcJoin(scale : Float, w : Float, h : Float, paint : Pain
     drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
         rotate(rot * dsc(3))
         drawLine(0f, 0f, size * dsc(0), -size * dsc(0), paint)
-        drawXY(0f, -size) {
+        drawXY(size, -size) {
             drawLine(0f, 0f, 0f, size * dsc(1), paint)
         }
         drawXY(size, 0f) {
