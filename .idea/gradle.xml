@@ -29,6 +29,7 @@
             <option value="$PROJECT_DIR$/bentlinearcleftvew" />
             <option value="$PROJECT_DIR$/bentlinedownrotview" />
             <option value="$PROJECT_DIR$/bentlinequarterarcview" />
+            <option value="$PROJECT_DIR$/bentlinerotsingleview" />
             <option value="$PROJECT_DIR$/bentlinestraightjoinview" />
             <option value="$PROJECT_DIR$/bentlinetofshapeview" />
             <option value="$PROJECT_DIR$/biarcdividemoveview" />
@@ -91,6 +92,7 @@
             <option value="$PROJECT_DIR$/linejoinarcdownview" />
             <option value="$PROJECT_DIR$/linejoinclosearview" />
             <option value="$PROJECT_DIR$/linejoinperprotview" />
+            <option value="$PROJECT_DIR$/linejoinquarterarcview" />
             <option value="$PROJECT_DIR$/linemultiforkrotview" />
             <option value="$PROJECT_DIR$/linenshaperightview" />
             <option value="$PROJECT_DIR$/lineopendownrotview" />
@@ -117,6 +119,7 @@
             <option value="$PROJECT_DIR$/paralleloppositelinerightview" />
             <option value="$PROJECT_DIR$/partarcrotlineview" />
             <option value="$PROJECT_DIR$/partrotarcupview" />
+            <option value="$PROJECT_DIR$/polarextendlinerotview" />
             <option value="$PROJECT_DIR$/quarterarclinerightview" />
             <option value="$PROJECT_DIR$/quarterarcshalfupview" />
             <option value="$PROJECT_DIR$/quarterhalfarcrotview" />
