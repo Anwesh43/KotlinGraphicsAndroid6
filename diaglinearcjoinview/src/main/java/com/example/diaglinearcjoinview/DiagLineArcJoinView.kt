@@ -212,4 +212,13 @@ class DiagLineArcJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : DiagLineArcJoinView {
+            val view : DiagLineArcJoinView = DiagLineArcJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
