@@ -40,12 +40,12 @@ fun Canvas.drawLineRightArcJoin(scale : Float, w : Float, h : Float, paint : Pai
         scale.divideScale(it, parts)
     }
     val size : Float = Math.min(w, h) / sizeFactor
-    drawXY(w / 2, h / 2) {
+    drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
         rotate(rot * dsc(3))
         drawLine(0f, 0f, 0f, -size * dsc(0), paint)
         drawArc(RectF(-size, -size, size, size), -90f, 90f * dsc(1), false, paint)
         drawXY(size, 0f) {
-            drawLine(0f, 0f, size * dsc(0), -size * dsc(0), paint)
+            drawLine(0f, 0f, size * dsc(2), -size * dsc(0), paint)
         }
     }
 }
