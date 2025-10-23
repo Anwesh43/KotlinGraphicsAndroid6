@@ -45,7 +45,7 @@ fun Canvas.drawLineRightArcJoin(scale : Float, w : Float, h : Float, paint : Pai
         drawLine(0f, 0f, 0f, -size * dsc(0), paint)
         drawArc(RectF(-size, -size, size, size), -90f, 90f * dsc(1), false, paint)
         drawXY(size, 0f) {
-            drawLine(0f, 0f, size * dsc(2), -size * dsc(0), paint)
+            drawLine(0f, 0f, size * dsc(2), -size * dsc(2), paint)
         }
     }
 }
