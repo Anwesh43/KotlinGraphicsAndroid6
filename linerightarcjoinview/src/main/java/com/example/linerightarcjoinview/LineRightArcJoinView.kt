@@ -186,4 +186,26 @@ class LineRightArcJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineRightArcJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lraj : LineRightArcJoin = LineRightArcJoin(0)
+
+        fun render(canvas : Canvas) {
+            lraj.draw(canvas, paint)
+            animator.animate {
+                lraj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lraj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
