@@ -22,7 +22,7 @@ val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
-val rot : Float = 45f
+val rot : Float = 75f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -54,7 +54,7 @@ fun Canvas.drawBiArcExpandUp(scale : Float, w : Float, h : Float, paint : Paint)
                     drawXY(size * dsc(1), 0f) {
                         scaleXY(1f - 2 * k, 1f) {
                             drawArc(
-                                RectF(-size / 2, -size / 2, size / 2, size / 2),
+                                RectF(0f, -size / 2, size, size / 2),
                                 180f,
                                 rot * dsc(2 * k),
                                 false,
