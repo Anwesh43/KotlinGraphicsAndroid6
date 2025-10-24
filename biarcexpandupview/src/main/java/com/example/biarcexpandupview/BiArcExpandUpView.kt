@@ -204,4 +204,27 @@ class BiArcExpandUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiArcExpandUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val baeu : BiArcExpandUp = BiArcExpandUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            baeu.draw(canvas, paint)
+            animator.animate {
+                baeu.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            baeu.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
