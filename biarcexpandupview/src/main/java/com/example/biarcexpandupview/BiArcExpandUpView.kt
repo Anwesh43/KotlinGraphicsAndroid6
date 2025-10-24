@@ -229,4 +229,12 @@ class BiArcExpandUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiArcExpandUpView {
+            val view : BiArcExpandUpView = BiArcExpandUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
