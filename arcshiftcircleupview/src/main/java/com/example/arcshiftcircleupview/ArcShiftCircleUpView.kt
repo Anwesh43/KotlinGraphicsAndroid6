@@ -197,4 +197,27 @@ class ArcShiftCircleUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcShiftCircleUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ascu : ArcShiftCircleUp = ArcShiftCircleUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ascu.draw(canvas, paint)
+            animator.animate {
+                ascu.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ascu.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
