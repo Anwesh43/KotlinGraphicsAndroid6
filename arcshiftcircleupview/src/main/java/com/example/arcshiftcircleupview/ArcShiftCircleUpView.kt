@@ -222,4 +222,13 @@ class ArcShiftCircleUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : ArcShiftCircleUpView {
+            val view : ArcShiftCircleUpView = ArcShiftCircleUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
