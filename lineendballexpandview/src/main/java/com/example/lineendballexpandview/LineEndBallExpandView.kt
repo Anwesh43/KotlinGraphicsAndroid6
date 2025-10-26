@@ -43,7 +43,7 @@ fun Canvas.drawLineEndBallExpand(scale : Float, w : Float, h : Float, paint : Pa
     val r : Float = Math.min(w, h) / rFactor
     drawXY(w / 2, h / 2) {
         for (j in 0..1) {
-            drawXY((-h * 0.5f + size) * (1 - j) * dsc(4), (w * 0.5f - size) * dsc(4)) {
+            drawXY( (w * 0.5f + 2 * r - size) * j * dsc(4), (-h * 0.5f - 2 * r + size) * (1 - j) * dsc(4)) {
                 rotate(rot * dsc(3) * j)
                 drawLine(0f, -size * dsc(1), 0f, -size * dsc(0), paint)
                 drawXY(0f, -size) {
