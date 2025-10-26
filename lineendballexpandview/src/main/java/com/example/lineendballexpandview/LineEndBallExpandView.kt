@@ -214,4 +214,12 @@ class LineEndBallExpandView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineEndBallExpandView {
+            val view : LineEndBallExpandView = LineEndBallExpandView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
