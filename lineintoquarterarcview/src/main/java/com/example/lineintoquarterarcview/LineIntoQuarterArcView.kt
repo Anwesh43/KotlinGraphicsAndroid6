@@ -213,4 +213,13 @@ class LineIntoQuarterArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineIntoQuarterArcView {
+            val view : LineIntoQuarterArcView = LineIntoQuarterArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
