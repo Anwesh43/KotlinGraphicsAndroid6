@@ -53,7 +53,7 @@ fun Canvas.drawLineIntoQuarterArc(scale : Float, w : Float, h : Float, paint : P
     }
 }
 
-fun Canvas.drawLIQCNode(i : Int, scale : Float, paint : Paint) {
+fun Canvas.drawLIQANode(i : Int, scale : Float, paint : Paint) {
     val w : Float = width.toFloat()
     val h : Float = height.toFloat()
     paint.color = colors[i].toColorInt()
@@ -122,6 +122,47 @@ class LineIntoQuarterArcView(ctx : Context) : View(ctx) {
             if (animated) {
                 animated = false
             }
+        }
+    }
+
+    data class LIQANode(var i : Int = 0, val state : State = State()) {
+
+        private var next : LIQANode? = null
+        private var prev : LIQANode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = LIQANode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawLIQANode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : LIQANode {
+            var curr : LIQANode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
         }
     }
 }
