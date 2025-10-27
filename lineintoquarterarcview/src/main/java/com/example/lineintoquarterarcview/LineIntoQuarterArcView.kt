@@ -188,4 +188,27 @@ class LineIntoQuarterArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineIntoQuarterArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val liqa : LineIntoQuarterArc = LineIntoQuarterArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            liqa.draw(canvas, paint)
+            animator.animate {
+                liqa.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            liqa.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
