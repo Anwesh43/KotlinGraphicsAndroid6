@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.lineintoquarterarcview.LineIntoQuarterArcView
+import com.example.linerightbreakrotview.LineRightBreakRotView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LineIntoQuarterArcView.create( this)
+        LineRightBreakRotView.create( this)
     }
 }
