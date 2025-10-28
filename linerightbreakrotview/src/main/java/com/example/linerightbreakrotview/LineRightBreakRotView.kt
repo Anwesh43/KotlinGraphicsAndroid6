@@ -42,8 +42,8 @@ fun Canvas.drawLineRightBreakRot(scale : Float, w : Float, h : Float, paint : Pa
     }
     drawXY(w / 2, h / 2) {
         for (j in 0..1) {
-            drawXY((w / 2) * j * dsc(2), (h / 2) * (1 - j) * dsc(3)) {
-                rotate(deg * dsc(1) * rot * dsc(3))
+            drawXY(-(w / 2) * j * dsc(2).divideScale(0, 2), (h / 2) * (1 - j) * dsc(2).divideScale(1, 2)) {
+                rotate(deg * dsc(1) * j + rot * dsc(3))
                 drawLine(0f, 0f, 0f, -size * dsc(0), paint)
             }
         }
