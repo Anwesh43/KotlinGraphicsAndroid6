@@ -92,6 +92,8 @@
             <option value="$PROJECT_DIR$/linedroprightdownview" />
             <option value="$PROJECT_DIR$/linedroprotextendview" />
             <option value="$PROJECT_DIR$/lineenclosearcleftview" />
+            <option value="$PROJECT_DIR$/lineendballexpandview" />
+            <option value="$PROJECT_DIR$/lineintoquarterarcview" />
             <option value="$PROJECT_DIR$/linejoinarcdownview" />
             <option value="$PROJECT_DIR$/linejoinclosearview" />
             <option value="$PROJECT_DIR$/linejoinperprotview" />
@@ -104,6 +106,7 @@
             <option value="$PROJECT_DIR$/linequartcreaterightview" />
             <option value="$PROJECT_DIR$/linequarterarcleftview" />
             <option value="$PROJECT_DIR$/linerightarcjoinview" />
+            <option value="$PROJECT_DIR$/linerightbreakrotview" />
             <option value="$PROJECT_DIR$/linerightleftpieview" />
             <option value="$PROJECT_DIR$/linerotarcleftview" />
             <option value="$PROJECT_DIR$/linerotarcsideview" />
