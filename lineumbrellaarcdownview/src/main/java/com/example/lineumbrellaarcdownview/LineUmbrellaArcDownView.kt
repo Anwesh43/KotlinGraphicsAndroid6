@@ -188,4 +188,27 @@ class LineUmbrellaArcDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineUmbrellaArcDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val luad : LineUmbrellaArcDown = LineUmbrellaArcDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            luad.draw(canvas, paint)
+            animator.animate {
+                luad.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            luad.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
