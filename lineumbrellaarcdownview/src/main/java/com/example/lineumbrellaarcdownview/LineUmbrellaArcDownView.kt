@@ -213,4 +213,12 @@ class LineUmbrellaArcDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineUmbrellaArcDownView {
+            val view : LineUmbrellaArcDownView = LineUmbrellaArcDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
