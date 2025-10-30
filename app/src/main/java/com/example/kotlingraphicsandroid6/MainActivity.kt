@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.lineumbrellaarcdownview.LineUmbrellaArcDownView
+import com.example.joinlineenclosesquareview.JoinLineEncloseSquareView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LineUmbrellaArcDownView.create( this)
+        JoinLineEncloseSquareView.create( this)
     }
 }
