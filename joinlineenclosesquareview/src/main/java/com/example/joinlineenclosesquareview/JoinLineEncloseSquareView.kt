@@ -213,4 +213,12 @@ class JoinLineEncloseSquareView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : JoinLineEncloseSquareView {
+            val view : JoinLineEncloseSquareView = JoinLineEncloseSquareView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
