@@ -188,4 +188,27 @@ class JoinLineEncloseSquareView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : JoinLineEncloseSquareView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val jles : JoinLineEncloseSquare = JoinLineEncloseSquare(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            jles.draw(canvas, paint)
+            animator.animate {
+                jles.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            jles.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
