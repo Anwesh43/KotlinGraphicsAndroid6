@@ -184,4 +184,27 @@ class HalfArcShiftUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : HalfArcShiftUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val hasu : HalfArcShiftUp = HalfArcShiftUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            hasu.draw(canvas, paint)
+            animator.animate {
+                hasu.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            hasu.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
