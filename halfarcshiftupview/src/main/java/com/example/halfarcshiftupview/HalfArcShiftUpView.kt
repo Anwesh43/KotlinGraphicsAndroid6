@@ -209,4 +209,13 @@ class HalfArcShiftUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : HalfArcShiftUpView {
+            val view : HalfArcShiftUpView = HalfArcShiftUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
