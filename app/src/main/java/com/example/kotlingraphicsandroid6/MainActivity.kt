@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.joinlineenclosesquareview.JoinLineEncloseSquareView
+import com.example.halfarcshiftupview.HalfArcShiftUpView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        JoinLineEncloseSquareView.create( this)
+        HalfArcShiftUpView.create( this)
     }
 }
