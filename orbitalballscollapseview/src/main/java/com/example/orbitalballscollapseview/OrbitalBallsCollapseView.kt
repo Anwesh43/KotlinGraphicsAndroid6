@@ -18,9 +18,9 @@ val colors : Array<String> = arrayOf(
 )
 val parts : Int = 4
 val scGap : Float = 0.04f / parts
-val sizeFactor : Float = 90f
+val sizeFactor : Float = 4.9f
 val backColor : Int ="#BDBDBD".toColorInt()
-val rot : Float = 180f
+val rot : Float = 90f
 val delay : Long = 20
 val sweep : Float = 360f
 val balls : Int = 6
@@ -46,11 +46,11 @@ fun Canvas.drawOrbitalBallsCollapse(scale : Float, w : Float, h : Float, paint :
     val uSize : Float = size * (1 - dsc(3).divideScale(1, 2))
     val uBallR : Float = ballR * (1 - dsc(3).divideScale(0, 2))
     drawXY(w / 2, h / 2) {
-        rotate(rot * dsc(3))
+        rotate(rot * dsc(2))
         drawArc(RectF(-uSize / 2, -uSize / 2, uSize / 2, uSize / 2), 0f, sweep * dsc(0), true, paint)
         for (j in 0..(balls - 1)) {
             drawXY(0f, 0f) {
-                rotate((360f / ballR) * j)
+                rotate((360f / balls) * j)
                 drawXY(0f, -2 * size * (1 - dsc(3).divideScale(0, 2))) {
                     drawArc(RectF(-uBallR, -uBallR, uBallR, uBallR), 0f, sweep * dsc(1), true, paint)
                 }
