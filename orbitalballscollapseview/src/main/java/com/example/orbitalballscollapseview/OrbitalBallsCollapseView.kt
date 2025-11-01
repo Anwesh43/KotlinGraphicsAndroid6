@@ -192,4 +192,27 @@ class OrbitalBallsCollapseView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : OrbitalBallsCollapseView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val obc : OrbitalBallsCollapse = OrbitalBallsCollapse(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            obc.draw(canvas, paint)
+            animator.animate {
+                obc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            obc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
