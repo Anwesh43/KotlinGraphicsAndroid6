@@ -217,4 +217,12 @@ class OrbitalBallsCollapseView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : OrbitalBallsCollapseView {
+            val view : OrbitalBallsCollapseView = OrbitalBallsCollapseView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
