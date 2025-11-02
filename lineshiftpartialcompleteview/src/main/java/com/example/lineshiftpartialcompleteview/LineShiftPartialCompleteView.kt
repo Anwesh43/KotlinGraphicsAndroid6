@@ -43,7 +43,7 @@ fun Canvas.drawLineShiftPartialComplete(scale : Float, w : Float, h : Float, pai
     drawXY(w / 2, h / 2 - (h / 2) * dsc(4)) {
         for (j in 0..1) {
             drawXY(0f, -size * dsc(2)) {
-                rotate(rot * dsc(1) + rest * dsc(3))
+                rotate((rot * dsc(1) + rest * dsc(3)) * (1f - 2 * j))
                 drawLine(0f, 0f, 0f, -size * dsc(0), paint)
             }
         }
