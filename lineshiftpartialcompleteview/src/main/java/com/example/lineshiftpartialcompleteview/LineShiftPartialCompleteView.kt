@@ -210,4 +210,13 @@ class LineShiftPartialCompleteView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineShiftPartialCompleteView {
+            val view : LineShiftPartialCompleteView = LineShiftPartialCompleteView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
