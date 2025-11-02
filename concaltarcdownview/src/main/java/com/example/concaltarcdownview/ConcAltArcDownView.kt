@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
+val parts : Int = 4
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
@@ -44,7 +44,7 @@ fun Canvas.drawConcAltArcDown(scale : Float, w : Float, h : Float, paint : Paint
     drawXY(w / 2, h / 2) {
         rotate(rot * dsc(1))
         for (j in 0..1) {
-            drawXY(0f, h * 0.5f * dsc(3).divideScale(j, 2)) {
+            drawXY(0f, -h * 0.5f * dsc(3).divideScale(j, 2)) {
                 val r : Float = size * 0.5f * (2 - j)
                 scale(1f - 2 * j, 1f)
                 drawArc(RectF(-r, -r, r, r), 180f, deg * dsc(0) + (rot - deg) * dsc(2), false, paint)
