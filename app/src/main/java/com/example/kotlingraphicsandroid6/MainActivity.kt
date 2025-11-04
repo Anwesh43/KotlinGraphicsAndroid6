@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.lineshiftpartialcompleteview.LineShiftPartialCompleteView
+import com.example.linearcjoinrightview.LineArcJoinRightView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LineShiftPartialCompleteView.create( this)
+        LineArcJoinRightView.create( this)
     }
 }
