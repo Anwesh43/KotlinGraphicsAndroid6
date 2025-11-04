@@ -8,7 +8,6 @@ import android.graphics.RectF
 import androidx.core.graphics.toColorInt
 import android.app.Activity
 import android.content.Context
-import androidx.constraintlayout.widget.ConstraintSet.Motion
 
 val colors : Array<String> = arrayOf(
     "#1A237E",
@@ -41,7 +40,7 @@ fun Canvas.drawLineArcJoinRight(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2) {
+    drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
         rotate(rot * dsc(2))
         for (j in 0..1) {
             drawXY(-size + size * 0.5f * j, 0f) {
