@@ -16,13 +16,14 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
+val parts : Int = 6
 val delay : Long = 20
-val scGap : Float = 0.04f / parts
+val scGap : Float = 0.05f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val rot : Float = 90f
 val backColor : Int = "#BDBDBD".toColorInt()
+val deg : Float = 180f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -40,14 +41,24 @@ fun Canvas.drawLineArcJoinRight(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
-        rotate(rot * dsc(2))
-        for (j in 0..1) {
-            drawXY(-size + size * 0.5f * j, 0f) {
-                drawArc(RectF(0f, -size / 4, size / 2, size / 4), 180f, 180f * dsc(j), false, paint)
+    drawXY(w / 2, h / 2) {
+        for (k in 0..1) {
+            drawXY((w / 2) * (1f - 2 * k) * dsc(5), 0f) {
+                rotate(rot * dsc(2) + deg * k * dsc(4))
+                for (j in 0..1) {
+                    drawXY(-size + size * 0.5f * j, 0f) {
+                        drawArc(
+                            RectF(0f, -size / 4, size / 2, size / 4),
+                            180f,
+                            180f * dsc(j),
+                            false,
+                            paint
+                        )
+                    }
+                }
+                drawLine(-size, 0f, -size + size * dsc(3), 0f, paint)
             }
         }
-        drawLine(-size, 0f, -size + size * dsc(3), 0f, paint)
     }
 }
 
