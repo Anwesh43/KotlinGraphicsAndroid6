@@ -190,4 +190,27 @@ class ArcShiftCircleDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcShiftCircleDownView) {
+
+        private val ascd : ArcShiftCircleDown = ArcShiftCircleDown(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator= Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ascd.draw(canvas, paint)
+            animator.animate {
+                ascd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ascd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
