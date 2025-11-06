@@ -188,4 +188,27 @@ class LineArcEncloseView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineArcEncloseView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lae : LineArcEnclose = LineArcEnclose(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lae.draw(canvas, paint)
+            animator.animate {
+                lae.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lae.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
