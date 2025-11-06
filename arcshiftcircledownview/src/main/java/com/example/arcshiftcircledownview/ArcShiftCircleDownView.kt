@@ -215,4 +215,12 @@ class ArcShiftCircleDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : ArcShiftCircleDownView {
+            val view : ArcShiftCircleDownView = ArcShiftCircleDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
