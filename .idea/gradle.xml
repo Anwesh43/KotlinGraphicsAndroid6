@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/arclinecloserightview" />
             <option value="$PROJECT_DIR$/arclineupdiagview" />
             <option value="$PROJECT_DIR$/arcopenlineshootview" />
+            <option value="$PROJECT_DIR$/arcshiftcircledownview" />
             <option value="$PROJECT_DIR$/arcshiftcircleupview" />
             <option value="$PROJECT_DIR$/arctolinedropview" />
             <option value="$PROJECT_DIR$/arcuplinejoinview" />
@@ -73,6 +74,7 @@
             <option value="$PROJECT_DIR$/linearccreateleftview" />
             <option value="$PROJECT_DIR$/linearcencloserightview" />
             <option value="$PROJECT_DIR$/linearchalfjoinview" />
+            <option value="$PROJECT_DIR$/linearcjoinrightview" />
             <option value="$PROJECT_DIR$/linearcminirotview" />
             <option value="$PROJECT_DIR$/linearcstartdownview" />
             <option value="$PROJECT_DIR$/linearcsweepdownview" />
