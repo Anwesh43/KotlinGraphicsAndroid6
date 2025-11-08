@@ -43,8 +43,8 @@ fun Canvas.drawUmbrellaMidLineDown(scale : Float, w : Float, h : Float, paint : 
     drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
         rotate(rot * dsc(2))
         drawLine(size * (1 - dsc(0)), 0f, size, 0f, paint)
-        drawArc(RectF(0f, -size / 2, size, size / 2), -90f * dsc(1), 180f * dsc(1), false, paint)
-        drawArc(RectF(-size, -size, size, size), 90f, 15f * dsc(3), false, paint)
+        drawArc(RectF(0f, -size / 2, size, size / 2), 180f -90f * dsc(1), 180f * dsc(1), false, paint)
+        drawArc(RectF(-size, -size, size, size), 0f, 15f * dsc(3), false, paint)
     }
 }
 
