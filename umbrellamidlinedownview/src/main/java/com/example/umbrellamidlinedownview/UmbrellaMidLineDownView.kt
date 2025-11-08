@@ -183,4 +183,27 @@ class UmbrellaMidLineDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : UmbrellaMidLineDownView) {
+
+        private val umld : UmbrellaMidLineDown = UmbrellaMidLineDown(0)
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            umld.draw(canvas, paint)
+            animator.animate {
+                umld.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            umld.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
