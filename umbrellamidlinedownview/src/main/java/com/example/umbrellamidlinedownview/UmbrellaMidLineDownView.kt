@@ -208,4 +208,12 @@ class UmbrellaMidLineDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : UmbrellaMidLineDownView {
+            val view : UmbrellaMidLineDownView = UmbrellaMidLineDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
