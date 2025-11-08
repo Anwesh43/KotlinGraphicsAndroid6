@@ -23,6 +23,7 @@ val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val rot : Float = 90f
+val handleDeg : Float = 30f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -44,7 +45,7 @@ fun Canvas.drawUmbrellaMidLineDown(scale : Float, w : Float, h : Float, paint : 
         rotate(rot * dsc(2))
         drawLine(size * (1 - dsc(0)), 0f, size, 0f, paint)
         drawArc(RectF(0f, -size / 2, size, size / 2), 180f -90f * dsc(1), 180f * dsc(1), false, paint)
-        drawArc(RectF(-size, -size, size, size), 0f, 15f * dsc(3), false, paint)
+        drawArc(RectF(-size, -size, size, size), 0f, handleDeg * dsc(3), false, paint)
     }
 }
 
