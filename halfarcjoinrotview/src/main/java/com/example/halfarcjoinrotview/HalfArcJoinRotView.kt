@@ -221,4 +221,12 @@ class HalfArcJoinRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : HalfArcJoinRotView {
+            var view : HalfArcJoinRotView = HalfArcJoinRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
