@@ -196,4 +196,27 @@ class HalfArcJoinRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : HalfArcJoinRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val hajr : HalfArcJoinRot = HalfArcJoinRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            hajr.draw(canvas, paint)
+            animator.animate {
+                hajr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            hajr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
