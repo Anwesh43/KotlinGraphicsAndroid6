@@ -47,7 +47,7 @@ fun Canvas.drawHalfArcJoinRot(scale : Float, w : Float, h : Float, paint : Paint
             for (j in 0..1) {
                 drawXY(-size + 2 * size * j, 0f) {
                     drawArc(
-                        RectF(-size, -size / 2, 0f, size / 2),
+                        RectF(0f, -size / 2, size, size / 2),
                         -deg * (1 - j) + rot * j,
                         deg * dsc(2 * j),
                         false,
