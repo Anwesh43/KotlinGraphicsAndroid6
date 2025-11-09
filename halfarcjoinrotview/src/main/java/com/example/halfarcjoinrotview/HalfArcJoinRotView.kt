@@ -69,3 +69,19 @@ fun Canvas.drawHAJRNode(i : Int, scale : Float, paint : Paint) {
     paint.style = Paint.Style.STROKE
     drawHalfArcJoinRot(scale, w, h, paint)
 }
+
+class HalfArcJoinRotView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
