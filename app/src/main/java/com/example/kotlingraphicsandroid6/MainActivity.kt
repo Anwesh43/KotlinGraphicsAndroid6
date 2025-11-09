@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.umbrellamidlinedownview.UmbrellaMidLineDownView
+import com.example.halfarcjoinrotview.HalfArcJoinRotView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        UmbrellaMidLineDownView.create( this)
+        HalfArcJoinRotView.create( this)
     }
 }
