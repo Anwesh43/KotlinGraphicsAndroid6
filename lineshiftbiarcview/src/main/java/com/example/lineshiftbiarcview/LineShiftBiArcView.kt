@@ -187,4 +187,27 @@ class LineShiftBiArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineShiftBiArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lsba : LineShiftBiArc = LineShiftBiArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lsba.draw(canvas, paint)
+            animator.animate {
+                lsba.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lsba.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
