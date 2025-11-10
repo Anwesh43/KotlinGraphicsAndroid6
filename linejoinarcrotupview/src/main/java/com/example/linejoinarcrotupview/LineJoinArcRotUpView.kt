@@ -186,4 +186,27 @@ class LineJoinArcRotUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineJoinArcRotUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint= Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ljaru : LineJoinArcRotUp = LineJoinArcRotUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ljaru.draw(canvas, paint)
+            animator.animate {
+                ljaru.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ljaru.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
