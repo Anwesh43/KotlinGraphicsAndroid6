@@ -211,4 +211,13 @@ class LineJoinArcRotUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineJoinArcRotUpView{
+            val view : LineJoinArcRotUpView = LineJoinArcRotUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
