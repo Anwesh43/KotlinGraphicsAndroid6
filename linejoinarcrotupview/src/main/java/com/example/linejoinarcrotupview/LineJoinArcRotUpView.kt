@@ -16,8 +16,8 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
-val scGap : Float = 0.04f / parts
+val parts : Int = 6
+val scGap : Float = 0.06f / parts
 val rot : Float = -90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
@@ -40,7 +40,7 @@ fun Canvas.drawLineJoinArcRotUp(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2 - (h / 2) * dsc(4)) {
+    drawXY(w / 2, h / 2 - (h / 2) * dsc(5)) {
         rotate(rot * dsc(3))
         for (j in 0..1) {
             drawXY(0f, -size / 4 + size * 0.5f * j) {
@@ -48,6 +48,9 @@ fun Canvas.drawLineJoinArcRotUp(scale : Float, w : Float, h : Float, paint : Pai
             }
         }
         drawArc(RectF(-size / 4, -size / 4, size / 4, size / 4), -90f, 180f * dsc(1), false, paint)
+        drawXY(0f, size / 4) {
+            drawLine(0f, 0f, 0f, -size * 0.5f * dsc(4), paint)
+        }
     }
 }
 
