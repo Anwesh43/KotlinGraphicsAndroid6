@@ -40,7 +40,7 @@ fun Canvas.drawLineJoinArcRotUp(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2) {
+    drawXY(w / 2, h / 2 - (h / 2) * dsc(4)) {
         rotate(rot * dsc(2))
         for (j in 0..1) {
             drawXY(0f, -size / 4 + size * 0.5f * j) {
@@ -57,6 +57,7 @@ fun Canvas.drawLJARUNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawLineJoinArcRotUp(scale, w, h, paint)
 }
 
