@@ -41,7 +41,7 @@ fun Canvas.drawLineJoinArcRotUp(scale : Float, w : Float, h : Float, paint : Pai
         scale.divideScale(it, parts)
     }
     drawXY(w / 2, h / 2 - (h / 2) * dsc(4)) {
-        rotate(rot * dsc(2))
+        rotate(rot * dsc(3))
         for (j in 0..1) {
             drawXY(0f, -size / 4 + size * 0.5f * j) {
                 drawLine(size * (1 - j) * (1 - dsc(j)), 0f, size * ((1 - j) + j * dsc(2 * j)), 0f, paint)
