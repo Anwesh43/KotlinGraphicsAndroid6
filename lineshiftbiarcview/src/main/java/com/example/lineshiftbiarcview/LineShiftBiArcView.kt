@@ -48,7 +48,7 @@ fun Canvas.drawLineShiftBiArc(scale : Float, w : Float, h : Float, paint : Paint
         drawXY(0f, -size * (1 - dsc(3))) {
             drawArc(RectF(-size, -size /2 , 0f, size / 2), 180f, 180f * dsc(0), false, paint)
         }
-        drawLine(0f, -size * (1 - dsc(2)), 0f, -size + size * dsc(1), paint)
+        drawLine(0f, -size * (1 - dsc(3)), 0f, -size + size * dsc(1), paint)
     }
 }
 
