@@ -183,4 +183,27 @@ class LinePartExtendArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LinePartExtendArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lpea : LinePartExtendArc = LinePartExtendArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lpea.draw(canvas, paint)
+            animator.animate {
+                lpea.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lpea.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
