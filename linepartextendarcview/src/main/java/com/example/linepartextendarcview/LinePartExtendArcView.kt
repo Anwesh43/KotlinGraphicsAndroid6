@@ -36,14 +36,17 @@ fun Canvas.drawXY(x : Float,  y: Float, cb : () -> Unit) {
 }
 
 fun Canvas.drawLinePartExtendArc(scale : Float, w : Float, h : Float, paint : Paint) {
-    val size : Float = Math.min(w, h) / strokeFactor
+    val size : Float = Math.min(w, h) / sizeFactor
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
     drawXY(w / 2, h / 2 + (h / 2) * dsc(5)) {
         rotate(rot * dsc(2))
-        drawLine(0f, size * dsc(4), 0f, -size * dsc(0), paint)
+        drawLine(0f, 0f, 0f, -size * dsc(0), paint)
         drawArc(RectF(-size, -size, size, size), -90f, rot * (dsc(1) + dsc(3)), false, paint)
+        drawXY(0f, size) {
+            drawLine(0f, 0f, 0f, -size * dsc(4), paint)
+        }
     }
 }
 
