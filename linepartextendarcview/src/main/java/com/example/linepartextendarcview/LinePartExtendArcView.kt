@@ -208,4 +208,12 @@ class LinePartExtendArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LinePartExtendArcView {
+            val view : LinePartExtendArcView = LinePartExtendArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
