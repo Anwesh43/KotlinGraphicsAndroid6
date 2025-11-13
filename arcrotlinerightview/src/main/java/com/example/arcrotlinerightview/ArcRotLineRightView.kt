@@ -188,4 +188,27 @@ class ArcRotLineRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcRotLineRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val arlr : ArcRotLineRight = ArcRotLineRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            arlr.draw(canvas, paint)
+            animator.animate {
+                arlr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            arlr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
