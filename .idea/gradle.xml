@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/arclinecloserightview" />
             <option value="$PROJECT_DIR$/arclineupdiagview" />
             <option value="$PROJECT_DIR$/arcopenlineshootview" />
+            <option value="$PROJECT_DIR$/arcrotlinerightview" />
             <option value="$PROJECT_DIR$/arcshiftcircledownview" />
             <option value="$PROJECT_DIR$/arcshiftcircleupview" />
             <option value="$PROJECT_DIR$/arctolinedropview" />
@@ -62,6 +63,7 @@
             <option value="$PROJECT_DIR$/enclosesqdiagview" />
             <option value="$PROJECT_DIR$/halfarcjoindownview" />
             <option value="$PROJECT_DIR$/halfarcjoinfullview" />
+            <option value="$PROJECT_DIR$/halfarcjoinrotview" />
             <option value="$PROJECT_DIR$/halfarclinebentview" />
             <option value="$PROJECT_DIR$/halfarcpointlineview" />
             <option value="$PROJECT_DIR$/halfarcrotrightview" />
@@ -101,6 +103,7 @@
             <option value="$PROJECT_DIR$/lineendballexpandview" />
             <option value="$PROJECT_DIR$/lineintoquarterarcview" />
             <option value="$PROJECT_DIR$/linejoinarcdownview" />
+            <option value="$PROJECT_DIR$/linejoinarcrotupview" />
             <option value="$PROJECT_DIR$/linejoinclosearview" />
             <option value="$PROJECT_DIR$/linejoinperprotview" />
             <option value="$PROJECT_DIR$/linejoinquarterarcview" />
@@ -108,6 +111,7 @@
             <option value="$PROJECT_DIR$/linenshaperightview" />
             <option value="$PROJECT_DIR$/lineopendownrotview" />
             <option value="$PROJECT_DIR$/lineopenrotupview" />
+            <option value="$PROJECT_DIR$/linepartextendarcview" />
             <option value="$PROJECT_DIR$/linepartialrotdownview" />
             <option value="$PROJECT_DIR$/linequartcreaterightview" />
             <option value="$PROJECT_DIR$/linequarterarcleftview" />
@@ -120,6 +124,7 @@
             <option value="$PROJECT_DIR$/linerotdroprightview" />
             <option value="$PROJECT_DIR$/linerottocircleview" />
             <option value="$PROJECT_DIR$/linerottricapview" />
+            <option value="$PROJECT_DIR$/lineshiftbiarcview" />
             <option value="$PROJECT_DIR$/lineshiftjoindownview" />
             <option value="$PROJECT_DIR$/lineshiftpartialcompleteview" />
             <option value="$PROJECT_DIR$/linesicklerotdownview" />
