@@ -181,4 +181,27 @@ class ArcJoinBigArcRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcJoinBigArcRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ajbar : ArcJoinBigArcRight = ArcJoinBigArcRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ajbar.draw(canvas, paint)
+            animator.animate {
+                ajbar.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ajbar.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
