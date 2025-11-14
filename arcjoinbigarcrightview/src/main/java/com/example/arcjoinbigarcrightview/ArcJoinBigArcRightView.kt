@@ -206,4 +206,12 @@ class ArcJoinBigArcRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ArcJoinBigArcRightView {
+            val view : ArcJoinBigArcRightView = ArcJoinBigArcRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
