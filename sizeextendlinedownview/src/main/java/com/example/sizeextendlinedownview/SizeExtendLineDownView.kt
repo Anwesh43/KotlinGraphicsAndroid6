@@ -26,3 +26,46 @@ val rot : Float = 180f
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
+
+fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
+    save()
+    translate(x, y)
+    cb()
+    restore()
+}
+
+fun Canvas.drawSizeExtendLineDown(scale : Float, w : Float, h : Float, paint : Paint) {
+    val size : Float = Math.min(w, h) / sizeFactor
+    val dsc : (Int) -> Float = {
+        scale.divideScale(it, parts)
+    }
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
+        rotate(rot * dsc(2))
+        drawXY(-size / 2, 0f) {
+            drawLine(0f, 0f, 0f, -size * 0.5f * dsc(0).divideScale(0, 3), paint)
+            drawXY(0f, -size / 2) {
+                drawLine(0f, 0f, size * dsc(0).divideScale(1, 3), 0f, paint)
+                drawXY(size, 0f) {
+                    drawLine(0f, 0f, 0f, size * 0.5f * dsc(0).divideScale(2, 3), paint)
+                }
+            }
+            for (j in 0..1) {
+                drawXY(0f, 0f) {
+                    scale(1f - 2 * j, 1f)
+                    drawXY(size * 0.5f * (1 - dsc(3)) + (w / 2 - size / 2) * (1 - dsc(1)), 0f) {
+                        drawLine(0f, 0f, size / 2, 0f, paint)
+                    }
+                }
+            }
+        }
+    }
+}
+
+fun Canvas.drawSELDNode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    paint.color = colors[i].toColorInt()
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    drawSizeExtendLineDown(scale, w, h, paint)
+}
