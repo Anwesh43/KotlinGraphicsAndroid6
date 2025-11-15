@@ -193,4 +193,27 @@ class CapArcLineRectView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : CapArcLineRectView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val calr : CapArcLineRect = CapArcLineRect(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            calr.draw(canvas, paint)
+            animator.animate {
+                calr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            calr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
