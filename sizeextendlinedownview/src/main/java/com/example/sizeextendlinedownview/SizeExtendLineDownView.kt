@@ -221,4 +221,12 @@ class SizeExtendLineDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : SizeExtendLineDownView {
+            val view : SizeExtendLineDownView = SizeExtendLineDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
