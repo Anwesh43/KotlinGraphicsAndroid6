@@ -196,4 +196,27 @@ class SizeExtendLineDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : SizeExtendLineDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val seld : SizeExtendLineDown = SizeExtendLineDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            seld.draw(canvas, paint)
+            animator.animate {
+                seld.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            seld.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
