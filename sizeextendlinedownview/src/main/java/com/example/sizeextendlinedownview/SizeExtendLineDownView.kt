@@ -49,12 +49,12 @@ fun Canvas.drawSizeExtendLineDown(scale : Float, w : Float, h : Float, paint : P
                     drawLine(0f, 0f, 0f, size * 0.5f * dsc(0).divideScale(2, 3), paint)
                 }
             }
-            for (j in 0..1) {
-                drawXY(0f, 0f) {
-                    scale(1f - 2 * j, 1f)
-                    drawXY(size * 0.5f * (1 - dsc(3)) + (w / 2 - size / 2) * (1 - dsc(1)), 0f) {
-                        drawLine(0f, 0f, size / 2, 0f, paint)
-                    }
+        }
+        for (j in 0..1) {
+            drawXY(0f, 0f) {
+                scale(1f - 2 * j, 1f)
+                drawXY(size * 0.5f * (1 - dsc(3)) + (w / 2 - size / 2) * (1 - dsc(1)), 0f) {
+                    drawLine(0f, 0f, size / 2, 0f, paint)
                 }
             }
         }
