@@ -218,4 +218,12 @@ class CapArcLineRectView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : CapArcLineRectView {
+            val view : CapArcLineRectView = CapArcLineRectView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
