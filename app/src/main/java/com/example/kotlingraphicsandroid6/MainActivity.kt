@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.sizeextendlinedownview.SizeExtendLineDownView
+import com.example.linedownarcrightview.LineDownArcRightView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        SizeExtendLineDownView.create( this)
+        LineDownArcRightView.create( this)
     }
 }
