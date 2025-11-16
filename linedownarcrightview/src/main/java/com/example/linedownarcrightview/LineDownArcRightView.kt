@@ -185,4 +185,27 @@ class LineDownArcRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineDownArcRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ldar : LineDownArcRight = LineDownArcRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ldar.draw(canvas, paint)
+            animator.animate {
+                ldar.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ldar.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
