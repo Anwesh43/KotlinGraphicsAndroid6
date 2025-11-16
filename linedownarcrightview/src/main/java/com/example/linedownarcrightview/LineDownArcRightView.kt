@@ -210,4 +210,12 @@ class LineDownArcRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineDownArcRightView {
+            val view : LineDownArcRightView = LineDownArcRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
