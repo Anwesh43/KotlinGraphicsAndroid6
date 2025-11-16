@@ -7,6 +7,6 @@ import com.example.linedownarcrightview.LineDownArcRightView
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LineDownArcRightView.create( this)
+        LineDownArcRightView.create(this)
     }
 }
