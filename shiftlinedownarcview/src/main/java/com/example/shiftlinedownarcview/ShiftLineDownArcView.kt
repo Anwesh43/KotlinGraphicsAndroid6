@@ -44,7 +44,7 @@ fun Canvas.drawShiftLineDownArc(scale : Float, w : Float, h : Float, paint : Pai
         rotate(rot * dsc(3))
         drawXY(0f, -size + size * dsc(2)) {
             drawLine(0f, 0f, size * dsc(0), 0f, paint)
-            drawArc(RectF(-size, -2 * size, size, 0f), 0f, 90f * dsc(1), false, paint)
+            drawArc(RectF(-size, -size, size, size), 0f, 90f * dsc(1), false, paint)
         }
     }
 }
