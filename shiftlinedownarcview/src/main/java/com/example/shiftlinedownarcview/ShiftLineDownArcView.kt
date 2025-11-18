@@ -210,4 +210,12 @@ class ShiftLineDownArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ShiftLineDownArcView {
+            val view : ShiftLineDownArcView = ShiftLineDownArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
