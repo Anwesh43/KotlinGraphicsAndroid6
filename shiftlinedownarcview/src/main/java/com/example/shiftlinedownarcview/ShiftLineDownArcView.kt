@@ -185,4 +185,27 @@ class ShiftLineDownArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ShiftLineDownArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val slda : ShiftLineDownArc = ShiftLineDownArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            slda.draw(canvas, paint)
+            animator.animate {
+                slda.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            slda.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
