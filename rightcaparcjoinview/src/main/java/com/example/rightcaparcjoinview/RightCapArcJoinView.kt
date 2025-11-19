@@ -215,4 +215,12 @@ class RightCapArcJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : RightCapArcJoinView {
+            val view : RightCapArcJoinView = RightCapArcJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
