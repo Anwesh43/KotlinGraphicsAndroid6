@@ -45,7 +45,7 @@ fun Canvas.drawRightCapArcJoin(scale : Float, w : Float, h : Float, paint : Pain
         drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 180f, 90f * dsc(0), false, paint)
         drawXY(0f, -size / 2) {
             drawLine(0f, 0f, size * 0.5f * dsc(1), 0f, paint)
-            drawXY(size / 2, -size / 2) {
+            drawXY(size / 2, 0f) {
                 drawLine(0f, 0f, 0f, size * 0.5f * dsc(2), paint)
                 drawXY(0f, size / 2) {
                     drawLine(0f, 0f, -size * dsc(4), 0f, paint)
@@ -61,6 +61,7 @@ fun Canvas.drawRCAJNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawRightCapArcJoin(scale, w, h, paint)
 }
 
