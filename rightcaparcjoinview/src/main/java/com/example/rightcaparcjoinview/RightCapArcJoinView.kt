@@ -190,4 +190,27 @@ class RightCapArcJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RightCapArcJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val rcaj : RightCapArcJoin = RightCapArcJoin(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rcaj.draw(canvas, paint)
+            animator.animate {
+                rcaj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rcaj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
