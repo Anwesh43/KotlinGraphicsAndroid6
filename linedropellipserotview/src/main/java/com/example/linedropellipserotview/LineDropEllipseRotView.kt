@@ -209,4 +209,12 @@ class LineDropEllipseRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineDropEllipseRotView {
+            val view : LineDropEllipseRotView = LineDropEllipseRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
