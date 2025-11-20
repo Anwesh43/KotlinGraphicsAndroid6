@@ -184,4 +184,27 @@ class LineDropEllipseRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineDropEllipseRotView) {
+
+        private val lder : LineDropEllipseRot = LineDropEllipseRot(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lder.draw(canvas, paint)
+            animator.animate {
+                lder.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lder.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
