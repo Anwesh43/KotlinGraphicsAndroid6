@@ -42,7 +42,7 @@ fun Canvas.drawLineDropEllipseRot(scale : Float, w : Float, h : Float, paint : P
     }
     drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
         rotate(-rot * dsc(2))
-        drawXY(-w * 0.5f * dsc(0), 0f) {
+        drawXY(-w * 0.5f * (1 - dsc(0)), 0f) {
             drawLine(0f, 0f, -size, 0f, paint)
         }
         drawArc(RectF(-size, -size / 5, 0f, size / 5), 0f, 180f * (dsc(1) + dsc(3)), false, paint)
@@ -55,6 +55,7 @@ fun Canvas.drawLDERNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawLineDropEllipseRot(scale, w, h, paint)
 }
 
