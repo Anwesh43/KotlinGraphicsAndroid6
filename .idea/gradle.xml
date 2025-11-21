@@ -43,6 +43,7 @@
             <option value="$PROJECT_DIR$/biendarrowlineview" />
             <option value="$PROJECT_DIR$/bilinearcjoinview" />
             <option value="$PROJECT_DIR$/bilineclosedownview" />
+            <option value="$PROJECT_DIR$/biquarterarcsemiview" />
             <option value="$PROJECT_DIR$/biquarterseparatearcview" />
             <option value="$PROJECT_DIR$/bottombentleftlineview" />
             <option value="$PROJECT_DIR$/brokenarcrectleftview" />
@@ -100,6 +101,7 @@
             <option value="$PROJECT_DIR$/linedownarcleftview" />
             <option value="$PROJECT_DIR$/linedownarcrightview" />
             <option value="$PROJECT_DIR$/linedownrotrightview" />
+            <option value="$PROJECT_DIR$/linedropellipserotview" />
             <option value="$PROJECT_DIR$/linedroprightdownview" />
             <option value="$PROJECT_DIR$/linedroprotextendview" />
             <option value="$PROJECT_DIR$/lineenclosearcleftview" />
