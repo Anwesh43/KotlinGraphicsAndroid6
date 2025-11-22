@@ -189,4 +189,27 @@ class BiQuarterArcSemiView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiQuarterArcSemiView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bqas : BiQuarterArcSemi = BiQuarterArcSemi(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bqas.draw(canvas, paint)
+            animator.animate {
+                bqas.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bqas.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
