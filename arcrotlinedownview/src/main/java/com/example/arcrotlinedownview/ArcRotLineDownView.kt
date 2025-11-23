@@ -214,4 +214,12 @@ class ArcRotLineDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : ArcRotLineDownView {
+            val view : ArcRotLineDownView = ArcRotLineDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
