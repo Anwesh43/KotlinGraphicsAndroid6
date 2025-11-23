@@ -186,4 +186,27 @@ class BiArcJoinDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiArcJoinDownView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bajd : BiArcJoinDown = BiArcJoinDown(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bajd.draw(canvas, paint)
+            animator.animate {
+                bajd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bajd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
