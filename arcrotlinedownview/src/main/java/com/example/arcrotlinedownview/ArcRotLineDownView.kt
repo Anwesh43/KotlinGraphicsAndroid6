@@ -66,8 +66,7 @@ fun Canvas.drawARLDNode(i : Int, scale : Float, paint : Paint) {
 class ArcRotLineDownView(ctx : Context) : View(ctx) {
 
     override fun onDraw(canvas : Canvas) {
-        val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
-        canvas.drawARLDNode(0, 0.5f, paint)
+
     }
 
     override fun onTouchEvent(event : MotionEvent) : Boolean {
@@ -77,5 +76,25 @@ class ArcRotLineDownView(ctx : Context) : View(ctx) {
             }
         }
         return true
+    }
+
+    data class State(var scale : Float = 0f, var dir : Float = 0f, var prevScale : Float = 0f) {
+
+        fun update(cb : (Float) -> Unit) {
+            scale += scGap * dir
+            if (Math.abs(scale - prevScale) > 1) {
+                scale = prevScale + dir
+                dir = 0f
+                prevScale = scale
+                cb(prevScale)
+            }
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            if (dir === 0f) {
+                dir = 1f - 2 * prevScale
+                cb()
+            }
+        }
     }
 }
