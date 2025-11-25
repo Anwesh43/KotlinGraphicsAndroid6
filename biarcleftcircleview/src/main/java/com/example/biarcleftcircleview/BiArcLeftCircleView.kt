@@ -211,4 +211,12 @@ class BiArcLeftCircleView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : BiArcLeftCircleView {
+            val view : BiArcLeftCircleView = BiArcLeftCircleView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
