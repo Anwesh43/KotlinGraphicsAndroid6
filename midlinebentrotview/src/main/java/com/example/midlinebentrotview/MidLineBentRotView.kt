@@ -187,4 +187,27 @@ class MidLineBentRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : MidLineBentRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val mlbr : MidLineBentRot = MidLineBentRot(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            mlbr.draw(canvas, paint)
+            animator.animate {
+                mlbr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            mlbr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
