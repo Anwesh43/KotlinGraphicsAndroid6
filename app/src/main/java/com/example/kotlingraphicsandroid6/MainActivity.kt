@@ -2,12 +2,12 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.arcrotlinedownview.ArcRotLineDownView
+import com.example.biarcleftcircleview.BiArcLeftCircleView
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        ArcRotLineDownView.create(this)
+        BiArcLeftCircleView.create(this)
     }
 }
