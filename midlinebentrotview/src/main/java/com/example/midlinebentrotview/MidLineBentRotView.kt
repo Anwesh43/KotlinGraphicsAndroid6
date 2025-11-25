@@ -212,4 +212,12 @@ class MidLineBentRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : MidLineBentRotView {
+            val view : MidLineBentRotView = MidLineBentRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
