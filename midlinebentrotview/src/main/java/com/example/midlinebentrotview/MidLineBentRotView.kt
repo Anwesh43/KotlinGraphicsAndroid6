@@ -45,7 +45,7 @@ fun Canvas.drawMidLineBentRot(scale : Float, w : Float, h : Float, paint : Paint
         for (j in 0..1) {
             drawXY(0f, -size) {
                 rotate((rot + deg * j) * dsc(1 + j))
-                drawLine(0f, 0f, 0f, size * dsc(0), paint)
+                drawLine(0f, 0f, 0f, size * dsc(0) * (1f - 2 * j), paint)
             }
         }
     }
