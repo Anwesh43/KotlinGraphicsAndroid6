@@ -22,6 +22,7 @@
             <option value="$PROJECT_DIR$/arclinecloserightview" />
             <option value="$PROJECT_DIR$/arclineupdiagview" />
             <option value="$PROJECT_DIR$/arcopenlineshootview" />
+            <option value="$PROJECT_DIR$/arcrotlinedownview" />
             <option value="$PROJECT_DIR$/arcrotlinerightview" />
             <option value="$PROJECT_DIR$/arcshiftcircledownview" />
             <option value="$PROJECT_DIR$/arcshiftcircleupview" />
@@ -40,6 +41,7 @@
             <option value="$PROJECT_DIR$/biarcedgedownview" />
             <option value="$PROJECT_DIR$/biarcexpandupview" />
             <option value="$PROJECT_DIR$/biarcjoindownview" />
+            <option value="$PROJECT_DIR$/biarcleftcircleview" />
             <option value="$PROJECT_DIR$/bibentfoldlineview" />
             <option value="$PROJECT_DIR$/biendarrowlineview" />
             <option value="$PROJECT_DIR$/bilinearcjoinview" />
