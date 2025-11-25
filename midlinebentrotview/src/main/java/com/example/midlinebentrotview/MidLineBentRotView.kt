@@ -164,4 +164,27 @@ class MidLineBentRotView(ctx : Context) : View(ctx) {
             return this
         }
     }
+
+    data class MidLineBentRot(var i : Int) {
+
+        private var curr : MLBRNode = MLBRNode(0)
+        private var dir : Int = 1
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            curr.draw(canvas, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            curr.update {
+                curr = curr.getNext(dir) {
+                    dir *= -1
+                }
+                cb(it)
+            }
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            curr.startUpdating(cb)
+        }
+    }
 }
