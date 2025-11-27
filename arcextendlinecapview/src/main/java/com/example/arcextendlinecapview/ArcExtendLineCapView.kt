@@ -189,4 +189,27 @@ class ArcExtendLineCapView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcExtendLineCapView) {
+
+        private val animator : Animator = Animator(view)
+        private val aelc : ArcExtendLineCap = ArcExtendLineCap(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            aelc.draw(canvas, paint)
+            animator.animate {
+                aelc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            aelc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
