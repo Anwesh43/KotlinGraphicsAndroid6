@@ -214,4 +214,12 @@ class ArcExtendLineCapView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ArcExtendLineCapView {
+            val view : ArcExtendLineCapView = ArcExtendLineCapView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
