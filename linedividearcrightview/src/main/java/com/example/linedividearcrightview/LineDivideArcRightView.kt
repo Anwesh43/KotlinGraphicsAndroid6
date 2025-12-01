@@ -48,7 +48,7 @@ fun Canvas.drawLineDivideArcRight(scale : Float, w : Float, h : Float, paint : P
             drawXY(size, 0f) {
                 drawArc(RectF(0f, -size, 2 * size, size), 180f, 90f * dsc(2), false, paint)
             }
-            drawXY(0f, -size) {
+            drawXY(2 * size, -size) {
                 drawLine(0f, 0f, 0f, size * dsc(3), paint)
             }
         }
