@@ -214,4 +214,13 @@ class LineRotCollapseArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineRotCollapseArcView {
+            val view : LineRotCollapseArcView = LineRotCollapseArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
