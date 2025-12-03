@@ -187,4 +187,27 @@ class ExtendBiArcLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ExtendBiArcLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val ebal : ExtendBiArcLine = ExtendBiArcLine(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ebal.draw(canvas, paint)
+            animator.animate {
+                ebal.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ebal.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
