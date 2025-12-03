@@ -212,4 +212,12 @@ class ExtendBiArcLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ExtendBiArcLineView {
+            val view : ExtendBiArcLineView = ExtendBiArcLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
