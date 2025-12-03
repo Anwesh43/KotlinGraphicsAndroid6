@@ -47,7 +47,15 @@ fun Canvas.drawExtendBiArcLine(scale : Float, w : Float, h : Float, paint : Pain
                 drawLine(0f, 0f, 0f, -size * (dsc(0) - dsc(2)), paint)
             }
         }
-        drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 180f, 180f * dsc(1), false, paint)
+        drawXY(0f, -size * (1 - dsc(2))) {
+            drawArc(
+                RectF(-size / 2, -size / 2, size / 2, size / 2),
+                180f,
+                180f * dsc(1),
+                false,
+                paint
+            )
+        }
     }
 }
 
