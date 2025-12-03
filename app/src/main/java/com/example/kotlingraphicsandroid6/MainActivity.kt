@@ -2,11 +2,11 @@ package com.example.kotlingraphicsandroid6
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import com.example.linerotcollapsearcview.LineRotCollapseArcView
+import com.example.extendbiarclineview.ExtendBiArcLineView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LineRotCollapseArcView.create(this)
+        ExtendBiArcLineView.create(this)
     }
 }
