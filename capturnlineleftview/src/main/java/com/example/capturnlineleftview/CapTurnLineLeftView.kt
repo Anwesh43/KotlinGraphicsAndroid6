@@ -93,4 +93,32 @@ class CapTurnLineLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class Animator(var view : View, var aniamted : Boolean = false) {
+
+        fun animate(cb : () -> Unit) {
+            if (aniamted) {
+                cb()
+                try {
+                    Thread.sleep(delay)
+                    view.invalidate()
+                } catch(ex : Exception) {
+
+                }
+            }
+        }
+
+        fun start() {
+            if (!aniamted) {
+                aniamted = true
+                view.postInvalidate()
+            }
+        }
+
+        fun stop() {
+            if (aniamted) {
+                aniamted = false
+            }
+        }
+    }
 }
