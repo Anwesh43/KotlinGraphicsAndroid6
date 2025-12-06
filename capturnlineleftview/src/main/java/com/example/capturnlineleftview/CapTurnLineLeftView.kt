@@ -185,4 +185,27 @@ class CapTurnLineLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : CapTurnLineLeftView) {
+
+        private val ctll : CapTurnLineLeft = CapTurnLineLeft(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ctll.draw(canvas, paint)
+            animator.animate {
+                ctll.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ctll.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
