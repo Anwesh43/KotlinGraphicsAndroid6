@@ -210,4 +210,12 @@ class CapTurnLineLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : CapTurnLineLeftView {
+            val view : CapTurnLineLeftView = CapTurnLineLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
