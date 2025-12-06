@@ -16,8 +16,8 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
-val scGap : Float = 0.04f / parts
+val parts : Int = 6
+val scGap : Float = 0.05f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
@@ -40,10 +40,10 @@ fun Canvas.drawCapTurnLineLeft(scale : Float, w : Float, h : Float, paint : Pain
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 - (w / 2) * dsc(4), h / 2) {
+    drawXY(w / 2 - (w / 2) * dsc(5), h / 2) {
         drawXY(0f, -size * (1 - dsc(3))) {
             rotate(rot * dsc(2))
-            drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(1), false, paint)
+            drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * (dsc(1) + dsc(4)), false, paint)
         }
         drawLine(0f, 0f, 0f, -size * (dsc(0) - dsc(3)), paint)
     }
