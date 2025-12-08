@@ -190,4 +190,27 @@ class LineBentRotJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineBentRotJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lbrj : LineBentRotJoin = LineBentRotJoin(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lbrj.draw(canvas, paint)
+            animator.animate {
+                lbrj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbrj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
