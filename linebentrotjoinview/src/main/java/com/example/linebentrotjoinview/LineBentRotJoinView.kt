@@ -43,14 +43,14 @@ fun Canvas.drawLineBentRotJoin(scale : Float, w : Float, h : Float, paint : Pain
     }
     drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
         for (j in 0..1) {
-            drawXY(0f, -size * 0.5f * j) {
+            drawXY(0f, -size * j) {
                 rotate(deg * dsc(1) * j)
-                drawLine(0f, 0f, 0f, -size * 0.5f * dsc(0).divideScale(j, 2), paint)
+                drawLine(0f, 0f, 0f, -size * dsc(0).divideScale(j, 2), paint)
             }
         }
-        drawXY(size / 2, -size / 2) {
+        drawXY(size, -size) {
             rotate(rot * dsc(3))
-            drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 90f * dsc(2), false, paint)
+            drawArc(RectF(0f, -size,  2 * size, size), 180f, 90f * dsc(2), false, paint)
         }
     }
 }
