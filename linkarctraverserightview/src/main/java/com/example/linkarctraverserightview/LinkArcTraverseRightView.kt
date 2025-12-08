@@ -20,7 +20,6 @@ val arcs : Int = 5
 val parts : Int = arcs + 1
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
-val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val sweep : Float = 180f
@@ -62,14 +61,16 @@ fun Canvas.drawLATRNode(i : Int, scale : Float, paint : Paint) {
 
 class LinkArcTraverseRightView(ctx : Context) : View(ctx) {
 
-    override fun onDraw(canvas : Canvas) {
+    private val renderer : Renderer = Renderer(this)
 
+    override fun onDraw(canvas : Canvas) {
+        renderer.render(canvas)
     }
 
     override fun onTouchEvent(event : MotionEvent) : Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-
+                renderer.handleTap()
             }
         }
         return true
