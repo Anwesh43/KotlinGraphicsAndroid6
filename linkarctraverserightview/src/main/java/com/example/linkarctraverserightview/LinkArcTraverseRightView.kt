@@ -210,4 +210,12 @@ class LinkArcTraverseRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LinkArcTraverseRightView {
+            val view : LinkArcTraverseRightView = LinkArcTraverseRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
