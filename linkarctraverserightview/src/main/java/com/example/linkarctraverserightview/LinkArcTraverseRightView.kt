@@ -154,13 +154,36 @@ class LinkArcTraverseRightView(ctx : Context) : View(ctx) {
         fun getNext(dir : Int, cb : () -> Unit) : LATRNode {
             var curr : LATRNode? = prev
             if (dir === 1) {
-                curr = nxt
+                curr = next
             }
             if (curr != null) {
                 return curr
             }
             cb()
             return this
+        }
+    }
+
+    data class LinkArcTraverseRight(var i : Int) {
+
+        private var curr : LATRNode = LATRNode(0)
+        private var dir : Int = 1
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            curr.draw(canvas, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            curr.update {
+                curr = curr.getNext(dir) {
+                    dir *= -1
+                }
+                cb(it)
+            }
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            curr.startUpdating(cb)
         }
     }
 }
