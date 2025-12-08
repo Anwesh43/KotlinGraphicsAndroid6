@@ -43,7 +43,7 @@ fun Canvas.drawLinkArcTraverseRight(scale : Float, w : Float, h : Float, paint :
     drawXY(0f, h / 2) {
         for (j in 0..(arcs - 1)) {
             drawXY(size * j, 0f) {
-                drawArc(RectF(0f, -size / 2, size, 0f), sweep * (1 + dsc(j + 1)), sweep * (dsc(j) - dsc(j + 1)), false, paint)
+                drawArc(RectF(0f, -size / 2, size, size / 2), sweep * (1 + dsc(j + 1)), sweep * (dsc(j) - dsc(j + 1)), false, paint)
             }
         }
     }
