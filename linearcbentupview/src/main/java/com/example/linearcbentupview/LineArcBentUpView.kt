@@ -21,7 +21,7 @@ val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
-val rot : Float = 75f
+val rot : Float = 45f
 val backColor : Int = "#BDBDBD".toColorInt()
 
 fun Int.inverse() : Float = 1f / this
@@ -46,7 +46,11 @@ fun Canvas.drawLineArcBentUp(scale : Float, w : Float, h : Float, paint : Paint)
                 rotate(rot * (1f - 2 * j) * dsc(2 + j))
                 drawXY(-size + size * j, 0f) {
                     val y : Float = size * 0.5f * (1 - j)
-                    drawArc(RectF(0f, -y, size, y), 180f, 180f * dsc(j), false, paint)
+                    if (j == 0) {
+                        drawArc(RectF(0f, -y, size, y), 180f, 180f * dsc(j), false, paint)
+                    } else {
+                        drawLine(0f, 0f, size * dsc(j), 0f, paint)
+                    }
                 }
             }
         }
