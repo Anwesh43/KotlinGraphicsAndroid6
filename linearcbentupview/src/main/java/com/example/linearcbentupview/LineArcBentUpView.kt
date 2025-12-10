@@ -189,4 +189,27 @@ class LineArcBentUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineArcBentUpView) {
+
+        private val labu : LineArcBentUp = LineArcBentUp(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            labu.draw(canvas, paint)
+            animator.animate {
+                labu.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            labu.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
