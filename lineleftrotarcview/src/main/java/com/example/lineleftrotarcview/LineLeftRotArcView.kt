@@ -4,6 +4,7 @@ import android.view.View
 import android.view.MotionEvent
 import android.graphics.Paint
 import android.app.Activity
+import android.content.Context
 import android.graphics.RectF
 import android.graphics.Canvas
 import android.graphics.Color
@@ -60,4 +61,20 @@ fun Canvas.drawLLRANode(i : Int, scale : Float, paint : Paint) {
     paint.strokeWidth = Math.min(w, h) / strokeFactor
     paint.style = Paint.Style.STROKE
     drawLineLeftRotArc(scale, w, h, paint)
+}
+
+class LineLeftRotArcView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
 }
