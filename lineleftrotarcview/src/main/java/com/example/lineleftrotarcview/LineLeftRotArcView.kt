@@ -7,7 +7,6 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.RectF
 import android.graphics.Canvas
-import android.graphics.Color
 import androidx.core.graphics.toColorInt
 
 val colors : Array<String> = arrayOf(
@@ -106,7 +105,8 @@ class LineLeftRotArcView(ctx : Context) : View(ctx) {
             if (animated) {
                 cb()
                 try {
-
+                    Thread.sleep(delay)
+                    view.invalidate()
                 } catch(ex : Exception) {
 
                 }
@@ -138,7 +138,7 @@ class LineLeftRotArcView(ctx : Context) : View(ctx) {
 
         fun addNeighbor() {
             if (i < colors.size - 1) {
-                next = LLRANode(i - 1)
+                next = LLRANode(i + 1)
                 next?.prev = this
             }
         }
